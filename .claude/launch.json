@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dakota",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["-C", "dakota", "dev"],
+      "port": 4790,
+      "autoPort": false
+    },
+    {
+      "name": "dakota-vite",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["-C", "dakota", "dev:client"],
+      "port": 4790,
+      "autoPort": false
+    },
+    {
+      "name": "dakota-nitro",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["-C", "dakota", "dev:server"],
+      "port": 4791,
+      "autoPort": false
+    },
+    {
+      "name": "template-webapp",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["-C", "template-webapp", "dev"],
+      "port": 4780,
+      "autoPort": true
+    }
+  ]
+}

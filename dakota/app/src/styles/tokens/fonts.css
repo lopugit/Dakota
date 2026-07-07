@@ -1,0 +1,10 @@
+/* Dakota — webfonts.
+   No brand font binaries were provided; Google Fonts stand in (flagged in readme.md).
+   Display serif: Newsreader · UI sans: Hanken Grotesk · Mono: Spline Sans Mono */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+  --font-display: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Hanken Grotesk', -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}

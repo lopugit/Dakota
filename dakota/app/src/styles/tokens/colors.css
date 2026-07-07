@@ -1,0 +1,199 @@
+/* Dakota — color tokens.
+   Mainly greyscale (faint leaf-grey warmth) + pastel green accent + the energy
+   spectrum, which doubles as the horse energy scale (violet = flat/quiet,
+   red = hot/tense). Light theme on :root; dark theme on [data-theme="dark"]. */
+
+/* ---------- Primitives (theme-independent ramps) ---------- */
+:root {
+  --grey-0:   #FFFFFF;
+  --grey-50:  #F5F6F3;
+  --grey-100: #ECEEE9;
+  --grey-200: #E0E3DC;
+  --grey-300: #CDD1C9;
+  --grey-400: #ABB0A7;
+  --grey-500: #878C83;
+  --grey-600: #676C63;
+  --grey-700: #4B4F47;
+  --grey-800: #333630;
+  --grey-900: #1F211D;
+  --grey-950: #141613;
+
+  --green-50:  #F1F7EF;
+  --green-100: #E3EFDF;
+  --green-200: #CFE5C9;
+  --green-300: #B5D8AD; /* the pastel accent */
+  --green-400: #98C58F;
+  --green-500: #77A96E;
+  --green-600: #5A8A52;
+  --green-700: #456C3F;
+  --green-800: #365330;
+  --green-900: #293F25;
+}
+
+/* ---------- Light theme (default) ---------- */
+:root {
+  color-scheme: light;
+
+  /* Energy-scale spectrum — earthy, desaturated to sit in a greyscale world */
+  --scale-hot3:      #A5493F;
+  --scale-hot2:    #B06A2F;
+  --scale-hot1:     #9C7F2E;
+  --scale-centre:     #55804E;
+  --scale-flat1:    #47708E;
+  --scale-flat2: #5A5F99;
+  --scale-flat3:     #7D5798;
+
+  --scale-hot3-soft:      #F4E3E0;
+  --scale-hot2-soft:    #F4E8DB;
+  --scale-hot1-soft:     #F2EDD6;
+  --scale-centre-soft:     #E4EFE1;
+  --scale-flat1-soft:    #E0EAF1;
+  --scale-flat2-soft: #E4E5F2;
+  --scale-flat3-soft:     #EDE3F2;
+
+  /* Surfaces */
+  --surface-page:    var(--grey-50);
+  --surface-card:    var(--grey-0);
+  --surface-sunken:  var(--grey-100);
+  --surface-raised:  var(--grey-0);
+  --surface-inverse: var(--grey-900);
+  --surface-hover:   rgb(31 33 29 / 0.05);
+  --surface-active:  rgb(31 33 29 / 0.09);
+
+  /* Text */
+  --text-primary:   var(--grey-900);
+  --text-secondary: var(--grey-700);
+  --text-muted:     var(--grey-500);
+  --text-faint:     var(--grey-400);
+  --text-inverse:   var(--grey-50);
+
+  /* Borders */
+  --border-subtle: var(--grey-200);
+  --border-strong: var(--grey-300);
+
+  /* Accent */
+  --accent:        var(--green-300);
+  --accent-hover:  var(--green-400);
+  --accent-press:  var(--green-500);
+  --accent-tint:   var(--green-100);
+  --accent-strong: var(--green-700);
+  --accent-text:   var(--green-800);
+  --on-accent:     var(--grey-900);
+
+  /* Controls */
+  --control-checked: var(--green-600);
+  --control-off:     var(--grey-300);
+  --on-control:      #FFFFFF;
+  --focus-ring:      var(--green-500);
+
+  /* Semantic (mapped onto the scale spectrum) */
+  --danger:       var(--scale-hot3);
+  --danger-hover: #8F3E35;
+  --danger-soft:  var(--scale-hot3-soft);
+  --warning:      var(--scale-hot2);
+  --warning-soft: var(--scale-hot2-soft);
+  --success:      var(--scale-centre);
+  --success-soft: var(--scale-centre-soft);
+  --info:         var(--scale-flat1);
+  --info-soft:    var(--scale-flat1-soft);
+
+  /* Flat ↔ hot */
+  --flat:  var(--scale-flat3);
+  --hot: var(--scale-hot3);
+  /* Display gradient (hairline, balance track) — follows the theme's scale palette:
+     earthy on light, lifted on dark. */
+  --spectrum-gradient: linear-gradient(90deg,
+    var(--scale-flat3) 0%,
+    var(--scale-flat2) 16.7%,
+    var(--scale-flat1) 33.3%,
+    var(--scale-centre) 50%,
+    var(--scale-hot1) 66.7%,
+    var(--scale-hot2) 83.3%,
+    var(--scale-hot3) 100%); /* @kind color */
+
+  /* Primary action — quiet fill (a step off the surface); ring/glow come from --spectrum-pastel */
+  --primary-fill: var(--grey-100); /* @kind color */
+
+  /* Super-pastel spectrum — primary-action ring & glow (deeper here so it reads on light) */
+  --spectrum-pastel: linear-gradient(105deg,
+    #CDB3DF 0%,
+    #B9BEE7 16.7%,
+    #ABC9E4 33.3%,
+    #ACD8A3 50%,
+    #DFD08E 66.7%,
+    #ECC392 83.3%,
+    #E8ACA1 100%); /* @kind color */
+}
+
+/* ---------- Dark theme ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --scale-hot3:      #C97F76;
+  --scale-hot2:    #CE9A5F;
+  --scale-hot1:     #C2AC5C;
+  --scale-centre:     #8FBB88;
+  --scale-flat1:    #7FA9C6;
+  --scale-flat2: #9297CC;
+  --scale-flat3:     #AB8AC6;
+
+  --scale-hot3-soft:      #3A2624;
+  --scale-hot2-soft:    #382C1E;
+  --scale-hot1-soft:     #35301C;
+  --scale-centre-soft:     #24301F;
+  --scale-flat1-soft:    #1F2A33;
+  --scale-flat2-soft: #26283A;
+  --scale-flat3-soft:     #2F2538;
+
+  --surface-page:    var(--grey-950);
+  --surface-card:    #1B1D19;
+  --surface-sunken:  #101210;
+  --surface-raised:  #22251F;
+  --surface-inverse: var(--grey-50);
+  --surface-hover:   rgb(240 242 237 / 0.06);
+  --surface-active:  rgb(240 242 237 / 0.11);
+
+  --text-primary:   #F0F2ED;
+  --text-secondary: #C3C7BD;
+  --text-muted:     #8D9288;
+  --text-faint:     #62665D;
+  --text-inverse:   var(--grey-900);
+
+  --border-subtle: #2A2D27;
+  --border-strong: #3D413A;
+
+  --accent:        var(--green-300);
+  --accent-hover:  #C4E2BD;
+  --accent-press:  #A3CD9A;
+  --accent-tint:   #22301E;
+  --accent-strong: var(--green-400);
+  --accent-text:   #CBE4C4;
+  --on-accent:     var(--grey-900);
+
+  --primary-fill: #272B24; /* @kind color */
+
+  /* Paler ring/glow stops — they already pop against dark surfaces */
+  --spectrum-pastel: linear-gradient(105deg,
+    #DBC9E7 0%,
+    #C9CCEC 16.7%,
+    #BFD7EA 33.3%,
+    #C0DFBA 50%,
+    #EAE0A9 66.7%,
+    #F2D6B0 83.3%,
+    #F0C6BE 100%); /* @kind color */
+
+  --control-checked: var(--green-400);
+  --control-off:     #3D413A;
+  --on-control:      #141613;
+  --focus-ring:      var(--green-400);
+
+  --danger:       var(--scale-hot3);
+  --danger-hover: #D8938B;
+  --danger-soft:  var(--scale-hot3-soft);
+  --warning:      var(--scale-hot2);
+  --warning-soft: var(--scale-hot2-soft);
+  --success:      var(--scale-centre);
+  --success-soft: var(--scale-centre-soft);
+  --info:         var(--scale-flat1);
+  --info-soft:    var(--scale-flat1-soft);
+}

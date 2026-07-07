@@ -1,0 +1,38 @@
+{
+  "name": "dakota",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n vite,nitro -c green,blue \"pnpm dev:client\" \"pnpm dev:server\"",
+    "dev:client": "vite",
+    "dev:server": "nitro dev --host 127.0.0.1 --port 4791",
+    "build": "pnpm build:client && nitro build --preset vercel",
+    "build:client": "vite build",
+    "build:node": "pnpm build:client && nitro build",
+    "seed": "tsx scripts/seed.ts",
+    "typecheck": "tsc --noEmit",
+    "verify:vercel-output": "node scripts/verify-vercel-output.mjs"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.62.0",
+    "lucide-react": "^0.525.0",
+    "mongodb": "^6.12.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "h3": "^1.13.0",
+    "nitropack": "^2.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}

@@ -1,0 +1,82 @@
+/* Dakota app-level styles: token imports + shell/interaction helpers.
+   Component visuals live in components.css (ported verbatim from the DS). */
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/layout.css';
+@import './tokens/base.css';
+@import './components.css';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--surface-page);
+}
+
+/* Screen enter — 8px rise, 200ms ease-out, never opacity. */
+@keyframes mbScreenIn {
+  from { transform: translateY(8px); }
+  to { transform: none; }
+}
+.dk-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: mbScreenIn var(--duration-base) var(--ease-out);
+}
+
+@keyframes mbSheetIn {
+  from { transform: translateY(24px); }
+  to { transform: none; }
+}
+@keyframes mbFadeIn {
+  from { opacity: 0; }
+}
+
+/* Row buttons — list rows are real buttons; quiet ink-wash hover. */
+.dk-row {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+.dk-hoverable { transition: background-color var(--duration-fast) var(--ease-out); }
+.dk-hoverable:hover { background: var(--surface-hover); }
+.dk-hoverable:active { background: var(--surface-active); }
+
+.dk-row:focus-visible,
+.dk-hoverable:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+
+/* Kicker — 11px/600, 0.08em, uppercase, muted. */
+.dk-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Mono data text */
+.dk-mono {
+  font-family: var(--font-mono);
+}
+
+/* Check-in slider */
+.dk-slider {
+  width: 100%;
+  accent-color: var(--accent-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
