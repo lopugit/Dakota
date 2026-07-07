@@ -15,15 +15,17 @@ export function signed(v: number): string {
   return (r > 0 ? '+' : r < 0 ? '−' : '±') + Math.abs(r).toFixed(2);
 }
 
-/** Value → scale token (dots, bars). Violet toward flat, red toward hot, green at centre. */
+/** Value → scale ink token (numbers, dots). Sky toward flat, barn toward hot, pasture
+    at centre. Uses the readable-on-white -ink variants; the bright --scale-* stay for
+    the meter track. */
 export function valColor(v: number): string {
-  if (v <= -0.5) return 'var(--scale-flat3)';
-  if (v <= -0.25) return 'var(--scale-flat2)';
-  if (v < -0.05) return 'var(--scale-flat1)';
-  if (v <= 0.05) return 'var(--scale-centre)';
-  if (v <= 0.25) return 'var(--scale-hot1)';
-  if (v <= 0.5) return 'var(--scale-hot2)';
-  return 'var(--scale-hot3)';
+  if (v <= -0.5) return 'var(--scale-flat3-ink)';
+  if (v <= -0.25) return 'var(--scale-flat2-ink)';
+  if (v < -0.05) return 'var(--scale-flat1-ink)';
+  if (v <= 0.05) return 'var(--scale-centre-ink)';
+  if (v <= 0.25) return 'var(--scale-hot1-ink)';
+  if (v <= 0.5) return 'var(--scale-hot2-ink)';
+  return 'var(--scale-hot3-ink)';
 }
 
 /** Energy label for a single reading. */

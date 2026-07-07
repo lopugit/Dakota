@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { Icon, ThemeToggle } from '@/components';
+import { Icon, ThemeToggle, Motif, FarmFieldFooter } from '@/components';
 import { RAIL_GROUPS, byId } from './nav';
 
 export function Rail({ activeTab, dateStr }: { activeTab: string; dateStr: string }) {
@@ -32,6 +32,7 @@ export function Rail({ activeTab, dateStr }: { activeTab: string; dateStr: strin
         >
           <Icon name="horse" size={20} color="var(--accent-strong)" strokeWidth={2} />
           <span className="dk-wordmark" style={{ fontSize: 21 }}>Dakota</span>
+          <Motif name="sunflower" size={19} style={{ marginLeft: -1 }} />
         </span>
         <span className="dk-mono" style={{ fontSize: 11, color: 'var(--text-muted)' }}>
           {dateStr}
@@ -85,6 +86,7 @@ export function Rail({ activeTab, dateStr }: { activeTab: string; dateStr: strin
         ))}
       </nav>
       <div style={{ flex: 1 }} />
+      <FarmFieldFooter count={4} />
       <div
         style={{
           display: 'flex',
