@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import { Icon, ThemeToggle } from '@/components';
+import { Icon, ThemeToggle, Motif, FarmFieldFooter, FarmScatter } from '@/components';
 import { Rail } from './Rail';
 import { TabBar } from './TabBar';
 import { MoreSheet } from './MoreSheet';
 import { activeTabFor, byId, screenMeta } from './nav';
-import { useIsDesktop } from './useMediaQuery';
+import { useIsDesktop, useIsWide } from './useMediaQuery';
 
 let restoredTab = false;
 
@@ -13,6 +13,8 @@ export function AppShell() {
   const location = useLocation();
   const navigate = useNavigate();
   const isDesktop = useIsDesktop();
+  const isWide = useIsWide();
+  const gardenSeed = Array.from(location.pathname).reduce((a, c) => a + c.charCodeAt(0), 0);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreButtonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -82,10 +84,22 @@ export function AppShell() {
           left: 0,
           right: 0,
           zIndex: 80,
+          pointerEvents: 'none',
         }}
       />
 
-      <div style={{ display: 'flex', alignItems: 'stretch', minHeight: '100vh' }}>
+      {/* Ambient farm sprigs in the margins — only when the column has real gutter. */}
+      {isWide && <FarmScatter />}
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'stretch',
+          minHeight: '100vh',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
         {isDesktop && <Rail activeTab={activeTab} dateStr={dateStr} />}
 
         <main style={{ flex: 1, minWidth: 0 }}>
@@ -107,6 +121,7 @@ export function AppShell() {
               >
                 <Icon name="horse" size={19} color="var(--accent-strong)" strokeWidth={2} />
                 <span className="dk-wordmark" style={{ fontSize: 20 }}>Dakota</span>
+                <Motif name="sunflower" size={18} style={{ marginLeft: -1 }} />
               </span>
               <ThemeToggle />
             </header>
@@ -143,6 +158,9 @@ export function AppShell() {
             </div>
 
             <Outlet />
+
+            {/* Desktop shows the garden in the rail instead, so it isn't doubled. */}
+            {!isDesktop && <FarmFieldFooter seed={gardenSeed} />}
           </div>
         </main>
       </div>

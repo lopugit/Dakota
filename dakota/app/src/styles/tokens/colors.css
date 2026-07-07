@@ -1,17 +1,18 @@
-/* Dakota — color tokens. The tack room.
-   Warm oat-canvas neutrals + saddle-leather accent + brass hardware, with the
-   horse energy scale as the one expressive range: violet = flat/switched off,
-   green = forward & relaxed, red = hot/tense.
-   Light theme on :root; dark theme ("tack room at night") on [data-theme="dark"]. */
+/* Dakota — color tokens. The whole farm, in full sun. 🌻🐴🥕
+   Bright, fresh farm palette: crisp white cards on a sky→meadow wash, a vivid
+   paddock-green accent, a festive farm-rainbow ribbon up top, and a colourful
+   motif palette (sunflowers, carrots, straw hats). The horse energy scale stays
+   a LANDSCAPE — sky (flat/switched off) → pasture → hay → carrot → barn (hot).
+   Light theme on :root; dark theme ("the farm at dusk") on [data-theme="dark"]. */
 
 /* ---------- Primitives (theme-independent ramps) ---------- */
 :root {
-  /* Oat — warm canvas neutrals, paper to bridle-leather ink */
-  --oat-0:   #FFFDF8;
-  --oat-50:  #F6F1E7;
-  --oat-100: #EDE5D6;
-  --oat-200: #E0D5C0;
-  --oat-300: #CBBC9F;
+  /* Oat — bright, clean canvas neutrals, paper to bridle-leather ink */
+  --oat-0:   #FFFFFF;
+  --oat-50:  #FAF7EF;
+  --oat-100: #F0EADB;
+  --oat-200: #E2D8C4;
+  --oat-300: #CDBEA1;
   --oat-400: #A8987D;
   --oat-500: #837458;
   --oat-600: #655840;
@@ -20,42 +21,88 @@
   --oat-900: #231E17;
   --oat-950: #17130E;
 
-  /* Saddle — oiled leather, the working accent */
+  /* Pasture — vivid paddock green, the working accent */
+  --pasture-50:  #EEF8E1;
+  --pasture-100: #D9EFBE;
+  --pasture-200: #B9E28F;
+  --pasture-300: #97D45F; /* the paddock accent */
+  --pasture-400: #72C23C;
+  --pasture-500: #55A82B;
+  --pasture-600: #438A22;
+  --pasture-700: #356E1E;
+  --pasture-800: #2A561A;
+  --pasture-900: #204214;
+
+  /* Saddle — oiled leather; tack, fence-rail brown (draught) */
   --saddle-50:  #F9EFDF;
   --saddle-100: #F3E2C7;
   --saddle-200: #E8CCA0;
-  --saddle-300: #D9AE6F; /* the leather accent */
+  --saddle-300: #D9AE6F;
   --saddle-400: #C6924B;
   --saddle-500: #AD7734;
   --saddle-600: #8F5E27;
   --saddle-700: #71491E;
   --saddle-800: #553618;
   --saddle-900: #3D2712;
+
+  /* Motif palette — the little-farm decorations (sunflowers, carrots, hats).
+     Theme-independent: colourful stickers that pop on light and dark alike. */
+  --m-sun:         #F5B81E; /* sunflower petal */
+  --m-sun-deep:    #E09E12;
+  --m-sun-core:    #7A4A24; /* sunflower centre */
+  --m-sun-core2:   #9A6A34;
+  --m-leaf:        #55B23F; /* bright leaf / stem */
+  --m-leaf-deep:   #3E8C2E;
+  --m-carrot:      #EE7F2D;
+  --m-carrot-deep: #CE671C;
+  --m-carrot-lite: #F7AC63;
+  --m-straw:       #E7BE55; /* straw hat / wheat */
+  --m-straw-deep:  #C99B34;
+  --m-sky:         #45A6E0; /* bright sky */
+  --m-sky-deep:    #2E8BC7;
+  --m-barn:        #D2513E; /* barn red — hatbands, accents */
+  --m-soil:        #8A5A2B;
+  --m-cream:       #FFF7E6;
+  --m-petal:       #EF7C97; /* tulip */
+  --m-petal-deep:  #D75B79;
+  --m-metal:       #B7BDC5; /* horseshoe */
+  --m-metal-deep:  #8E949C;
+  --m-metal-hole:  #5A6069;
 }
 
 /* ---------- Light theme (default) ---------- */
 :root {
   color-scheme: light;
 
-  /* Energy scale — twilight violet (flat) through pasture green to chestnut (hot) */
-  --scale-flat3:  #6F5BA6;
-  --scale-flat2:  #5769AE;
-  --scale-flat1:  #477C97;
-  --scale-centre: #5E8B4C;
-  --scale-hot1:   #A3842B;
-  --scale-hot2:   #B06A31;
-  --scale-hot3:   #A8473B;
+  /* Energy scale — a bright landscape: sky (flat) through pasture to barn (hot) */
+  --scale-flat3:  #7C86D6; /* pre-dawn heather-sky — flattest */
+  --scale-flat2:  #5E86DC; /* cornflower */
+  --scale-flat1:  #2E9BDD; /* clear sky — info */
+  --scale-centre: #57A83A; /* pasture — forward & relaxed / success */
+  --scale-hot1:   #E0A413; /* sunflower hay */
+  --scale-hot2:   #E67E24; /* carrot — warning */
+  --scale-hot3:   #C24C39; /* barn red — hot / danger */
 
-  --scale-flat3-soft:  #ECE4F3;
-  --scale-flat2-soft:  #E4E7F5;
-  --scale-flat1-soft:  #DFEAF0;
-  --scale-centre-soft: #E3EEDA;
-  --scale-hot1-soft:   #F1E9D0;
-  --scale-hot2-soft:   #F4E2CE;
-  --scale-hot3-soft:   #F4DED8;
+  --scale-flat3-soft:  #E8E9F9;
+  --scale-flat2-soft:  #E1E9FB;
+  --scale-flat1-soft:  #D8ECFA;
+  --scale-centre-soft: #E4F4D7;
+  --scale-hot1-soft:   #F9EFCC;
+  --scale-hot2-soft:   #F9E6D0;
+  --scale-hot3-soft:   #F7DFD9;
 
-  /* Surfaces — oat canvas */
-  --surface-page:    var(--oat-50);
+  /* Ink variants — darker, readable-on-white versions for numbers, dots and
+     badge text. The bright --scale-* above stay for the meter/fills. */
+  --scale-flat3-ink:  #6069AC;
+  --scale-flat2-ink:  #4A6EB8;
+  --scale-flat1-ink:  #1F76A6;
+  --scale-centre-ink: #3F7D29;
+  --scale-hot1-ink:   #886811;
+  --scale-hot2-ink:   #A85A18;
+  --scale-hot3-ink:   #B8462F;
+
+  /* Surfaces — crisp white cards under a sky→meadow wash */
+  --surface-page:    linear-gradient(178deg, #D6EDF8 0%, #E9F4DC 44%, var(--oat-50) 100%); /* sky → meadow → cream @kind color */
   --surface-card:    var(--oat-0);
   --surface-sunken:  var(--oat-100);
   --surface-raised:  var(--oat-0);
@@ -66,7 +113,7 @@
   /* Text — bridle ink */
   --text-primary:   var(--oat-900);
   --text-secondary: var(--oat-700);
-  --text-muted:     var(--oat-500);
+  --text-muted:     var(--oat-600); /* clears AA on the cream/meadow page wash */
   --text-faint:     var(--oat-400);
   --text-inverse:   var(--oat-50);
 
@@ -74,30 +121,30 @@
   --border-subtle: var(--oat-200);
   --border-strong: var(--oat-300);
 
-  /* Accent — saddle leather */
-  --accent:        var(--saddle-300);
-  --accent-hover:  var(--saddle-400);
-  --accent-press:  var(--saddle-500);
-  --accent-tint:   var(--saddle-100);
-  --accent-strong: var(--saddle-600);
-  --accent-text:   var(--saddle-700);
-  --on-accent:     var(--saddle-900);
+  /* Accent — vivid paddock green */
+  --accent:        var(--pasture-300);
+  --accent-hover:  var(--pasture-400);
+  --accent-press:  var(--pasture-500);
+  --accent-tint:   var(--pasture-100);
+  --accent-strong: var(--pasture-700); /* deep paddock — links clear AA on cream */
+  --accent-text:   var(--pasture-700);
+  --on-accent:     var(--pasture-900);
 
-  /* Brass hardware — buckles, rings, focus */
-  --brass:      #A08023;
-  --brass-soft: #F0E6C4;
+  /* Brass hardware — buckles, rings, focus (hay-gold) */
+  --brass:      #A8871F;
+  --brass-soft: #F5E9BE;
 
   /* Controls */
-  --control-checked: var(--saddle-500);
+  --control-checked: var(--pasture-600); /* white glyph clears the 3:1 UI-component floor */
   --control-off:     var(--oat-300);
-  --on-control:      #FFFDF8;
+  --on-control:      #FFFFFF;
   --focus-ring:      var(--brass);
 
-  /* Semantic (mapped onto the energy scale) */
+  /* Semantic (mapped onto the landscape scale) */
   --danger:       var(--scale-hot3);
-  --danger-hover: #8F3A2F;
+  --danger-hover: #A73E2E;
   --danger-soft:  var(--scale-hot3-soft);
-  --on-danger:    #FFFDF8;
+  --on-danger:    #FFFFFF;
   --warning:      var(--scale-hot2);
   --warning-soft: var(--scale-hot2-soft);
   --success:      var(--scale-centre);
@@ -108,7 +155,7 @@
   /* Flat ↔ hot */
   --flat: var(--scale-flat3);
   --hot:  var(--scale-hot3);
-  /* Meter track — the energy scale as a gradient */
+  /* Meter track — the energy scale as a gradient (sky → pasture → harvest) */
   --spectrum-gradient: linear-gradient(90deg,
     var(--scale-flat3) 0%,
     var(--scale-flat2) 16.7%,
@@ -118,38 +165,50 @@
     var(--scale-hot2) 83.3%,
     var(--scale-hot3) 100%); /* @kind color */
 
-  /* Primary action — saddle leather with a lighter worn top edge */
-  --primary-fill: linear-gradient(180deg, var(--saddle-300), var(--saddle-400)); /* @kind color */
-  --primary-edge: var(--saddle-500);
-  --primary-stitch: rgb(255 253 248 / 0.55);
+  /* Primary action — a vivid painted paddock gate with a stitched edge */
+  --primary-fill: linear-gradient(180deg, var(--pasture-300), var(--pasture-400)); /* @kind color */
+  --primary-edge: var(--pasture-500);
+  --primary-stitch: rgb(255 255 255 / 0.6);
 
-  /* The strap — stitched leather brand hairline (top of app, dividers) */
-  --strap: repeating-linear-gradient(90deg,
-    var(--saddle-700) 0 14px,
-    var(--saddle-200) 14px 19px); /* @kind color */
+  /* The ribbon — a festive farm-rainbow hairline (top of app, dividers) */
+  --strap: linear-gradient(90deg,
+    var(--m-sky) 0%,
+    var(--m-leaf) 30%,
+    var(--m-sun) 55%,
+    var(--m-carrot) 78%,
+    var(--m-barn) 100%); /* @kind color */
 }
 
-/* ---------- Dark theme — the tack room at night ---------- */
+/* ---------- Dark theme — the farm at dusk ---------- */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --scale-flat3:  #A796D2;
-  --scale-flat2:  #94A1DB;
-  --scale-flat1:  #7FB0C4;
-  --scale-centre: #92BE7E;
-  --scale-hot1:   #CFB35A;
-  --scale-hot2:   #D69A5C;
-  --scale-hot3:   #D07E6E;
+  --scale-flat3:  #A6A9DC; /* dusk heather-sky */
+  --scale-flat2:  #93A6DD; /* cornflower */
+  --scale-flat1:  #5FB6E6; /* sky */
+  --scale-centre: #8FCB74; /* pasture */
+  --scale-hot1:   #E4C64F; /* hay */
+  --scale-hot2:   #ED9E56; /* carrot */
+  --scale-hot3:   #DE7E68; /* barn red */
 
-  --scale-flat3-soft:  #2C2539;
-  --scale-flat2-soft:  #252A3B;
-  --scale-flat1-soft:  #1F2E35;
-  --scale-centre-soft: #24301D;
-  --scale-hot1-soft:   #363018;
-  --scale-hot2-soft:   #392B1A;
-  --scale-hot3-soft:   #3A2420;
+  --scale-flat3-soft:  #29293C;
+  --scale-flat2-soft:  #232A3C;
+  --scale-flat1-soft:  #16303C;
+  --scale-centre-soft: #24311C;
+  --scale-hot1-soft:   #383016;
+  --scale-hot2-soft:   #3A2B18;
+  --scale-hot3-soft:   #3C231E;
 
-  --surface-page:    #16110D;
+  /* Ink = the (already light, readable-on-dark) scale colours at night. */
+  --scale-flat3-ink:  var(--scale-flat3);
+  --scale-flat2-ink:  var(--scale-flat2);
+  --scale-flat1-ink:  var(--scale-flat1);
+  --scale-centre-ink: var(--scale-centre);
+  --scale-hot1-ink:   var(--scale-hot1);
+  --scale-hot2-ink:   var(--scale-hot2);
+  --scale-hot3-ink:   var(--scale-hot3);
+
+  --surface-page:    linear-gradient(178deg, #14202B 0%, #171712 34%, #16110D 100%); /* night sky → soil @kind color */
   --surface-card:    #201914;
   --surface-sunken:  #100C09;
   --surface-raised:  #2A211A;
@@ -166,24 +225,24 @@
   --border-subtle: #352B21;
   --border-strong: #4A3D2E;
 
-  --accent:        var(--saddle-300);
-  --accent-hover:  #E4C088;
-  --accent-press:  #CFA260;
-  --accent-tint:   #33271A;
-  --accent-strong: #DFB679;
-  --accent-text:   #EBCF9E;
+  --accent:        var(--pasture-300);
+  --accent-hover:  #ACE27E;
+  --accent-press:  #8ECB5C;
+  --accent-tint:   #253619;
+  --accent-strong: #A6DC7B;
+  --accent-text:   #BCE79C;
   --on-accent:     var(--oat-950);
 
-  --brass:      #D6B356;
+  --brass:      #E0C05C;
   --brass-soft: #3A311A;
 
-  --control-checked: var(--saddle-400);
+  --control-checked: var(--pasture-400);
   --control-off:     #4A3D2E;
   --on-control:      #17130E;
   --focus-ring:      var(--brass);
 
   --danger:       var(--scale-hot3);
-  --danger-hover: #DB9285;
+  --danger-hover: #E8907C;
   --danger-soft:  var(--scale-hot3-soft);
   --on-danger:    var(--oat-950);
   --warning:      var(--scale-hot2);
@@ -196,12 +255,16 @@
   --flat: var(--scale-flat3);
   --hot:  var(--scale-hot3);
 
-  /* Leather reads lighter against the dark room */
-  --primary-fill: linear-gradient(180deg, var(--saddle-300), #BE8B45); /* @kind color */
-  --primary-edge: var(--saddle-600);
+  /* The gate reads brighter against the dusk */
+  --primary-fill: linear-gradient(180deg, #8FCF5A, #6BB53A); /* @kind color */
+  --primary-edge: var(--pasture-600);
   --primary-stitch: rgb(23 19 14 / 0.5);
 
-  --strap: repeating-linear-gradient(90deg,
-    #3B2C1B 0 14px,
-    var(--saddle-400) 14px 19px); /* @kind color */
+  /* Ribbon dims a touch at night but keeps its colours */
+  --strap: linear-gradient(90deg,
+    var(--m-sky-deep) 0%,
+    var(--m-leaf-deep) 30%,
+    var(--m-sun-deep) 55%,
+    var(--m-carrot-deep) 78%,
+    var(--m-barn) 100%); /* @kind color */
 }

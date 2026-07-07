@@ -18,5 +18,5 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 a { color: var(--accent-strong); text-underline-offset: 2px; }
 
-::selection { background: var(--saddle-200); color: var(--oat-900); }
-[data-theme="dark"] ::selection { background: var(--saddle-800); color: var(--oat-50); }
+::selection { background: var(--pasture-100); color: var(--oat-900); }
+[data-theme="dark"] ::selection { background: var(--pasture-800); color: var(--oat-50); }

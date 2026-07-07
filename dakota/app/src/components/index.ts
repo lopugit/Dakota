@@ -9,3 +9,4 @@ export { Switch } from './Switch';
 export { ThemeToggle, initTheme, setTheme } from './ThemeToggle';
 export { BalanceMeter } from './BalanceMeter';
 export { Avatar } from './Avatar';
+export { Motif, FarmFieldFooter, FarmScatter, type MotifName } from './FarmMotifs';

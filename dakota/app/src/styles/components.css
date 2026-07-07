@@ -118,17 +118,17 @@
 }
 .dk-badge__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
 .dk-badge--green   { background: var(--accent-tint); color: var(--accent-text); }
-.dk-badge--success { background: var(--success-soft); color: var(--success); }
-.dk-badge--warning { background: var(--warning-soft); color: var(--warning); }
-.dk-badge--danger  { background: var(--danger-soft);  color: var(--danger); }
-.dk-badge--info    { background: var(--info-soft);    color: var(--info); }
-.dk-badge--root      { background: var(--scale-hot3-soft);      color: var(--scale-hot3); }
-.dk-badge--sacral    { background: var(--scale-hot2-soft);    color: var(--scale-hot2); }
-.dk-badge--solar     { background: var(--scale-hot1-soft);     color: var(--scale-hot1); }
-.dk-badge--heart     { background: var(--scale-centre-soft);     color: var(--scale-centre); }
-.dk-badge--throat    { background: var(--scale-flat1-soft);    color: var(--scale-flat1); }
-.dk-badge--third-eye { background: var(--scale-flat2-soft); color: var(--scale-flat2); }
-.dk-badge--crown     { background: var(--scale-flat3-soft);     color: var(--scale-flat3); }
+.dk-badge--success { background: var(--success-soft); color: var(--scale-centre-ink); }
+.dk-badge--warning { background: var(--warning-soft); color: var(--scale-hot2-ink); }
+.dk-badge--danger  { background: var(--danger-soft);  color: var(--scale-hot3-ink); }
+.dk-badge--info    { background: var(--info-soft);    color: var(--scale-flat1-ink); }
+.dk-badge--root      { background: var(--scale-hot3-soft);   color: var(--scale-hot3-ink); }
+.dk-badge--sacral    { background: var(--scale-hot2-soft);   color: var(--scale-hot2-ink); }
+.dk-badge--solar     { background: var(--scale-hot1-soft);   color: var(--scale-hot1-ink); }
+.dk-badge--heart     { background: var(--scale-centre-soft); color: var(--scale-centre-ink); }
+.dk-badge--throat    { background: var(--scale-flat1-soft);  color: var(--scale-flat1-ink); }
+.dk-badge--third-eye { background: var(--scale-flat2-soft);  color: var(--scale-flat2-ink); }
+.dk-badge--crown     { background: var(--scale-flat3-soft);  color: var(--scale-flat3-ink); }
 
 .dk-tag {
   display: inline-flex;

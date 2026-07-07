@@ -13,3 +13,5 @@ export function useMediaQuery(query: string): boolean {
 }
 
 export const useIsDesktop = (): boolean => useMediaQuery('(min-width: 900px)');
+/** Wide enough that the content column has a real side gutter (for ambient art). */
+export const useIsWide = (): boolean => useMediaQuery('(min-width: 1180px)');
