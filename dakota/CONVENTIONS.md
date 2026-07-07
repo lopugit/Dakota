@@ -1,9 +1,26 @@
 # Dakota — implementation conventions (read before touching a screen)
 
-Dakota is a horse training, health and riding companion. The structure and
-visual language are inherited from the Macrobiotica template
-(`../template-webapp/` — its screens are the living reference for layout
-recipes, paddings and list-row patterns).
+Dakota is a horse training, health and riding companion. The structure is
+inherited from the Macrobiotica template (`../template-webapp/` — its screens
+remain the living reference for layout recipes, paddings and list-row
+patterns), but the visual identity is Dakota's own.
+
+## Brand: the tack room
+
+Warm oat-canvas neutrals (`--oat-*`), a saddle-leather accent (`--saddle-*`),
+and brass hardware (`--brass`). Signature elements:
+
+- **The strap** — the stitched-leather hairline at the very top of the app
+  (`.dk-strap`, `var(--strap)`); it replaces any rainbow/gradient hairline.
+- **Leather primary buttons** — `--primary-fill` leather gradient with a
+  dashed stitch inset (`.dk-btn--primary::before`). Text is `--on-accent`.
+- **Brass ring marker** on the energy meter (`.dk-balance__marker`), and
+  brass `--focus-ring`.
+- **Type**: Fraunces (`--font-display`) for headings/wordmark, Albert Sans
+  (`--font-sans`) for UI, IBM Plex Mono (`--font-mono`) for data. Never
+  hardcode family names in screens — always the tokens.
+- Grass/pasture UI (paddock fills, lush badges) stays green via the scale
+  tokens (`--scale-centre*`), never the leather accent.
 
 ## The energy scale (core concept)
 
@@ -25,7 +42,7 @@ reuse the same meter for their `heat` (cooling ↔ heating).
 - Every screen's root element: `<div className="dk-screen">…</div>`.
 - List rows are real `<button className="dk-row dk-hoverable">` (or `<Link>`)
   with the template's paddings and a `border-top: 1px solid var(--border-subtle)`.
-- Font families inline when needed: `'Newsreader', Georgia, serif` for display,
+- Font families inline when needed: `var(--font-display)` for display,
   `var(--font-mono)` for numbers/times. Kickers via `className="dk-kicker"`.
 
 ## Components (`@/components`)

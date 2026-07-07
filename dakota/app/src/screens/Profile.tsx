@@ -18,7 +18,7 @@ import { sampleModeEnabled, setSampleMode } from '@/lib/sample';
 import { sessionStreak } from '@shared/derive';
 
 const mono = { fontFamily: 'var(--font-mono)' } as const;
-const serif = { fontFamily: "'Newsreader', Georgia, serif" } as const;
+const serif = { fontFamily: 'var(--font-display)' } as const;
 
 const settingsRow = {
   display: 'flex',

@@ -28,7 +28,7 @@ export function FriendScreen() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <span
               style={{
-                fontFamily: "'Newsreader', Georgia, serif",
+                fontFamily: 'var(--font-display)',
                 fontSize: 22,
                 fontWeight: 500,
                 letterSpacing: '-0.01em',

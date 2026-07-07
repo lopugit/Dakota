@@ -32,7 +32,7 @@ export function LearnScreen() {
             >
               <span
                 style={{
-                  fontFamily: "'Newsreader', Georgia, serif",
+                  fontFamily: 'var(--font-display)',
                   fontSize: 18,
                   fontWeight: 500,
                   letterSpacing: '-0.01em',

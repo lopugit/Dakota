@@ -80,7 +80,7 @@ export function AilmentDetailScreen() {
       <Card style={{ padding: 20, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <span
           style={{
-            fontFamily: "'Newsreader', Georgia, serif",
+            fontFamily: 'var(--font-display)',
             fontSize: 22,
             fontWeight: 500,
             letterSpacing: '-0.01em',
@@ -159,7 +159,7 @@ export function AilmentDetailScreen() {
             margin: 0,
             borderLeft: '3px solid var(--border-strong)',
             paddingLeft: 14,
-            fontFamily: "'Newsreader', Georgia, serif",
+            fontFamily: 'var(--font-display)',
             fontStyle: 'italic',
             fontSize: 15,
             lineHeight: 1.6,

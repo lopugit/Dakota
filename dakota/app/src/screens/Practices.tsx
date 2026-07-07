@@ -141,7 +141,7 @@ export function PracticesScreen() {
                 <p
                   style={{
                     margin: 0,
-                    fontFamily: "'Newsreader', Georgia, serif",
+                    fontFamily: 'var(--font-display)',
                     fontStyle: 'italic',
                     fontSize: 15,
                     lineHeight: 1.6,

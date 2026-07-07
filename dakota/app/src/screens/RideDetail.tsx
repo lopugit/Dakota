@@ -71,7 +71,7 @@ export function RideDetailScreen() {
       <Card style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 6 }}>
         <span
           style={{
-            fontFamily: "'Newsreader', Georgia, serif",
+            fontFamily: 'var(--font-display)',
             fontSize: 22,
             fontWeight: 500,
             letterSpacing: '-0.01em',

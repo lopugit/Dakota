@@ -187,7 +187,7 @@ export function HorseDetailScreen() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, minWidth: 0 }}>
             <span
               style={{
-                fontFamily: "'Newsreader', Georgia, serif",
+                fontFamily: 'var(--font-display)',
                 fontSize: 24,
                 fontWeight: 500,
                 letterSpacing: '-0.01em',

@@ -9,7 +9,7 @@ function Block({ block }: { block: ArticleBlock }) {
       <h3
         style={{
           margin: '10px 0 0',
-          fontFamily: "'Newsreader', Georgia, serif",
+          fontFamily: 'var(--font-display)',
           fontSize: 18,
           fontWeight: 600,
           letterSpacing: '-0.01em',
@@ -42,7 +42,7 @@ function Block({ block }: { block: ArticleBlock }) {
           margin: '6px 0',
           padding: '4px 0 4px 14px',
           borderLeft: '3px solid var(--accent-strong)',
-          fontFamily: "'Newsreader', Georgia, serif",
+          fontFamily: 'var(--font-display)',
           fontStyle: 'italic',
           fontSize: 17,
           lineHeight: 1.55,
@@ -140,7 +140,7 @@ export function LessonScreen() {
           <h2
             style={{
               margin: 0,
-              fontFamily: "'Newsreader', Georgia, serif",
+              fontFamily: 'var(--font-display)',
               fontSize: 26,
               fontWeight: 500,
               letterSpacing: '-0.01em',

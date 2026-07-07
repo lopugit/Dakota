@@ -219,7 +219,7 @@ export function ExerciseDetailScreen() {
       <Card style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
         <span
           style={{
-            fontFamily: "'Newsreader', Georgia, serif",
+            fontFamily: 'var(--font-display)',
             fontSize: 24,
             fontWeight: 500,
             letterSpacing: '-0.01em',

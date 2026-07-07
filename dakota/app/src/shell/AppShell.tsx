@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import { ThemeToggle } from '@/components';
+import { Icon, ThemeToggle } from '@/components';
 import { Rail } from './Rail';
 import { TabBar } from './TabBar';
 import { MoreSheet } from './MoreSheet';
@@ -69,19 +69,18 @@ export function AppShell() {
         minHeight: '100vh',
         background: 'var(--surface-page)',
         color: 'var(--text-primary)',
-        fontFamily: "'Hanken Grotesk', system-ui, sans-serif",
+        fontFamily: 'var(--font-sans)',
       }}
     >
-      {/* 2px spectrum hairline — fixed at the very top, always. */}
+      {/* The strap — stitched-leather brand hairline, fixed at the very top. */}
       <div
         aria-hidden="true"
+        className="dk-strap"
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
-          height: 2,
-          background: 'var(--spectrum-gradient)',
           zIndex: 80,
         }}
       />
@@ -103,8 +102,11 @@ export function AppShell() {
                 boxSizing: 'border-box',
               }}
             >
-              <span className="dk-wordmark" style={{ fontSize: 20, color: 'var(--text-primary)' }}>
-                Dakota
+              <span
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--text-primary)' }}
+              >
+                <Icon name="horse" size={19} color="var(--accent-strong)" strokeWidth={2} />
+                <span className="dk-wordmark" style={{ fontSize: 20 }}>Dakota</span>
               </span>
               <ThemeToggle />
             </header>
@@ -127,7 +129,7 @@ export function AppShell() {
               <h1
                 style={{
                   margin: 0,
-                  fontFamily: "'Newsreader', Georgia, serif",
+                  fontFamily: 'var(--font-display)',
                   fontWeight: 500,
                   fontSize: 30,
                   letterSpacing: '-0.015em',

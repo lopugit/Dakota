@@ -88,7 +88,7 @@ export function DiaryScreen() {
           <IconButton aria-label="Previous month" onClick={() => setMonthOffset((o) => o - 1)}>
             <Icon name="chevron-left" size={18} />
           </IconButton>
-          <span style={{ fontFamily: "'Newsreader', Georgia, serif", fontSize: 20, fontWeight: 500 }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 500 }}>
             {monthLabel}
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
@@ -176,7 +176,7 @@ export function DiaryScreen() {
             flexWrap: 'wrap',
           }}
         >
-          <span style={{ fontFamily: "'Newsreader', Georgia, serif", fontSize: 22, fontWeight: 500 }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 500 }}>
             {selDate.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}
           </span>
           <span style={{ ...mono, fontSize: 13, color: 'var(--text-secondary)' }}>

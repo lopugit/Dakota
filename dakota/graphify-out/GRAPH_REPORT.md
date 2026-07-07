@@ -1,15 +1,16 @@
 # Graph Report - dakota  (2026-07-08)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 101 files · ~59,702 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 524 nodes · 1419 edges · 20 communities (18 shown, 2 thin omitted)
+- 525 nodes · 1421 edges · 21 communities (19 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.68)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0574e16c`
+- Built from commit: `96a3603a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,10 +32,11 @@
 - [[_COMMUNITY_Social Feed Fixtures|Social Feed Fixtures]]
 - [[_COMMUNITY_Practice Data|Practice Data]]
 - [[_COMMUNITY_Vercel Deployment Notes|Vercel Deployment Notes]]
+- [[_COMMUNITY_feeds.ts|feeds.ts]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `useCatalog()` - 33 edges
-2. `Icon()` - 25 edges
+2. `Icon()` - 26 edges
 3. `Card()` - 24 edges
 4. `getDataContext()` - 23 edges
 5. `TodayScreen()` - 19 edges
@@ -59,11 +61,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (20 total, 2 thin omitted)
+## Communities (21 total, 2 thin omitted)
 
 ### Community 0 - "UI Components"
 Cohesion: 0.06
-Nodes (56): Avatar(), AvatarProps, Badge(), BadgeProps, BadgeTone, BalanceMeterProps, ButtonProps, Card() (+48 more)
+Nodes (53): Avatar(), AvatarProps, Badge(), BadgeProps, BadgeTone, BalanceMeterProps, ButtonProps, Card() (+45 more)
 
 ### Community 1 - "Auth And Feed APIs"
 Cohesion: 0.08
@@ -75,11 +77,11 @@ Nodes (63): BalanceMeter(), Button(), getDay(), todayKey(), useDayAvg(), useHors
 
 ### Community 3 - "React Query Hooks"
 Cohesion: 0.08
-Nodes (34): useExerciseById(), Ctx, keys, useAddComment(), useAuth(), useAuthMutation(), useCompleteLesson(), useFeed() (+26 more)
+Nodes (37): useExerciseById(), Ctx, keys, useAddComment(), useAddHorse(), useAuth(), useAuthMutation(), useCompleteLesson() (+29 more)
 
 ### Community 4 - "API Client And Types"
 Cohesion: 0.07
-Nodes (29): api, post(), request(), AilmentCare, ArticleBlockType, Catalog, DayLog, Discipline (+21 more)
+Nodes (27): api, post(), request(), AgeRow, AilmentCare, ArticleBlockType, Catalog, ConditionScore (+19 more)
 
 ### Community 5 - "Icons And Theme"
 Cohesion: 0.10
@@ -90,8 +92,8 @@ Cohesion: 0.06
 Nodes (33): dependencies, lucide-react, mongodb, react, react-dom, react-router, @tanstack/react-query, zod (+25 more)
 
 ### Community 7 - "Seeded Catalog Data"
-Cohesion: 0.14
-Nodes (23): AILMENT_SYSTEMS, AILMENTS, ARTICLES, COURSES, DISCIPLINES, EXERCISES, LEVELS, FEED_CATS (+15 more)
+Cohesion: 0.15
+Nodes (24): main(), AILMENT_SYSTEMS, AILMENTS, ARTICLES, COURSES, daysAgo(), demoHorses(), demoPaddocks() (+16 more)
 
 ### Community 8 - "Ride Tracking"
 Cohesion: 0.17
@@ -102,12 +104,12 @@ Cohesion: 0.10
 Nodes (20): compilerOptions, esModuleInterop, isolatedModules, jsx, lib, module, moduleResolution, noEmit (+12 more)
 
 ### Community 10 - "Demo Stable Data"
-Cohesion: 0.18
-Nodes (15): main(), CHECKIN_NOTES, daysAgo(), DEFAULT_PADDOCKS, demoHorses(), demoPaddocks(), demoRides(), prng() (+7 more)
+Cohesion: 0.24
+Nodes (9): CHECKIN_NOTES, DEFAULT_PADDOCKS, prng(), RIDE_SKETCHES, RideSketch, SESSION_NOTES, trace(), Paddocks (+1 more)
 
 ### Community 11 - "Implementation Conventions"
-Cohesion: 0.20
-Nodes (9): Accessibility, Arena diagrams, Components (`@/components`), Dakota — implementation conventions (read before touching a screen), Data (`@/lib`), Layout & styling, Navigation, The energy scale (core concept) (+1 more)
+Cohesion: 0.18
+Nodes (10): Accessibility, Arena diagrams, Brand: the tack room, Components (`@/components`), Dakota — implementation conventions (read before touching a screen), Data (`@/lib`), Layout & styling, Navigation (+2 more)
 
 ### Community 12 - "Project README"
 Cohesion: 0.20
@@ -118,11 +120,15 @@ Cohesion: 0.29
 Nodes (5): config, configPath, fsIndex, html, indexPath
 
 ### Community 14 - "Social Feed Fixtures"
+Cohesion: 0.22
+Nodes (7): FRIENDS, POSTS, FeedPost, Friend, Post, PostComment, UserPost
+
+### Community 20 - "feeds.ts"
 Cohesion: 0.50
-Nodes (3): FRIENDS, POSTS, Friend
+Nodes (3): FEED_CATS, FEEDS, FeedItem
 
 ## Knowledge Gaps
-- **153 isolated node(s):** `AvatarProps`, `BadgeProps`, `BalanceMeterProps`, `ButtonProps`, `CardProps` (+148 more)
+- **154 isolated node(s):** `AvatarProps`, `BadgeProps`, `BalanceMeterProps`, `ButtonProps`, `CardProps` (+149 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -130,16 +136,16 @@ Nodes (3): FRIENDS, POSTS, Friend
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Icon()` connect `UI Components` to `Ride Tracking`, `Daily Horse Tracking`, `React Query Hooks`, `Icons And Theme`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Why does `dateKey()` connect `Daily Horse Tracking` to `Auth And Feed APIs`, `Demo Stable Data`, `React Query Hooks`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `dateKey()` connect `Daily Horse Tracking` to `Auth And Feed APIs`, `Demo Stable Data`, `React Query Hooks`, `Seeded Catalog Data`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **Why does `useCatalog()` connect `UI Components` to `Daily Horse Tracking`, `React Query Hooks`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `AvatarProps`, `BadgeProps`, `BalanceMeterProps` to the rest of the system?**
-  _153 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _154 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `UI Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05744888023369036 - nodes in this community are weakly interconnected._
 - **Should `Auth And Feed APIs` be split into smaller, more focused modules?**
-  _Cohesion score 0.07530022719896137 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07929824561403509 - nodes in this community are weakly interconnected._
 - **Should `Daily Horse Tracking` be split into smaller, more focused modules?**
   _Cohesion score 0.07313738892686261 - nodes in this community are weakly interconnected._

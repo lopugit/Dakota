@@ -65,7 +65,7 @@ export function FeedItemDetailScreen() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', minHeight: 30 }}>
         <span
           style={{
-            fontFamily: "'Newsreader', Georgia, serif",
+            fontFamily: 'var(--font-display)',
             fontSize: 22,
             fontWeight: 500,
             letterSpacing: '-0.01em',

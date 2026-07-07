@@ -7,15 +7,16 @@ import type { Grass, Paddock } from '@shared/types';
 const mono = { fontFamily: 'var(--font-mono)' } as const;
 
 const GRASS_FILL: Record<Grass, string> = {
-  lush: 'var(--accent-tint)',
+  lush: 'var(--scale-centre-soft)',
   good: 'var(--surface-sunken)',
   short: 'var(--scale-hot1-soft)',
   'eaten down': 'var(--scale-hot2-soft)',
   resting: 'transparent',
 };
 
+// Grass reads as grass: green tones for growth, warm tones for wear.
 const GRASS_TONE: Record<Grass, BadgeTone> = {
-  lush: 'green',
+  lush: 'heart',
   good: 'success',
   short: 'solar',
   'eaten down': 'sacral',

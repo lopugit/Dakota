@@ -23,10 +23,15 @@ export function Rail({ activeTab, dateStr }: { activeTab: string; dateStr: strin
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '0 12px' }}>
         <span
-          className="dk-wordmark"
-          style={{ fontSize: 21, color: 'var(--text-primary)' }}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            color: 'var(--text-primary)',
+          }}
         >
-          Dakota
+          <Icon name="horse" size={20} color="var(--accent-strong)" strokeWidth={2} />
+          <span className="dk-wordmark" style={{ fontSize: 21 }}>Dakota</span>
         </span>
         <span className="dk-mono" style={{ fontSize: 11, color: 'var(--text-muted)' }}>
           {dateStr}

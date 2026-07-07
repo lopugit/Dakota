@@ -10,8 +10,11 @@ Built for a two-horse family yard, sized for any. Every session and check-in
 scores the horse on one axis: **−1 flat/quiet · 0 forward & relaxed · +1
 hot/tense** — the energy scale that runs through the whole app.
 
-Structure and design system inherited from `../template-webapp/`
-(Macrobiotica); see `CONVENTIONS.md` before touching a screen.
+The structure is inherited from `../template-webapp/` (Macrobiotica), but the
+identity is Dakota's own — **the tack room**: oat-canvas neutrals, a
+saddle-leather accent with stitched detailing, brass hardware, Fraunces
+display type, and a stitched-leather "strap" running along the top of the
+app. See `CONVENTIONS.md` (Brand section) before touching a screen.
 
 ## Stack
 

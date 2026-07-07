@@ -52,7 +52,7 @@ export function AuthScreen() {
         minHeight: '100vh',
         background: 'var(--surface-page)',
         color: 'var(--text-primary)',
-        fontFamily: "'Hanken Grotesk', system-ui, sans-serif",
+        fontFamily: 'var(--font-sans)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -90,7 +90,7 @@ export function AuthScreen() {
           <h1
             style={{
               margin: '10px 0 0',
-              fontFamily: "'Newsreader', Georgia, serif",
+              fontFamily: 'var(--font-display)',
               fontWeight: 500,
               fontSize: 30,
               letterSpacing: '-0.015em',
