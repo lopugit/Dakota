@@ -1,0 +1,199 @@
+/* Macrobiotica — color tokens.
+   Mainly greyscale (faint leaf-grey warmth) + pastel green accent + the chakra
+   spectrum, which doubles as the macrobiotic yin→yang scale (violet = most yin,
+   red = most yang). Light theme on :root; dark theme on [data-theme="dark"]. */
+
+/* ---------- Primitives (theme-independent ramps) ---------- */
+:root {
+  --grey-0:   #FFFFFF;
+  --grey-50:  #F5F6F3;
+  --grey-100: #ECEEE9;
+  --grey-200: #E0E3DC;
+  --grey-300: #CDD1C9;
+  --grey-400: #ABB0A7;
+  --grey-500: #878C83;
+  --grey-600: #676C63;
+  --grey-700: #4B4F47;
+  --grey-800: #333630;
+  --grey-900: #1F211D;
+  --grey-950: #141613;
+
+  --green-50:  #F1F7EF;
+  --green-100: #E3EFDF;
+  --green-200: #CFE5C9;
+  --green-300: #B5D8AD; /* the pastel accent */
+  --green-400: #98C58F;
+  --green-500: #77A96E;
+  --green-600: #5A8A52;
+  --green-700: #456C3F;
+  --green-800: #365330;
+  --green-900: #293F25;
+}
+
+/* ---------- Light theme (default) ---------- */
+:root {
+  color-scheme: light;
+
+  /* Chakra spectrum — earthy, desaturated to sit in a greyscale world */
+  --chakra-root:      #A5493F;
+  --chakra-sacral:    #B06A2F;
+  --chakra-solar:     #9C7F2E;
+  --chakra-heart:     #55804E;
+  --chakra-throat:    #47708E;
+  --chakra-third-eye: #5A5F99;
+  --chakra-crown:     #7D5798;
+
+  --chakra-root-soft:      #F4E3E0;
+  --chakra-sacral-soft:    #F4E8DB;
+  --chakra-solar-soft:     #F2EDD6;
+  --chakra-heart-soft:     #E4EFE1;
+  --chakra-throat-soft:    #E0EAF1;
+  --chakra-third-eye-soft: #E4E5F2;
+  --chakra-crown-soft:     #EDE3F2;
+
+  /* Surfaces */
+  --surface-page:    var(--grey-50);
+  --surface-card:    var(--grey-0);
+  --surface-sunken:  var(--grey-100);
+  --surface-raised:  var(--grey-0);
+  --surface-inverse: var(--grey-900);
+  --surface-hover:   rgb(31 33 29 / 0.05);
+  --surface-active:  rgb(31 33 29 / 0.09);
+
+  /* Text */
+  --text-primary:   var(--grey-900);
+  --text-secondary: var(--grey-700);
+  --text-muted:     var(--grey-500);
+  --text-faint:     var(--grey-400);
+  --text-inverse:   var(--grey-50);
+
+  /* Borders */
+  --border-subtle: var(--grey-200);
+  --border-strong: var(--grey-300);
+
+  /* Accent */
+  --accent:        var(--green-300);
+  --accent-hover:  var(--green-400);
+  --accent-press:  var(--green-500);
+  --accent-tint:   var(--green-100);
+  --accent-strong: var(--green-700);
+  --accent-text:   var(--green-800);
+  --on-accent:     var(--grey-900);
+
+  /* Controls */
+  --control-checked: var(--green-600);
+  --control-off:     var(--grey-300);
+  --on-control:      #FFFFFF;
+  --focus-ring:      var(--green-500);
+
+  /* Semantic (mapped onto the chakra spectrum) */
+  --danger:       var(--chakra-root);
+  --danger-hover: #8F3E35;
+  --danger-soft:  var(--chakra-root-soft);
+  --warning:      var(--chakra-sacral);
+  --warning-soft: var(--chakra-sacral-soft);
+  --success:      var(--chakra-heart);
+  --success-soft: var(--chakra-heart-soft);
+  --info:         var(--chakra-throat);
+  --info-soft:    var(--chakra-throat-soft);
+
+  /* Yin ↔ yang */
+  --yin:  var(--chakra-crown);
+  --yang: var(--chakra-root);
+  /* Display gradient (hairline, balance track) — follows the theme's chakra palette:
+     earthy on light, lifted on dark. */
+  --spectrum-gradient: linear-gradient(90deg,
+    var(--chakra-crown) 0%,
+    var(--chakra-third-eye) 16.7%,
+    var(--chakra-throat) 33.3%,
+    var(--chakra-heart) 50%,
+    var(--chakra-solar) 66.7%,
+    var(--chakra-sacral) 83.3%,
+    var(--chakra-root) 100%); /* @kind color */
+
+  /* Primary action — quiet fill (a step off the surface); ring/glow come from --spectrum-pastel */
+  --primary-fill: var(--grey-100); /* @kind color */
+
+  /* Super-pastel spectrum — primary-action ring & glow (deeper here so it reads on light) */
+  --spectrum-pastel: linear-gradient(105deg,
+    #CDB3DF 0%,
+    #B9BEE7 16.7%,
+    #ABC9E4 33.3%,
+    #ACD8A3 50%,
+    #DFD08E 66.7%,
+    #ECC392 83.3%,
+    #E8ACA1 100%); /* @kind color */
+}
+
+/* ---------- Dark theme ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --chakra-root:      #C97F76;
+  --chakra-sacral:    #CE9A5F;
+  --chakra-solar:     #C2AC5C;
+  --chakra-heart:     #8FBB88;
+  --chakra-throat:    #7FA9C6;
+  --chakra-third-eye: #9297CC;
+  --chakra-crown:     #AB8AC6;
+
+  --chakra-root-soft:      #3A2624;
+  --chakra-sacral-soft:    #382C1E;
+  --chakra-solar-soft:     #35301C;
+  --chakra-heart-soft:     #24301F;
+  --chakra-throat-soft:    #1F2A33;
+  --chakra-third-eye-soft: #26283A;
+  --chakra-crown-soft:     #2F2538;
+
+  --surface-page:    var(--grey-950);
+  --surface-card:    #1B1D19;
+  --surface-sunken:  #101210;
+  --surface-raised:  #22251F;
+  --surface-inverse: var(--grey-50);
+  --surface-hover:   rgb(240 242 237 / 0.06);
+  --surface-active:  rgb(240 242 237 / 0.11);
+
+  --text-primary:   #F0F2ED;
+  --text-secondary: #C3C7BD;
+  --text-muted:     #8D9288;
+  --text-faint:     #62665D;
+  --text-inverse:   var(--grey-900);
+
+  --border-subtle: #2A2D27;
+  --border-strong: #3D413A;
+
+  --accent:        var(--green-300);
+  --accent-hover:  #C4E2BD;
+  --accent-press:  #A3CD9A;
+  --accent-tint:   #22301E;
+  --accent-strong: var(--green-400);
+  --accent-text:   #CBE4C4;
+  --on-accent:     var(--grey-900);
+
+  --primary-fill: #272B24; /* @kind color */
+
+  /* Paler ring/glow stops — they already pop against dark surfaces */
+  --spectrum-pastel: linear-gradient(105deg,
+    #DBC9E7 0%,
+    #C9CCEC 16.7%,
+    #BFD7EA 33.3%,
+    #C0DFBA 50%,
+    #EAE0A9 66.7%,
+    #F2D6B0 83.3%,
+    #F0C6BE 100%); /* @kind color */
+
+  --control-checked: var(--green-400);
+  --control-off:     #3D413A;
+  --on-control:      #141613;
+  --focus-ring:      var(--green-400);
+
+  --danger:       var(--chakra-root);
+  --danger-hover: #D8938B;
+  --danger-soft:  var(--chakra-root-soft);
+  --warning:      var(--chakra-sacral);
+  --warning-soft: var(--chakra-sacral-soft);
+  --success:      var(--chakra-heart);
+  --success-soft: var(--chakra-heart-soft);
+  --info:         var(--chakra-throat);
+  --info-soft:    var(--chakra-throat-soft);
+}

@@ -1,0 +1,19 @@
+<!-- @dsCard group="Spacing" viewport="700x160" name="Motion" subtitle="Calm fades and gentle rises — no bounces" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 22px 28px; display: flex; flex-direction: column; gap: 12px; }
+  .r { display: flex; align-items: center; gap: 16px; }
+  .r code { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); width: 210px; flex: none; }
+  .r span { font-size: 13px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+  <div class="r"><code>--ease-out · .22,1,.36,1</code><span>entrances, marker moves, hovers</span></div>
+  <div class="r"><code>--ease-in-out · .65,0,.35,1</code><span>theme cross-fades, position swaps</span></div>
+  <div class="r"><code>120 / 200 / 320ms</code><span>fast (hover) · base (dialogs, toggles) · slow (balance meter)</span></div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/layout.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/base.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/components/components.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/styles.css">
+  <script src="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_ds_bundle.js"></script>
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--surface-page); }
+    @keyframes mbScreenIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: var(--surface-page); color: var(--text-primary); font-family: 'Hanken Grotesk', system-ui, sans-serif;">
+
+  <div style="position: fixed; top: 0; left: 0; right: 0; height: 2px; background: var(--spectrum-gradient); z-index: 60;"></div>
+
+  <div style="display: flex; align-items: stretch; min-height: 100vh;">
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+      <aside style="flex: none; width: 236px; position: sticky; top: 0; height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; padding: 28px 16px 20px; background: var(--surface-card); border-right: 1px solid var(--border-subtle); overflow-y: auto;">
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 0 12px;">
+          <span class="mb-wordmark" style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 21px; letter-spacing: -0.01em; color: var(--text-primary);">Macrobiotica</span>
+          <span style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; color: var(--text-muted);">{{ dateStr }}</span>
+        </div>
+        <nav aria-label="Main" style="display: flex; flex-direction: column; gap: 4px;">
+          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="4">
+            <button onClick="{{ item.go }}" aria-current="{{ item.ariaCurrent }}" style="display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 10px 12px; border: none; border-radius: 10px; background: {{ item.railBg }}; color: {{ item.color }}; font-family: inherit; font-size: 14px; font-weight: {{ item.weight }}; text-align: left; cursor: pointer; transition: background 120ms ease-out, color 120ms ease-out;" style-hover="background: var(--surface-hover); color: var(--text-primary);">
+              <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ item.icon }}" size="{{ 19 }}" stroke-width="{{ item.stroke }}" hint-size="19px,19px"></x-import>
+              <span>{{ item.label }}</span>
+            </button>
+          </sc-for>
+        </nav>
+        <div style="flex: 1;"></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 12px;">
+          <span style="font-size: 12px; color: var(--text-muted);">Theme</span>
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.ThemeToggle" hint-size="52px,28px"></x-import>
+        </div>
+      </aside>
+    </sc-if>
+
+    <main style="flex: 1; min-width: 0;" data-screen-label="{{ screenTitle }}">
+
+      <sc-if value="{{ showMobileHeader }}" hint-placeholder-val="{{ true }}">
+        <header style="display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 640px; margin: 0 auto; padding: 18px 20px 0; box-sizing: border-box;">
+          <span class="mb-wordmark" style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 20px; letter-spacing: -0.01em; color: var(--text-primary);">Macrobiotica</span>
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.ThemeToggle" hint-size="52px,28px"></x-import>
+        </header>
+      </sc-if>
+
+      <div style="max-width: {{ contentMaxWidth }}; margin: 0 auto; box-sizing: border-box; padding: {{ mainPad }}; display: flex; flex-direction: column; gap: 16px;">
+
+        <div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0 4px;">
+          <h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 30px; letter-spacing: -0.015em; line-height: 1.15; color: var(--text-primary);">{{ screenTitle }}</h1>
+          <p style="margin: 0; font-size: 14px; color: var(--text-muted);">{{ screenSub }}</p>
+        </div>
+
+        <sc-if value="{{ showToday }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out both;">
+            <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.TodayScreen" hint-size="100%,800px"></x-import>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showLearn }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out both;">
+            <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.LearnScreen" hint-size="100%,800px"></x-import>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showFoods }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out both;">
+            <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.FoodsScreen" hint-size="100%,800px"></x-import>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showCare }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out both;">
+            <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.CareScreen" hint-size="100%,800px"></x-import>
+          </div>
+        </sc-if>
+
+      </div>
+    </main>
+  </div>
+
+  <sc-if value="{{ showTabBar }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Main" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; max-width: 640px; margin: 0 auto; padding: 6px 12px calc(6px + env(safe-area-inset-bottom)); box-sizing: border-box; background: color-mix(in srgb, var(--surface-card) 86%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--border-subtle);">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="4">
+        <button onClick="{{ item.go }}" aria-current="{{ item.ariaCurrent }}" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 52px; padding: 4px 2px; border: none; border-radius: 10px; background: transparent; color: {{ item.color }}; font-family: inherit; cursor: pointer; transition: color 120ms ease-out;" style-hover="background: var(--surface-hover); color: var(--text-primary);">
+          <span style="display: block; width: 16px; height: 2px; border-radius: 1px; background: {{ item.barBg }};"></span>
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ item.icon }}" size="{{ 20 }}" stroke-width="{{ item.stroke }}" hint-size="20px,20px"></x-import>
+          <sc-if value="{{ showTabLabels }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size: 11px; font-weight: {{ item.weight }};">{{ item.label }}</span>
+          </sc-if>
+        </button>
+      </sc-for>
+    </nav>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;startTab&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;today&quot;, &quot;options&quot;: [&quot;today&quot;, &quot;learn&quot;, &quot;foods&quot;, &quot;care&quot;], &quot;tsType&quot;: &quot;'today' | 'learn' | 'foods' | 'care'&quot;, &quot;section&quot;: &quot;Behavior&quot; },
+  &quot;showTabLabels&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot; },
+  &quot;contentWidth&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 640, &quot;min&quot;: 560, &quot;max&quot;: 800, &quot;step&quot;: 20, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Layout&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    tab: null,
+    isDesktop: typeof window !== 'undefined' && window.matchMedia('(min-width: 900px)').matches
+  };
+
+  componentDidMount() {
+    try {
+      const saved = localStorage.getItem('mb-theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+    this._mq = window.matchMedia('(min-width: 900px)');
+    this._onMq = (e) => this.setState({ isDesktop: e.matches });
+    this._mq.addEventListener('change', this._onMq);
+  }
+
+  componentWillUnmount() {
+    if (this._mq) this._mq.removeEventListener('change', this._onMq);
+  }
+
+  renderVals() {
+    const valid = ['today', 'learn', 'foods', 'care'];
+    let tab = this.state.tab;
+    if (!tab) {
+      try { tab = localStorage.getItem('mb-tab'); } catch (e) {}
+    }
+    if (valid.indexOf(tab) === -1) tab = this.props.startTab ?? 'today';
+
+    const isDesktop = !!this.state.isDesktop;
+    const setTab = (id) => {
+      try { localStorage.setItem('mb-tab', id); } catch (e) {}
+      this.setState({ tab: id });
+    };
+
+    const defs = [
+      { id: 'today', icon: 'sun', label: 'Today' },
+      { id: 'learn', icon: 'book-open', label: 'Learn' },
+      { id: 'foods', icon: 'carrot', label: 'Foods' },
+      { id: 'care', icon: 'heart', label: 'Care' }
+    ];
+    const navItems = defs.map((d) => {
+      const active = d.id === tab;
+      return {
+        id: d.id,
+        icon: d.icon,
+        label: d.label,
+        go: () => setTab(d.id),
+        ariaCurrent: active ? 'page' : undefined,
+        color: active ? 'var(--text-primary)' : 'var(--text-muted)',
+        weight: active ? 600 : 500,
+        barBg: active ? 'var(--text-primary)' : 'transparent',
+        railBg: active ? 'var(--surface-sunken)' : 'transparent',
+        stroke: active ? 2 : 1.75
+      };
+    });
+
+    const dateStr = new Date().toLocaleDateString('en-US', {
+      weekday: 'long', month: 'long', day: 'numeric'
+    });
+    const meta = {
+      today: { title: 'Today', sub: dateStr },
+      learn: { title: 'Learn', sub: 'Philosophy, lessons, practice' },
+      foods: { title: 'Foods', sub: 'The yin\u2013yang food compass' },
+      care: { title: 'Care', sub: 'Cooking for the people around you' }
+    };
+
+    return {
+      isDesktop: isDesktop,
+      showMobileHeader: !isDesktop,
+      showTabBar: !isDesktop,
+      showTabLabels: this.props.showTabLabels ?? true,
+      navItems: navItems,
+      dateStr: dateStr,
+      screenTitle: meta[tab].title,
+      screenSub: meta[tab].sub,
+      showToday: tab === 'today',
+      showLearn: tab === 'learn',
+      showFoods: tab === 'foods',
+      showCare: tab === 'care',
+      contentMaxWidth: (this.props.contentWidth ?? 640) + 'px',
+      mainPad: isDesktop ? '36px 32px 56px' : '6px 20px 108px'
+    };
+  }
+}
+</script>
+</body>
+</html>

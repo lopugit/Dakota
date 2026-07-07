@@ -1,0 +1,47 @@
+/* Macrobiotica — spacing, radii, borders, elevation, motion. */
+:root {
+  /* Spacing — 4px base */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  32px;
+  --space-8:  40px;
+  --space-9:  48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* Radii — soft, organic; pills for actions */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 999px;
+
+  --border-width: 1px;
+
+  /* Elevation — low, diffuse, never harsh */
+  --shadow-sm: 0 1px 2px rgb(15 17 14 / 0.05);
+  --shadow-md: 0 1px 2px rgb(15 17 14 / 0.04), 0 4px 12px -2px rgb(15 17 14 / 0.08);
+  --shadow-lg: 0 2px 4px rgb(15 17 14 / 0.05), 0 16px 40px -8px rgb(15 17 14 / 0.16);
+
+  /* Motion — calm fades and gentle rises; no bounces */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --duration-fast: 120ms; /* @kind other */
+  --duration-base: 200ms; /* @kind other */
+  --duration-slow: 320ms; /* @kind other */
+
+  --z-nav:     10; /* @kind other */
+  --z-overlay: 100; /* @kind other */
+  --z-toast:   200; /* @kind other */
+}
+
+[data-theme="dark"] {
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 12px -2px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.35), 0 16px 40px -8px rgb(0 0 0 / 0.6);
+}

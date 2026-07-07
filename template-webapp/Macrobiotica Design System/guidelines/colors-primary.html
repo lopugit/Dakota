@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x200" name="Primary action" subtitle="Quiet fill · dim spectrum ring & glow · green stays on controls" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 24px 20px; display: flex; flex-direction: column; gap: 18px; }
+  .row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .row .gap { width: 10px; }
+  .cap { font-size: 12px; color: var(--text-muted); }
+  .dark-pane { background: var(--surface-page); border-radius: var(--radius-md); padding: 12px 14px; display: inline-flex; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <button class="mb-btn mb-btn--primary">Log a meal</button>
+    <button class="mb-btn mb-btn--primary mb-btn--sm">Log</button>
+    <button class="mb-btn mb-btn--primary" disabled>Saved</button>
+    <span class="dark-pane" data-theme="dark"><button class="mb-btn mb-btn--sm mb-btn--primary">In the dark</button></span>
+  </div>
+  <div class="row">
+    <input type="checkbox" class="mb-switch" checked aria-label="Example switch">
+    <input type="checkbox" class="mb-checkbox" checked aria-label="Example checkbox">
+    <span class="cap">checked controls keep the green · the ring/glow is the only rainbow on a button</span>
+  </div>
+</body>
+</html>

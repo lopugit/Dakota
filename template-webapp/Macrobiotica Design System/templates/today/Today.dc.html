@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="App screen — Today" description="Mobile app screen: yin/yang balance, meal log, daily practice (390px)" -->
+<helmet><script src="./ds-base.js"></script></helmet>
+<div data-theme="{{ theme }}" style="max-width: 390px; margin: 0 auto; min-height: 100vh; background: var(--surface-page); color: var(--text-primary); font-family: var(--font-sans); display: flex; flex-direction: column;">
+  <div style="height: 2px; background: var(--spectrum-gradient); flex: none;"></div>
+  <header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 18px 20px 14px;">
+    <div>
+      <span style="display: block; margin-bottom: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Thursday, July 2</span>
+      <h1 style="margin: 0; font-family: var(--font-display); font-size: 31px; font-weight: 500; letter-spacing: -0.014em; line-height: 1.05;">Today</h1>
+    </div>
+    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.ThemeToggle" hint-size="36px,36px"></x-import>
+  </header>
+  <main style="flex: 1; padding: 4px 20px 40px; display: flex; flex-direction: column; gap: 16px;">
+
+    <section style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 14px; box-shadow: var(--shadow-sm); padding: 20px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;">Your balance</div>
+      <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ balance }}" label="{{ balanceNote }}" hint-size="100%,44px"></x-import>
+      <div style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">Based on {{ mealsCount }} meals logged today</div>
+    </section>
+
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin: 6px 2px -8px;">Meals</div>
+    <section style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 14px; box-shadow: var(--shadow-sm); overflow: hidden;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 13px 16px;">
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 14px; font-weight: 600; line-height: 1.3;">Breakfast</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Miso soup, brown rice, pickles</div>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">+0.1</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 13px 16px; border-top: 1px solid var(--border-subtle);">
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 14px; font-weight: 600; line-height: 1.3;">Lunch</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Kinpira gobo bowl</div>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">+0.3</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 13px 16px; border-top: 1px solid var(--border-subtle);">
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 14px; font-weight: 600; line-height: 1.3;">Dinner</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">{{ dinnerSub }}</div>
+        </div>
+        <sc-if value="{{ dinnerLogged }}" hint-placeholder-val="{{ false }}">
+          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">−0.1</span>
+        </sc-if>
+        <sc-if value="{{ dinnerNotLogged }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ logDinner }}" style="position: relative; height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid transparent; background: linear-gradient(var(--primary-fill), var(--primary-fill)) padding-box, var(--spectrum-pastel) border-box; color: var(--text-primary); font-family: var(--font-sans); font-size: 13px; font-weight: 600; line-height: 1; cursor: pointer;" style-before="content: ''; position: absolute; inset: -2px; border-radius: 999px; background: var(--spectrum-pastel); filter: blur(6px); opacity: 0.25; z-index: -1; pointer-events: none;" style-hover="box-shadow: inset 0 0 0 999px var(--surface-hover);">Log</button>
+        </sc-if>
+      </div>
+    </section>
+
+    <sc-if value="{{ showPractice }}" hint-placeholder-val="{{ true }}">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin: 6px 2px -8px;">Today's practice</div>
+      <section style="background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 14px; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 13px 16px;">
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="book-open" size="{{ practiceIconSize }}" color="var(--text-muted)" hint-size="20px,20px"></x-import>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 14px; font-weight: 600; line-height: 1.3;">Chewing well</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Foundations of Balance · 5 min read</div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 390, &quot;height&quot;: 780 },
+  &quot;theme&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;light&quot;, &quot;dark&quot;], &quot;default&quot;: &quot;light&quot;, &quot;tsType&quot;: &quot;'light' | 'dark'&quot;, &quot;section&quot;: &quot;Appearance&quot; },
+  &quot;showPractice&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot; }
+}">
+class Component extends DCLogic {
+  state = { dinnerLogged: false };
+
+  renderVals() {
+    const logged = this.state.dinnerLogged;
+    return {
+      theme: this.props.theme ?? 'light',
+      balance: this.props.balance ?? (logged ? 0.05 : 0.2),
+      balanceNote: logged ? 'Near balance' : 'Slightly yang',
+      mealsCount: logged ? 3 : 2,
+      dinnerLogged: logged,
+      dinnerNotLogged: !logged,
+      dinnerSub: logged ? 'Kabocha stew' : 'Not yet logged',
+      showPractice: this.props.showPractice ?? true,
+      practiceIconSize: 20,
+      logDinner: () => this.setState({ dinnerLogged: true }),
+    };
+  }
+}
+</script>
+</body>
+</html>

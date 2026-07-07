@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x270" name="Light & dark surfaces" subtitle="Yang theme by day, yin theme by night — data-theme on any element" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: transparent; }
+  .pane { background: var(--surface-page); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; flex-direction: column; gap: 10px; color: var(--text-primary); }
+  .card { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 12px 14px; }
+  .card b { font-size: 13px; font-weight: 600; display: block; }
+  .card span { font-size: 12px; color: var(--text-muted); }
+  .sunk { background: var(--surface-sunken); border-radius: var(--radius-md); padding: 8px 12px; font-size: 12px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+  <div class="pane">
+    <div class="card"><b>Card on page</b><span>--surface-card / --surface-page</span></div>
+    <div class="sunk">--surface-sunken</div>
+    <button class="mb-btn mb-btn--sm mb-btn--primary" style="align-self: flex-start;">Primary stays quiet</button>
+  </div>
+  <div class="pane" data-theme="dark">
+    <div class="card"><b>Card on page</b><span>--surface-card / --surface-page</span></div>
+    <div class="sunk">--surface-sunken</div>
+    <button class="mb-btn mb-btn--sm mb-btn--primary" style="align-self: flex-start;">Primary stays quiet</button>
+  </div>
+</body>
+</html>

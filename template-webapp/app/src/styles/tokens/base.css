@@ -1,0 +1,22 @@
+/* Macrobiotica — minimal base. Light-touch: box model, body defaults, selection. */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  background: var(--surface-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+a { color: var(--accent-strong); text-underline-offset: 2px; }
+
+::selection { background: var(--green-200); color: var(--grey-900); }
+[data-theme="dark"] ::selection { background: var(--green-800); color: var(--grey-50); }

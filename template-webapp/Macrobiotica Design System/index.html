@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Macrobiotica Design System</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+  document.documentElement.setAttribute('data-theme', (function () {
+    try { return localStorage.getItem('mb-theme') || 'light'; } catch (e) { return 'light'; }
+  })());
+</script>
+<style>
+  body { display: flex; min-height: 100vh; }
+
+  /* ---------- Sidebar ---------- */
+  .side {
+    position: sticky; top: 0; align-self: flex-start;
+    width: 250px; flex: none; height: 100vh; overflow-y: auto;
+    padding: 28px 12px 40px 20px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .side .brand { font-family: var(--font-display); font-size: 19px; font-weight: var(--weight-medium); letter-spacing: -0.015em; margin: 0 8px 4px; }
+  .side .brand-line { height: 2px; border-radius: 999px; background: var(--spectrum-gradient); margin: 0 8px 14px; }
+  .side a { display: block; padding: 5px 10px; border-radius: var(--radius-sm); font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+  .side a:hover { background: var(--surface-hover); color: var(--text-primary); }
+  .side .grp { display: flex; align-items: center; justify-content: space-between; margin: 12px 10px 3px; font-size: var(--text-2xs); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted); }
+  .side .grp:first-of-type { margin-top: 4px; }
+  .side .theme-btn { margin: 18px 8px 0; align-self: flex-start; }
+
+  /* ---------- Main ---------- */
+  .main { flex: 1; min-width: 0; padding: 36px 40px 120px; }
+  .col { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; }
+  h2.group-title { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); margin: 52px 0 6px; padding-top: 12px; border-top: 1px solid var(--border-subtle); }
+  .entry { margin-top: 30px; }
+  .entry .name { font-size: 15px; font-weight: var(--weight-semibold); }
+  .entry .subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .frame-wrap { margin-top: 10px; padding: 14px; background: var(--surface-sunken); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+  .frame-wrap iframe { display: block; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); width: 100%; background: var(--surface-page); box-shadow: var(--shadow-sm); }
+  .entry.phone .frame-wrap { width: fit-content; }
+  .entry.phone iframe { width: 390px; }
+  .open-link { font-size: 12px; margin-top: 6px; display: inline-block; color: var(--text-muted); text-decoration: none; }
+  .open-link:hover { color: var(--text-primary); }
+
+  /* ---------- Readme ---------- */
+  .readme { font-size: 15px; line-height: var(--leading-relaxed); color: var(--text-primary); }
+  .readme h1 { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); line-height: 1.1; margin: 0 0 14px; }
+  .readme h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: var(--weight-medium); margin: 30px 0 8px; }
+  .readme p { margin: 0 0 12px; }
+  .readme ul { margin: 0 0 12px; padding-left: 22px; }
+  .readme li { margin: 4px 0; }
+  .readme code { font-family: var(--font-mono); font-size: 0.85em; background: var(--surface-sunken); border-radius: 5px; padding: 1px 6px; }
+  .readme a { color: var(--accent-text); }
+  .readme-fallback { padding: 18px 20px; background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); font-size: 14px; color: var(--text-secondary); }
+
+  @media (max-width: 860px) {
+    .side { display: none; }
+    .main { padding: 24px 16px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="side" id="sidenav" aria-label="Design system">
+  <div class="brand mb-wordmark">Macrobiotica</div>
+  <div class="brand-line"></div>
+  <a href="#readme">Readme</a>
+</nav>
+
+<main class="main">
+  <div class="col">
+    <section id="readme">
+      <div class="readme" id="readmeBody">
+        <div class="readme-fallback">
+          Couldn't load <code>readme.md</code> automatically (some browsers block local file reads) —
+          <a href="readme.md">open readme.md directly</a>.
+        </div>
+      </div>
+    </section>
+    <div id="groups"></div>
+  </div>
+</main>
+
+<script>
+// ---------- Card index (path, declared viewport, name, subtitle) ----------
+const GROUPS = [
+  { id: 'templates', label: 'Templates', entries: [
+    { name: 'App screen — Today', subtitle: 'Mobile app screen: yin/yang balance, meal log, daily practice', path: 'templates/today/Today.dc.html', w: 390, h: 780, phone: true },
+  ]},
+  { id: 'app', label: 'App', entries: [
+    { name: 'Macrobiotica app', subtitle: 'Interactive: tabs, theme toggle, log a meal, add a person', path: 'ui_kits/app/index.html', w: 390, h: 780, phone: true },
+  ]},
+  { id: 'brand', label: 'Brand', entries: [
+    { name: 'Yin & yang balance', subtitle: 'The signature element — a marker on the spectrum', path: 'guidelines/brand-balance.html', w: 700, h: 180 },
+    { name: 'Iconography', subtitle: 'Lucide · 1.75px stroke · ink or muted, never multicolor', path: 'guidelines/brand-icons.html', w: 700, h: 170 },
+    { name: 'Voice', subtitle: 'Calm, plain-spoken, encouraging — never preachy', path: 'guidelines/brand-voice.html', w: 700, h: 240 },
+    { name: 'Wordmark', subtitle: 'Type-set only — no drawn logo was provided', path: 'guidelines/brand-wordmark.html', w: 700, h: 190 },
+  ]},
+  { id: 'colors', label: 'Colors', entries: [
+    { name: 'Chakra spectrum', subtitle: 'Doubles as the yin → yang scale: violet most yin, red most yang', path: 'guidelines/colors-chakra.html', w: 700, h: 230 },
+    { name: 'Accent greens', subtitle: 'green-300 is the accent · deeper steps for text & states', path: 'guidelines/colors-greens.html', w: 700, h: 170 },
+    { name: 'Greyscale', subtitle: 'Faint leaf-grey warmth · the quiet 90% of every screen', path: 'guidelines/colors-greyscale.html', w: 700, h: 170 },
+    { name: 'Primary action', subtitle: 'Quiet fill · dim spectrum ring & glow · green stays on controls', path: 'guidelines/colors-primary.html', w: 700, h: 200 },
+    { name: 'Semantic tones', subtitle: 'Mapped onto the chakra spectrum', path: 'guidelines/colors-semantic.html', w: 700, h: 150 },
+    { name: 'Light & dark surfaces', subtitle: 'Yang theme by day, yin theme by night', path: 'guidelines/colors-themes.html', w: 700, h: 270 },
+  ]},
+  { id: 'components', label: 'Components', entries: [
+    { name: 'Brand', subtitle: 'Icon, theme toggle, balance meter', path: 'components/brand/brand.card.html', w: 700, h: 300 },
+    { name: 'Core', subtitle: 'Buttons, badges, tags, cards', path: 'components/core/core.card.html', w: 700, h: 330 },
+    { name: 'Feedback', subtitle: 'Dialog, toast, tooltip', path: 'components/feedback/feedback.card.html', w: 700, h: 400 },
+    { name: 'Forms', subtitle: 'Input, select, checkbox, radio, switch', path: 'components/forms/forms.card.html', w: 700, h: 400 },
+    { name: 'Navigation', subtitle: 'Tabs — ink underline', path: 'components/navigation/navigation.card.html', w: 700, h: 140 },
+  ]},
+  { id: 'spacing', label: 'Spacing', entries: [
+    { name: 'Elevation', subtitle: 'Low, diffuse shadows — never harsh', path: 'guidelines/spacing-elevation.html', w: 700, h: 190 },
+    { name: 'Motion', subtitle: 'Calm fades and gentle rises — no bounces', path: 'guidelines/spacing-motion.html', w: 700, h: 160 },
+    { name: 'Radii', subtitle: 'Soft & organic · pills for actions', path: 'guidelines/spacing-radii.html', w: 700, h: 170 },
+    { name: 'Spacing scale', subtitle: '4px base · --space-1 … --space-12', path: 'guidelines/spacing-scale.html', w: 700, h: 260 },
+  ]},
+  { id: 'type', label: 'Type', entries: [
+    { name: 'Display serif — Newsreader', subtitle: 'Headlines, dialog titles, quiet editorial moments', path: 'guidelines/type-display.html', w: 700, h: 200 },
+    { name: 'UI sans — Hanken Grotesk', subtitle: 'All interface text', path: 'guidelines/type-sans.html', w: 700, h: 200 },
+    { name: 'Mono — Spline Sans Mono', subtitle: 'Tokens, data, timestamps', path: 'guidelines/type-mono.html', w: 700, h: 150 },
+    { name: 'Type scale', subtitle: '≈1.25 ratio · 11–48px', path: 'guidelines/type-scale.html', w: 700, h: 330 },
+  ]},
+];
+
+// ---------- Build main content ----------
+const groupsHost = document.getElementById('groups');
+const nav = document.getElementById('sidenav');
+
+for (const g of GROUPS) {
+  const navGrp = document.createElement('div');
+  navGrp.className = 'grp';
+  navGrp.textContent = g.label;
+  nav.appendChild(navGrp);
+
+  const title = document.createElement('h2');
+  title.className = 'group-title';
+  title.id = g.id;
+  title.textContent = g.label;
+  groupsHost.appendChild(title);
+
+  g.entries.forEach(function (e, i) {
+    const slug = g.id + '-' + i;
+    const navLink = document.createElement('a');
+    navLink.href = '#' + slug;
+    navLink.textContent = e.name;
+    nav.appendChild(navLink);
+
+    const entry = document.createElement('section');
+    entry.className = 'entry' + (e.phone ? ' phone' : '');
+    entry.id = slug;
+
+    const name = document.createElement('div');
+    name.className = 'name';
+    name.textContent = e.name;
+    entry.appendChild(name);
+
+    if (e.subtitle) {
+      const sub = document.createElement('div');
+      sub.className = 'subtitle';
+      sub.textContent = e.subtitle;
+      entry.appendChild(sub);
+    }
+
+    const wrap = document.createElement('div');
+    wrap.className = 'frame-wrap';
+    const iframe = document.createElement('iframe');
+    iframe.src = e.path;
+    iframe.title = e.name;
+    iframe.style.height = e.h + 'px';
+    wrap.appendChild(iframe);
+    entry.appendChild(wrap);
+
+    const open = document.createElement('a');
+    open.className = 'open-link';
+    open.href = e.path;
+    open.textContent = 'Open full page →';
+    entry.appendChild(open);
+
+    groupsHost.appendChild(entry);
+  });
+}
+
+// Theme toggle at the bottom of the nav
+const themeBtn = document.createElement('button');
+themeBtn.className = 'mb-btn mb-btn--sm mb-btn--secondary theme-btn';
+themeBtn.textContent = 'Toggle theme';
+themeBtn.addEventListener('click', function () {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('mb-theme', next); } catch (e) {}
+});
+nav.appendChild(themeBtn);
+
+// ---------- Readme: fetch + tiny markdown render (fallback link stays if blocked) ----------
+fetch('readme.md').then(function (r) { return r.ok ? r.text() : Promise.reject(); }).then(function (md) {
+  document.getElementById('readmeBody').innerHTML = renderMd(md);
+}).catch(function () { /* fallback message already in place */ });
+
+function esc(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function inline(s) {
+  return esc(s)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+}
+function renderMd(md) {
+  const lines = md.split('\n');
+  let html = '';
+  let inList = false;
+  for (const line of lines) {
+    const li = line.match(/^\s*-\s+(.*)/);
+    if (li) {
+      if (!inList) { html += '<ul>'; inList = true; }
+      html += '<li>' + inline(li[1]) + '</li>';
+      continue;
+    }
+    if (inList) { html += '</ul>'; inList = false; }
+    const h = line.match(/^(#{1,3})\s+(.*)/);
+    if (h) {
+      const level = h[1].length;
+      html += '<h' + level + '>' + inline(h[2]) + '</h' + level + '>';
+    } else if (line.trim() === '') {
+      // paragraph break — handled by closing tags
+    } else {
+      html += '<p>' + inline(line) + '</p>';
+    }
+  }
+  if (inList) html += '</ul>';
+  return html;
+}
+</script>
+</body>
+</html>

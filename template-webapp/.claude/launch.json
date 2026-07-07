@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "macrobiotica",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev:client"],
+      "port": 4780,
+      "autoPort": true
+    }
+  ]
+}

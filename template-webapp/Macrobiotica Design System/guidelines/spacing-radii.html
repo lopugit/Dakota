@@ -1,0 +1,20 @@
+<!-- @dsCard group="Spacing" viewport="700x170" name="Radii" subtitle="Soft & organic · pills for actions" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; display: flex; gap: 14px; align-items: flex-end; }
+  .b { width: 108px; height: 76px; background: var(--surface-card); border: 1px solid var(--border-strong); display: grid; place-content: center; font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-align: center; }
+  .pill { width: 132px; height: 40px; background: linear-gradient(var(--primary-fill), var(--primary-fill)) padding-box, var(--spectrum-pastel) border-box; border: 1px solid transparent; color: var(--text-primary); font-family: var(--font-sans); font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="b" style="border-radius: var(--radius-sm);">sm · 6</div>
+  <div class="b" style="border-radius: var(--radius-md);">md · 10<br>inputs</div>
+  <div class="b" style="border-radius: var(--radius-lg);">lg · 14<br>cards</div>
+  <div class="b" style="border-radius: var(--radius-xl);">xl · 20<br>dialogs</div>
+  <div class="b pill" style="border-radius: var(--radius-full);">full · buttons</div>
+</body>
+</html>

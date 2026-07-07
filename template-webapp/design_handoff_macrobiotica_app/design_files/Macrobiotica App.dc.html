@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/layout.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/tokens/base.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/components/components.css">
+  <link rel="stylesheet" href="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/styles.css">
+  <script src="_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_ds_bundle.js"></script>
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--surface-page); }
+    @keyframes mbScreenIn { from { transform: translateY(8px); } to { transform: none; } }
+    @keyframes mbSheetIn { from { transform: translateY(24px); } to { transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: var(--surface-page); color: var(--text-primary); font-family: 'Hanken Grotesk', system-ui, sans-serif;">
+
+  <div style="position: fixed; top: 0; left: 0; right: 0; height: 2px; background: var(--spectrum-gradient); z-index: 80;"></div>
+
+  <div style="display: flex; align-items: stretch; min-height: 100vh;">
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+      <aside style="flex: none; width: 240px; position: sticky; top: 0; height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; padding: 28px 14px 20px; background: var(--surface-card); border-right: 1px solid var(--border-subtle); overflow-y: auto;">
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 0 12px;">
+          <span style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 21px; letter-spacing: -0.01em; color: var(--text-primary);">Macrobiotica</span>
+          <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 11px; color: var(--text-muted);">{{ dateStr }}</span>
+        </div>
+        <nav aria-label="Main" style="display: flex; flex-direction: column; gap: 16px;">
+          <sc-for list="{{ railGroups }}" as="grp" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <sc-if value="{{ grp.showH }}" hint-placeholder-val="{{ false }}">
+                <span style="padding: 0 12px 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint);">{{ grp.h }}</span>
+              </sc-if>
+              <sc-for list="{{ grp.items }}" as="item" hint-placeholder-count="2">
+                <button onClick="{{ item.go }}" aria-current="{{ item.ariaCurrent }}" style="display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 8px 12px; border: none; border-radius: 10px; background: {{ item.railBg }}; color: {{ item.color }}; font-family: inherit; font-size: 14px; font-weight: {{ item.weight }}; text-align: left; cursor: pointer; transition: background 120ms ease-out, color 120ms ease-out;" style-hover="background: var(--surface-hover); color: var(--text-primary);">
+                  <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ item.icon }}" size="{{ 18 }}" stroke-width="{{ item.stroke }}" hint-size="18px,18px"></x-import>
+                  <span>{{ item.label }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-for>
+        </nav>
+        <div style="flex: 1;"></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 12px;">
+          <span style="font-size: 12px; color: var(--text-muted);">Theme</span>
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.ThemeToggle" hint-size="52px,28px"></x-import>
+        </div>
+      </aside>
+    </sc-if>
+
+    <main style="flex: 1; min-width: 0;" data-screen-label="{{ screenTitle }}">
+
+      <sc-if value="{{ showMobileHeader }}" hint-placeholder-val="{{ true }}">
+        <header style="display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 680px; margin: 0 auto; padding: 18px 20px 0; box-sizing: border-box;">
+          <span style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 20px; letter-spacing: -0.01em; color: var(--text-primary);">Macrobiotica</span>
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.ThemeToggle" hint-size="52px,28px"></x-import>
+        </header>
+      </sc-if>
+
+      <div style="max-width: {{ contentMaxWidth }}; margin: 0 auto; box-sizing: border-box; padding: {{ mainPad }}; display: flex; flex-direction: column; gap: 16px;">
+
+        <div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0 4px;">
+          <h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 30px; letter-spacing: -0.015em; line-height: 1.15; color: var(--text-primary);">{{ screenTitle }}</h1>
+          <p style="margin: 0; font-size: 14px; color: var(--text-muted);">{{ screenSub }}</p>
+        </div>
+
+        <!-- ============ TODAY ============ -->
+        <sc-if value="{{ showToday }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Today" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <div class="mb-card" style="display: flex; align-items: center; gap: 14px; padding: 16px 20px;">
+              <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="sun" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+              <div style="display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0;">
+                <span style="font-size: 14px; font-weight: 600;">High summer — fire season</span>
+                <span style="font-size: 13px; color: var(--text-muted);">Lighter cooking, bigger greens, gentle salt. Save the baking for autumn.</span>
+              </div>
+              <span style="font-family: 'Newsreader', Georgia, serif; font-size: 26px; color: var(--text-faint);">陽</span>
+            </div>
+
+            <div class="mb-card" style="display: flex; flex-direction: column; gap: 14px; padding: 20px;">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Balance today</span>
+                <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 13px; color: var(--text-secondary);">{{ todayValStr }}</span>
+              </div>
+              <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ todayVal }}" label="{{ todayNote }}" hint-size="100%,44px"></x-import>
+              <div style="border-top: 1px solid var(--border-subtle); margin: 2px 0 0; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Check-ins</span>
+                <button class="mb-btn mb-btn--primary mb-btn--sm" onClick="{{ toggleCheckin }}">Rate my balance now</button>
+              </div>
+              <sc-if value="{{ checkinOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column; gap: 12px; padding: 14px; background: var(--surface-sunken); border-radius: 10px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                    <span style="font-size: 13px; color: var(--text-secondary);">{{ checkinLiveNote }}</span>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 13px;">{{ checkinValStr }}</span>
+                  </div>
+                  <input type="range" min="-1" max="1" step="0.05" value="{{ checkinVal }}" onChange="{{ onCheckinSlide }}" aria-label="Balance right now" style="width: 100%; accent-color: var(--accent-strong);">
+                  <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted);">
+                    <span>Yin 陰</span><span>centre</span><span>陽 Yang</span>
+                  </div>
+                  <input class="mb-input" placeholder="A word about why (optional)" value="{{ checkinNoteText }}" onChange="{{ onCheckinNote }}">
+                  <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                    <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ toggleCheckin }}">Cancel</button>
+                    <button class="mb-btn mb-btn--primary mb-btn--sm" onClick="{{ saveCheckin }}">Save check-in</button>
+                  </div>
+                </div>
+              </sc-if>
+              <div style="display: flex; flex-direction: column;">
+                <sc-for list="{{ todayChecks }}" as="item" hint-placeholder-count="2">
+                  <div style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border-subtle);">
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted); width: 44px; flex: none;">{{ item.t }}</span>
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ item.dot }}; flex: none;"></span>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 13px; width: 48px; flex: none;">{{ item.vStr }}</span>
+                    <span style="font-size: 13px; color: var(--text-secondary); flex: 1; min-width: 0;">{{ item.note }}</span>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ noChecks }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin: 8px 0 0; font-size: 13px; color: var(--text-muted);">No check-ins yet today. The first one takes ten seconds.</p>
+                </sc-if>
+              </div>
+            </div>
+
+            <div class="mb-card" style="display: flex; flex-direction: column; gap: 4px; padding: 20px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 8px;">
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Meals · {{ mealCount }}</span>
+                <button class="mb-btn mb-btn--secondary mb-btn--sm" onClick="{{ togglePicker }}">Log a meal</button>
+              </div>
+              <sc-if value="{{ pickerOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; background: var(--surface-sunken); border-radius: 10px; margin-bottom: 8px;">
+                  <input class="mb-input" placeholder="Search meals — try pumpkin soup" value="{{ pickQ }}" onChange="{{ onPickQ }}">
+                  <div style="display: flex; flex-direction: column; max-height: 240px; overflow-y: auto;">
+                    <sc-for list="{{ pickRows }}" as="item" hint-placeholder-count="3">
+                      <button onClick="{{ item.add }}" style="display: flex; align-items: center; gap: 12px; padding: 9px 6px; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer; border-radius: 6px;" style-hover="background: var(--surface-hover);">
+                        <span style="flex: 1; min-width: 0; font-size: 14px; color: var(--text-primary);">{{ item.name }}</span>
+                        <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 11px; color: var(--text-muted);">{{ item.time }}</span>
+                        <div style="width: 90px; flex: none;">
+                          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.yy }}" size="sm" show-labels="{{ false }}" hint-size="90px,8px"></x-import>
+                        </div>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+              <div style="display: flex; flex-direction: column;">
+                <sc-for list="{{ todayMeals }}" as="item" hint-placeholder-count="2">
+                  <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 12px; padding: 11px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted); width: 44px; flex: none;">{{ item.t }}</span>
+                    <span style="flex: 1; min-width: 0; font-size: 14px; color: var(--text-primary);">{{ item.name }}</span>
+                    <div style="width: 110px; flex: none;">
+                      <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.yy }}" size="sm" show-labels="{{ false }}" hint-size="110px,8px"></x-import>
+                    </div>
+                    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-right" size="{{ 16 }}" color="var(--text-faint)" hint-size="16px,16px"></x-import>
+                  </button>
+                </sc-for>
+                <sc-if value="{{ noTodayMeals }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin: 8px 0 0; font-size: 13px; color: var(--text-muted);">Nothing logged yet.</p>
+                </sc-if>
+              </div>
+            </div>
+
+            <div class="mb-card" style="display: flex; align-items: center; gap: 14px; padding: 18px 20px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: var(--surface-sunken); flex: none;">
+                <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ practiceIcon }}" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              </span>
+              <div style="display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0;">
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Today's practice</span>
+                <span style="font-size: 15px; font-weight: 600;">{{ practiceName }}</span>
+                <span style="font-size: 13px; color: var(--text-muted);">{{ practiceDesc }}</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end;">
+                <button class="{{ practiceBtnCls }}" onClick="{{ togglePracticeToday }}">{{ practiceBtnLabel }}</button>
+                <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ goPractices }}">All practices</button>
+              </div>
+            </div>
+
+            <div class="mb-card" style="display: flex; flex-direction: column; gap: 12px; padding: 18px 20px;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">This week</span>
+                <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ goDiary }}">Open diary</button>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;">
+                <sc-for list="{{ weekCols }}" as="item" hint-placeholder-count="7">
+                  <button onClick="{{ item.go }}" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 2px; border: 1px solid {{ item.border }}; border-radius: 10px; background: transparent; font-family: inherit; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                    <span style="font-size: 11px; color: var(--text-muted);">{{ item.letter }}</span>
+                    <span style="width: 10px; height: 10px; border-radius: 50%; background: {{ item.dot }};"></span>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 10px; color: var(--text-faint);">{{ item.vStr }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+
+          </div>
+        </sc-if>
+
+        <!-- ============ DIARY ============ -->
+        <sc-if value="{{ showDiary }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Diary" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <div class="mb-card" style="display: flex; flex-direction: column; gap: 12px; padding: 20px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <button class="mb-icon-btn" onClick="{{ prevMonth }}" aria-label="Previous month">
+                  <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-left" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+                </button>
+                <span style="font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-weight: 500;">{{ monthLabel }}</span>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ goTodayDiary }}">Today</button>
+                  <button class="mb-icon-btn" onClick="{{ nextMonth }}" aria-label="Next month">
+                    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-right" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+                  </button>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 11px; color: var(--text-faint);">
+                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;">
+                <sc-for list="{{ dayCells }}" as="item" hint-placeholder-count="35">
+                  <button onClick="{{ item.click }}" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 48px; padding: 4px 0; border: 1px solid {{ item.border }}; border-radius: 10px; background: {{ item.bg }}; font-family: inherit; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: {{ item.numColor }};">{{ item.num }}</span>
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ item.dot }};"></span>
+                  </button>
+                </sc-for>
+              </div>
+              <p style="margin: 0; font-size: 12px; color: var(--text-faint); text-align: center;">Dot colour is the day's average — violet toward yin, red toward yang, green at centre.</p>
+            </div>
+
+            <div class="mb-card" style="display: flex; flex-direction: column; gap: 14px; padding: 20px;">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                <span style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 500;">{{ selDayLabel }}</span>
+                <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 13px; color: var(--text-secondary);">{{ selAvgStr }}</span>
+              </div>
+              <sc-if value="{{ selHasAvg }}" hint-placeholder-val="{{ true }}">
+                <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ selAvg }}" label="{{ selAvgNote }}" hint-size="100%,44px"></x-import>
+              </sc-if>
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 6px;">Check-ins</span>
+                <sc-for list="{{ selChecks }}" as="item" hint-placeholder-count="2">
+                  <div style="display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid var(--border-subtle);">
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted); width: 44px; flex: none;">{{ item.t }}</span>
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ item.dot }}; flex: none;"></span>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 13px; width: 48px; flex: none;">{{ item.vStr }}</span>
+                    <span style="font-size: 13px; color: var(--text-secondary); flex: 1;">{{ item.note }}</span>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ selNoChecks }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin: 4px 0 8px; font-size: 13px; color: var(--text-muted);">No check-ins this day.</p>
+                </sc-if>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 6px;">Meals</span>
+                <sc-for list="{{ selMeals }}" as="item" hint-placeholder-count="2">
+                  <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted); width: 44px; flex: none;">{{ item.t }}</span>
+                    <span style="flex: 1; min-width: 0; font-size: 14px;">{{ item.name }}</span>
+                    <div style="width: 110px; flex: none;">
+                      <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.yy }}" size="sm" show-labels="{{ false }}" hint-size="110px,8px"></x-import>
+                    </div>
+                  </button>
+                </sc-for>
+                <sc-if value="{{ selNoMeals }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin: 4px 0 8px; font-size: 13px; color: var(--text-muted);">No meals logged this day.</p>
+                </sc-if>
+              </div>
+              <sc-if value="{{ selHasPractices }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Practices kept</span>
+                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    <sc-for list="{{ selPractices }}" as="item" hint-placeholder-count="2">
+                      <span class="mb-badge mb-badge--green">{{ item.n }}</span>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+
+          </div>
+        </sc-if>
+
+        <!-- ============ FOODS ============ -->
+        <sc-if value="{{ showFoods }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Foods" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <sc-if value="{{ showFoodsList }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <input class="mb-input" placeholder="Search foods and meals — try pumpkin soup" value="{{ q }}" onChange="{{ onQ }}" aria-label="Search foods and meals">
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <sc-for list="{{ catChips }}" as="item" hint-placeholder-count="6">
+                    <button class="{{ item.cls }}" onClick="{{ item.click }}">{{ item.label }}</button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ hasMealRows }}" hint-placeholder-val="{{ true }}">
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Meals</span>
+                    <div class="mb-card" style="padding: 4px 20px; display: flex; flex-direction: column;">
+                      <sc-for list="{{ mealRows }}" as="item" hint-placeholder-count="3">
+                        <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 14px; padding: 12px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px;">
+                            <span style="font-size: 14px; font-weight: 500; color: var(--text-primary);">{{ item.name }}</span>
+                            <span style="font-size: 12px; color: var(--text-muted);">{{ item.sub }}</span>
+                          </div>
+                          <div style="width: 110px; flex: none;">
+                            <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.yy }}" size="sm" show-labels="{{ false }}" hint-size="110px,8px"></x-import>
+                          </div>
+                          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-right" size="{{ 16 }}" color="var(--text-faint)" hint-size="16px,16px"></x-import>
+                        </button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ hasFoodRows }}" hint-placeholder-val="{{ true }}">
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Foods</span>
+                    <div class="mb-card" style="padding: 4px 20px; display: flex; flex-direction: column;">
+                      <sc-for list="{{ foodRows }}" as="item" hint-placeholder-count="5">
+                        <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 14px; padding: 12px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px;">
+                            <span style="font-size: 14px; font-weight: 500; color: var(--text-primary);">{{ item.name }}</span>
+                            <span style="font-size: 12px; color: var(--text-muted);">{{ item.sub }}</span>
+                          </div>
+                          <div style="width: 110px; flex: none;">
+                            <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.yy }}" size="sm" show-labels="{{ false }}" hint-size="110px,8px"></x-import>
+                          </div>
+                          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-right" size="{{ 16 }}" color="var(--text-faint)" hint-size="16px,16px"></x-import>
+                        </button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+                  <div class="mb-card" style="padding: 24px 20px; display: flex; flex-direction: column; gap: 4px;">
+                    <span style="font-size: 15px; font-weight: 500;">Nothing here for “{{ qEcho }}”</span>
+                    <span style="font-size: 13px; color: var(--text-muted);">Try another spelling or a broader word — the compass grows with every release.</span>
+                  </div>
+                </sc-if>
+                <p style="margin: 0; font-size: 12px; color: var(--text-faint); text-align: center;">Left is yin 陰 · right is yang 陽 · centre is balance</p>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showFoodDetail }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                  <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ backToFoods }}">← All foods</button>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span style="font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.01em;">{{ foodName }}</span>
+                    <span class="mb-badge">{{ foodCat }}</span>
+                  </div>
+                  <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ foodYY }}" label="{{ foodMeterLabel }}" hint-size="100%,44px"></x-import>
+                  <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary);">{{ foodNoteTxt }}</p>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 6px;">How preparation moves it</span>
+                  <sc-for list="{{ foodCookRows }}" as="item" hint-placeholder-count="4">
+                    <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0; border-top: 1px solid var(--border-subtle);">
+                      <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 14px; font-weight: 500; flex: 1;">{{ item.m }}</span>
+                        <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-secondary);">{{ item.shiftStr }}</span>
+                      </div>
+                      <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.val }}" size="sm" show-labels="{{ false }}" hint-size="100%,8px"></x-import>
+                      <span style="font-size: 12px; color: var(--text-muted);">{{ item.note }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ hasFoodMealChips }}" hint-placeholder-val="{{ false }}">
+                  <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">In meals</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                      <sc-for list="{{ foodMealChips }}" as="item" hint-placeholder-count="2">
+                        <button class="mb-tag" onClick="{{ item.click }}">{{ item.name }}</button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showMealDetail }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                  <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ backToFoods }}">← All foods</button>
+                  <button class="mb-btn mb-btn--primary mb-btn--sm" onClick="{{ logThisMeal }}">Log this meal today</button>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span style="font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.01em;">{{ mealName }}</span>
+                    <span class="mb-badge">{{ mealTime }}</span>
+                    <span class="mb-badge">{{ mealSeason }}</span>
+                  </div>
+                  <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary);">{{ mealDesc }}</p>
+                  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Whole-meal balance</span>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 13px; color: var(--text-secondary);">{{ mealValStr }}</span>
+                  </div>
+                  <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ mealYY }}" label="{{ mealMeterLabel }}" hint-size="100%,44px"></x-import>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 8px;">Ingredients</span>
+                  <sc-for list="{{ mealIngRows }}" as="item" hint-placeholder-count="4">
+                    <button onClick="{{ item.click }}" style="display: flex; flex-direction: column; gap: 5px; padding: 11px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                      <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 14px; font-weight: 500; color: var(--text-primary); flex: 1;">{{ item.n }}</span>
+                        <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted);">{{ item.amt }}</span>
+                        <div style="width: 100px; flex: none;">
+                          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.yy }}" size="sm" show-labels="{{ false }}" hint-size="100px,8px"></x-import>
+                        </div>
+                      </div>
+                      <sc-if value="{{ item.hasNote }}" hint-placeholder-val="{{ false }}">
+                        <span style="font-size: 12px; color: var(--text-muted);">{{ item.note }}</span>
+                      </sc-if>
+                    </button>
+                  </sc-for>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 8px;">Process and order</span>
+                  <sc-for list="{{ mealProcRows }}" as="item" hint-placeholder-count="3">
+                    <div style="display: flex; flex-direction: column; gap: 5px; padding: 11px 0; border-top: 1px solid var(--border-subtle);">
+                      <div style="display: flex; align-items: baseline; gap: 12px;">
+                        <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-faint); width: 16px; flex: none;">{{ item.i }}</span>
+                        <span style="font-size: 14px; color: var(--text-primary); flex: 1;">{{ item.s }}</span>
+                        <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-secondary); flex: none;">{{ item.eStr }}</span>
+                      </div>
+                      <sc-if value="{{ item.hasNote }}" hint-placeholder-val="{{ false }}">
+                        <span style="font-size: 12px; color: var(--text-muted); padding-left: 28px;">{{ item.note }}</span>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 0 2px; border-top: 1px solid var(--border-subtle);">
+                    <span style="font-size: 13px; font-weight: 600;">Net effect of preparation</span>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 13px;">{{ mealNetStr }}</span>
+                  </div>
+                  <p style="margin: 6px 0 0; font-size: 12px; color: var(--text-faint);">The same shopping list cooked differently lands in a different place — the pot decides.</p>
+                </div>
+                <sc-if value="{{ hasMealComments }}" hint-placeholder-val="{{ false }}">
+                  <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 8px;">Notes from cooks</span>
+                    <sc-for list="{{ mealComments }}" as="item" hint-placeholder-count="2">
+                      <div style="display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-top: 1px solid var(--border-subtle);">
+                        <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-sunken); font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 10px; color: var(--text-secondary); flex: none;">{{ item.initials }}</span>
+                        <div style="display: flex; flex-direction: column; gap: 2px;">
+                          <span style="font-size: 13px; font-weight: 600;">{{ item.who }}</span>
+                          <span style="font-size: 13px; line-height: 1.55; color: var(--text-secondary);">{{ item.t }}</span>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-if>
+
+        <!-- ============ TREATMENTS ============ -->
+        <sc-if value="{{ showTreatments }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Treatments" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <sc-if value="{{ showTreatList }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <input class="mb-input" placeholder="Search ailments — try cold hands, bloating, sleep" value="{{ tq }}" onChange="{{ onTq }}" aria-label="Search ailments">
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <sc-for list="{{ sysChips }}" as="item" hint-placeholder-count="6">
+                    <button class="{{ item.cls }}" onClick="{{ item.click }}">{{ item.label }}</button>
+                  </sc-for>
+                </div>
+                <div class="mb-card" style="padding: 4px 20px; display: flex; flex-direction: column;">
+                  <sc-for list="{{ ailRows }}" as="item" hint-placeholder-count="5">
+                    <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 14px; padding: 13px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px;">
+                        <span style="font-size: 14px; font-weight: 500; color: var(--text-primary);">{{ item.n }}</span>
+                        <span style="font-size: 12px; color: var(--text-muted);">{{ item.sysLabel }}</span>
+                      </div>
+                      <span class="{{ item.patCls }}">{{ item.pattern }}</span>
+                      <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-right" size="{{ 16 }}" color="var(--text-faint)" hint-size="16px,16px"></x-import>
+                    </button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ noTreatResults }}" hint-placeholder-val="{{ false }}">
+                  <div class="mb-card" style="padding: 24px 20px;">
+                    <span style="font-size: 13px; color: var(--text-muted);">Nothing found — try a body system or a simpler word.</span>
+                  </div>
+                </sc-if>
+                <p style="margin: 0; font-size: 12px; color: var(--text-faint); text-align: center;">Gentle kitchen support, not medical advice. Persistent or severe symptoms deserve a practitioner's care.</p>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showTreatDetail }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                  <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ backToAilments }}">← All ailments</button>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span style="font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.01em;">{{ ailName }}</span>
+                    <span class="{{ ailPatCls }}">{{ ailPattern }}</span>
+                    <span class="mb-badge">{{ ailSystem }}</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <sc-for list="{{ ailSigns }}" as="item" hint-placeholder-count="3">
+                      <div style="display: flex; align-items: baseline; gap: 10px;">
+                        <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--text-faint); flex: none; transform: translateY(-2px);"></span>
+                        <span style="font-size: 13px; color: var(--text-secondary);">{{ item.x }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 8px;">Favour</span>
+                  <sc-for list="{{ ailEat }}" as="item" hint-placeholder-count="3">
+                    <button onClick="{{ item.click }}" style="display: flex; flex-direction: column; gap: 2px; padding: 11px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                      <span style="font-size: 14px; font-weight: 500; color: var(--text-primary);">{{ item.n }}</span>
+                      <span style="font-size: 12px; color: var(--text-muted);">{{ item.why }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 8px;">Home remedies</span>
+                  <sc-for list="{{ ailRemedies }}" as="item" hint-placeholder-count="2">
+                    <div style="display: flex; flex-direction: column; gap: 2px; padding: 11px 0; border-top: 1px solid var(--border-subtle);">
+                      <span style="font-size: 14px; font-weight: 500;">{{ item.n }}</span>
+                      <span style="font-size: 12px; color: var(--text-muted);">{{ item.how }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Supporting practices</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                      <sc-for list="{{ ailPractices }}" as="item" hint-placeholder-count="2">
+                        <button class="mb-tag" onClick="{{ item.click }}">{{ item.n }}</button>
+                      </sc-for>
+                    </div>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Ease off</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                      <sc-for list="{{ ailAvoid }}" as="item" hint-placeholder-count="3">
+                        <span class="mb-badge">{{ item.x }}</span>
+                      </sc-for>
+                    </div>
+                  </div>
+                  <p style="margin: 0; padding-top: 4px; border-top: 1px solid var(--border-subtle); font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.6; color: var(--text-secondary);">{{ ailNote }}</p>
+                  <p style="margin: 0; font-size: 12px; color: var(--text-faint);">Kitchen support, not a diagnosis. See a practitioner for anything persistent or severe.</p>
+                </div>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-if>
+
+        <!-- @slot:treatments-end -->
+        <!-- ============ LEARN ============ -->
+        <sc-if value="{{ showLearn }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Learn" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <sc-if value="{{ showLearnList }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="mb-card mb-card--raised" style="padding: 24px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Continue</span>
+                  <span style="font-family: 'Newsreader', Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.2;">{{ continueTitle }}</span>
+                  <span style="font-size: 13px; color: var(--text-muted);">{{ continueMeta }}</span>
+                  <button class="mb-btn mb-btn--primary" onClick="{{ openContinue }}" style="margin-top: 6px;">Continue lesson</button>
+                </div>
+                <sc-for list="{{ courseCards }}" as="course" hint-placeholder-count="4">
+                  <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+                      <span style="font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-weight: 500;">{{ course.title }}</span>
+                      <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted);">{{ course.prog }}</span>
+                    </div>
+                    <div style="height: 4px; border-radius: 2px; background: var(--surface-sunken); overflow: hidden;">
+                      <div style="height: 100%; width: {{ course.pct }}; background: var(--accent); border-radius: 2px; transition: width 320ms ease-out;"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                      <sc-for list="{{ course.rows }}" as="item" hint-placeholder-count="4">
+                        <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                          <span style="width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid {{ item.dotBorder }}; background: {{ item.dotBg }}; flex: none;"></span>
+                          <span style="flex: 1; min-width: 0; font-size: 14px; color: {{ item.titleColor }};">{{ item.t }}</span>
+                          <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 11px; color: var(--text-faint);">{{ item.minStr }}</span>
+                          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-right" size="{{ 16 }}" color="var(--text-faint)" hint-size="16px,16px"></x-import>
+                        </button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showReader }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                  <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ backToLearn }}">← All courses</button>
+                </div>
+                <article class="mb-card" style="padding: 28px 26px 24px; display: flex; flex-direction: column; gap: 16px;">
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">{{ readerKicker }}</span>
+                    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 32px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;">{{ readerTitle }}</h2>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted);">{{ readerMeta }}</span>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 56ch;">
+                    <sc-for list="{{ readerBlocks }}" as="item" hint-placeholder-count="4">
+                      <div style="display: flex; flex-direction: column;">
+                        <sc-if value="{{ item.isH }}" hint-placeholder-val="{{ false }}">
+                          <h3 style="margin: 10px 0 0; font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 500; letter-spacing: -0.01em;">{{ item.x }}</h3>
+                        </sc-if>
+                        <sc-if value="{{ item.isP }}" hint-placeholder-val="{{ true }}">
+                          <p style="margin: 0; font-size: 15px; line-height: 1.75; color: var(--text-secondary); text-wrap: pretty;">{{ item.x }}</p>
+                        </sc-if>
+                        <sc-if value="{{ item.isQuote }}" hint-placeholder-val="{{ false }}">
+                          <p style="margin: 8px 0; padding: 16px 8px; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; text-align: center; color: var(--text-primary); text-wrap: pretty;">{{ item.x }}</p>
+                        </sc-if>
+                        <sc-if value="{{ item.isList }}" hint-placeholder-val="{{ false }}">
+                          <div style="display: flex; flex-direction: column; gap: 8px; padding: 4px 0 4px 4px;">
+                            <sc-for list="{{ item.items }}" as="li" hint-placeholder-count="3">
+                              <div style="display: flex; align-items: baseline; gap: 10px;">
+                                <span style="width: 5px; height: 5px; border-radius: 50%; background: var(--accent-strong); flex: none; transform: translateY(-2px);"></span>
+                                <span style="font-size: 14px; line-height: 1.6; color: var(--text-secondary);">{{ li.x }}</span>
+                              </div>
+                            </sc-for>
+                          </div>
+                        </sc-if>
+                        <sc-if value="{{ item.isAside }}" hint-placeholder-val="{{ false }}">
+                          <div style="padding: 14px 16px; background: var(--surface-sunken); border-radius: 10px; font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);">{{ item.x }}</div>
+                        </sc-if>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid var(--border-subtle);">
+                    <button class="{{ readerDoneCls }}" onClick="{{ markDone }}">{{ readerDoneLabel }}</button>
+                    <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ false }}">
+                      <button class="mb-btn mb-btn--ghost" onClick="{{ goNext }}">{{ nextLabel }}</button>
+                    </sc-if>
+                  </div>
+                </article>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-if>
+
+        <!-- ============ PRACTICES ============ -->
+        <sc-if value="{{ showPractices }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Practices" style="display: flex; flex-direction: column; gap: 12px; animation: mbScreenIn 200ms ease-out;">
+            <sc-for list="{{ practiceRows }}" as="item" hint-placeholder-count="5">
+              <div class="mb-card" style="padding: 16px 20px; display: flex; flex-direction: column; gap: 12px;">
+                <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 14px; border: none; background: transparent; font-family: inherit; text-align: left; cursor: pointer; padding: 0;">
+                  <span style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: var(--surface-sunken); flex: none;">
+                    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ item.icon }}" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+                  </span>
+                  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                      <span style="font-size: 15px; font-weight: 600;">{{ item.n }}</span>
+                      <span class="mb-badge">{{ item.tag }}</span>
+                      <sc-if value="{{ item.hasStreak }}" hint-placeholder-val="{{ false }}">
+                        <span class="mb-badge mb-badge--green">{{ item.streakStr }}</span>
+                      </sc-if>
+                    </div>
+                    <span style="font-size: 13px; color: var(--text-muted);">{{ item.desc }}</span>
+                  </div>
+                  <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ item.chevron }}" size="{{ 16 }}" color="var(--text-faint)" hint-size="16px,16px"></x-import>
+                </button>
+                <sc-if value="{{ item.expanded }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--border-subtle); padding-top: 12px;">
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <sc-for list="{{ item.steps }}" as="step" hint-placeholder-count="3">
+                        <div style="display: flex; align-items: baseline; gap: 12px;">
+                          <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-faint); width: 14px; flex: none;">{{ step.i }}</span>
+                          <span style="font-size: 14px; line-height: 1.55; color: var(--text-secondary);">{{ step.x }}</span>
+                        </div>
+                      </sc-for>
+                    </div>
+                    <p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.6; color: var(--text-secondary);">{{ item.why }}</p>
+                    <div>
+                      <button class="{{ item.doneBtnCls }}" onClick="{{ item.toggle }}">{{ item.doneLabel }}</button>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+            <p style="margin: 0; font-size: 12px; color: var(--text-faint); text-align: center;">Practice, not perfection — a kept streak is a bonus, not a duty.</p>
+          </div>
+        </sc-if>
+
+        <!-- @slot:practices-end -->
+        <!-- ============ FEED ============ -->
+        <sc-if value="{{ showFeed }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Feed" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <div class="mb-card" style="padding: 18px 20px; display: flex; flex-direction: column; gap: 10px;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Share from today</span>
+              <input class="mb-input" placeholder="What did you cook, notice, learn?" value="{{ shareText }}" onChange="{{ onShareText }}">
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <sc-for list="{{ shareChips }}" as="item" hint-placeholder-count="3">
+                  <button class="{{ item.cls }}" onClick="{{ item.click }}">{{ item.label }}</button>
+                </sc-for>
+                <div style="flex: 1;"></div>
+                <button class="mb-btn mb-btn--primary mb-btn--sm" onClick="{{ share }}">Share</button>
+              </div>
+            </div>
+
+            <sc-for list="{{ feedPosts }}" as="item" hint-placeholder-count="4">
+              <div class="mb-card" style="padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--surface-sunken); font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 11px; color: var(--text-secondary); flex: none;">{{ item.initials }}</span>
+                  <span style="flex: 1; font-size: 14px; font-weight: 600;">{{ item.who }}</span>
+                  <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 11px; color: var(--text-faint);">{{ item.time }}</span>
+                </div>
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-primary); text-wrap: pretty;">{{ item.text }}</p>
+                <sc-if value="{{ item.hasMeal }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ item.openMeal }}" style="display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid var(--border-subtle); border-radius: 10px; background: var(--surface-sunken); font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="soup" size="{{ 16 }}" color="var(--text-muted)" hint-size="16px,16px"></x-import>
+                    <span style="flex: 1; font-size: 13px; font-weight: 500;">{{ item.mealName }}</span>
+                    <div style="width: 90px; flex: none;">
+                      <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.mealYY }}" size="sm" show-labels="{{ false }}" hint-size="90px,8px"></x-import>
+                    </div>
+                  </button>
+                </sc-if>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <button onClick="{{ item.toggleLike }}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border: none; border-radius: 999px; background: transparent; color: {{ item.likeColor }}; font-family: inherit; font-size: 13px; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="heart" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px;">{{ item.likes }}</span>
+                  </button>
+                  <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; color: var(--text-muted); font-size: 13px;">
+                    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="message-circle" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px;">{{ item.commentCount }}</span>
+                  </span>
+                </div>
+                <sc-if value="{{ item.hasComments }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; flex-direction: column; border-top: 1px solid var(--border-subtle);">
+                    <sc-for list="{{ item.comments }}" as="c" hint-placeholder-count="2">
+                      <div style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0 0;">
+                        <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--surface-sunken); font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 9px; color: var(--text-secondary); flex: none;">{{ c.initials }}</span>
+                        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-secondary);"><strong style="color: var(--text-primary); font-weight: 600;">{{ c.who }}</strong>&nbsp; {{ c.t }}</p>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <div style="display: flex; gap: 8px;">
+                  <input class="mb-input" placeholder="Add a comment" value="{{ item.draft }}" onChange="{{ item.onDraft }}" style="flex: 1;">
+                  <button class="mb-btn mb-btn--secondary mb-btn--sm" onClick="{{ item.addComment }}" style="align-self: center;">Post</button>
+                </div>
+              </div>
+            </sc-for>
+
+          </div>
+        </sc-if>
+
+        <!-- ============ CARE ============ -->
+        <sc-if value="{{ showCare }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Care" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <sc-if value="{{ showCareList }}" hint-placeholder-val="{{ true }}">
+              <div class="mb-card" style="padding: 4px 20px; display: flex; flex-direction: column;">
+                <sc-for list="{{ friendRows }}" as="item" hint-placeholder-count="5">
+                  <button onClick="{{ item.click }}" style="display: flex; align-items: center; gap: 14px; padding: 13px 0; border: none; border-top: 1px solid var(--border-subtle); background: transparent; font-family: inherit; text-align: left; cursor: pointer;" style-hover="background: var(--surface-hover);">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: var(--surface-sunken); font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-secondary); flex: none;">{{ item.initials }}</span>
+                    <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px;">
+                      <span style="font-size: 14px; font-weight: 600;">{{ item.n }}</span>
+                      <span style="font-size: 12px; color: var(--text-muted);">{{ item.relation }}</span>
+                    </div>
+                    <div style="width: 100px; flex: none;">
+                      <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ item.yy }}" size="sm" show-labels="{{ false }}" hint-size="100px,8px"></x-import>
+                    </div>
+                    <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="chevron-right" size="{{ 16 }}" color="var(--text-faint)" hint-size="16px,16px"></x-import>
+                  </button>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showFriend }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                  <button class="mb-btn mb-btn--ghost mb-btn--sm" onClick="{{ backToCare }}">← Everyone</button>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+                  <div style="display: flex; align-items: center; gap: 14px;">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: var(--surface-sunken); font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 15px; color: var(--text-secondary); flex: none;">{{ fInitials }}</span>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <span style="font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.01em; line-height: 1;">{{ fName }}</span>
+                      <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                        <span class="mb-badge">{{ fRelation }}</span>
+                        <span class="mb-badge mb-badge--green">{{ fConstitution }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.BalanceMeter" value="{{ fBal }}" label="{{ fMeterLabel }}" hint-size="100%,44px"></x-import>
+                  <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px;">
+                    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Past seven days</span>
+                    <div style="display: flex; align-items: flex-end; gap: 6px; height: 44px;">
+                      <sc-for list="{{ fBars }}" as="item" hint-placeholder-count="7">
+                        <span style="flex: 1; height: {{ item.h }}; background: {{ item.bg }}; opacity: {{ item.op }}; border-radius: 3px 3px 0 0;"></span>
+                      </sc-for>
+                    </div>
+                    <span style="font-size: 11px; color: var(--text-faint);">Bar height is distance from centre; colour is direction.</span>
+                  </div>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">{{ fCookingKicker }}</span>
+                  <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary);">{{ fCooking }}</p>
+                  <p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.6; color: var(--text-secondary);">{{ fNote }}</p>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Meals that would suit this week</span>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <sc-for list="{{ fMeals }}" as="item" hint-placeholder-count="3">
+                      <button class="mb-tag" onClick="{{ item.click }}">{{ item.name }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-if>
+
+        <!-- @slot:care-end -->
+        <!-- ============ WISDOM ============ -->
+        <sc-if value="{{ showWisdom }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Wisdom" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ wChips }}" as="item" hint-placeholder-count="4">
+                  <button class="{{ item.cls }}" onClick="{{ item.click }}">{{ item.label }}</button>
+                </sc-for>
+              </div>
+              <input class="mb-input" placeholder="Search — organs, seasons, terms" value="{{ wq }}" onChange="{{ onWq }}" aria-label="Search wisdom">
+            </div>
+
+            <sc-if value="{{ showElements }}" hint-placeholder-val="{{ true }}">
+              <div class="mb-card" style="padding: 4px 20px; display: flex; flex-direction: column;">
+                <sc-for list="{{ elementRows }}" as="item" hint-placeholder-count="5">
+                  <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 0; border-top: 1px solid var(--border-subtle);">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <span style="width: 10px; height: 10px; border-radius: 50%; background: {{ item.dot }}; flex: none;"></span>
+                      <span style="font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-weight: 500;">{{ item.el }}</span>
+                      <span style="font-size: 13px; color: var(--text-muted);">{{ item.organ }}</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px 16px; padding-left: 20px;">
+                      <div style="display: flex; flex-direction: column;"><span style="font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint);">Season</span><span style="font-size: 13px; color: var(--text-secondary);">{{ item.season }}</span></div>
+                      <div style="display: flex; flex-direction: column;"><span style="font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint);">Taste</span><span style="font-size: 13px; color: var(--text-secondary);">{{ item.taste }}</span></div>
+                      <div style="display: flex; flex-direction: column;"><span style="font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint);">Emotion</span><span style="font-size: 13px; color: var(--text-secondary);">{{ item.emotion }}</span></div>
+                      <div style="display: flex; flex-direction: column;"><span style="font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint);">Foods</span><span style="font-size: 13px; color: var(--text-secondary);">{{ item.foods }}</span></div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showClock }}" hint-placeholder-val="{{ false }}">
+              <div class="mb-card" style="padding: 4px 20px; display: flex; flex-direction: column;">
+                <sc-for list="{{ clockRows }}" as="item" hint-placeholder-count="6">
+                  <div style="display: flex; align-items: center; gap: 12px; padding: 11px 8px; margin: 0 -8px; border-top: 1px solid var(--border-subtle); background: {{ item.bg }}; border-radius: 8px;">
+                    <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 12px; color: var(--text-muted); width: 48px; flex: none;">{{ item.label }}</span>
+                    <span style="font-size: 14px; font-weight: 500; width: 118px; flex: none;">{{ item.organ }}</span>
+                    <span style="font-size: 12.5px; color: var(--text-muted); flex: 1;">{{ item.note }}</span>
+                    <sc-if value="{{ item.isNow }}" hint-placeholder-val="{{ false }}">
+                      <span class="mb-badge mb-badge--green">now</span>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showAstro }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">Your chart</span>
+                  <div style="display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                      <label style="font-size: 12px; color: var(--text-muted);">Birth year</label>
+                      <input class="mb-input" type="number" value="{{ birthYear }}" onChange="{{ onBirthYear }}" style="width: 110px;">
+                    </div>
+                    <sc-if value="{{ zodOk }}" hint-placeholder-val="{{ true }}">
+                      <div style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 2px;">
+                        <span style="font-family: 'Newsreader', Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -0.01em; line-height: 1;">{{ zodTitle }}</span>
+                        <span class="mb-badge" style="align-self: flex-start;">{{ zodPolarity }}</span>
+                      </div>
+                    </sc-if>
+                  </div>
+                  <sc-if value="{{ zodOk }}" hint-placeholder-val="{{ true }}">
+                    <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary);">{{ zodNote }}</p>
+                    <p style="margin: 0; font-size: 13px; color: var(--text-muted);">{{ zodElementLine }}</p>
+                  </sc-if>
+                </div>
+                <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);">This year</span>
+                  <span style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 500;">2026 — the Fire Horse 丙午</span>
+                  <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary);">A fast, warm, outward-moving year. The classical counsel is to balance its heat with grounding meals, steady sleep and unhurried mornings — more nishime, less midnight.</p>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showGlossary }}" hint-placeholder-val="{{ false }}">
+              <div class="mb-card" style="padding: 4px 20px; display: flex; flex-direction: column;">
+                <sc-for list="{{ glossaryRows }}" as="item" hint-placeholder-count="6">
+                  <div style="display: flex; flex-direction: column; gap: 3px; padding: 13px 0; border-top: 1px solid var(--border-subtle);">
+                    <span style="font-family: 'Newsreader', Georgia, serif; font-size: 18px; font-weight: 500;">{{ item.term }}</span>
+                    <span style="font-size: 13.5px; line-height: 1.6; color: var(--text-secondary);">{{ item.def }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-if>
+
+        <!-- ============ PROFILE ============ -->
+        <sc-if value="{{ showProfile }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Profile" style="display: flex; flex-direction: column; gap: 16px; animation: mbScreenIn 200ms ease-out;">
+
+            <div class="mb-card" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--surface-sunken); font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 16px; color: var(--text-secondary); flex: none;">{{ profileInitials }}</span>
+                <div style="display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0;">
+                  <span style="font-family: 'Newsreader', Georgia, serif; font-size: 24px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1;">{{ profileDisplay }}</span>
+                  <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 11px; color: var(--text-muted);">practising since June 2026</span>
+                </div>
+                <span class="mb-badge mb-badge--green">Leans a little yang</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 12px; color: var(--text-muted);">Display name</label>
+                <input class="mb-input" placeholder="Add your name" value="{{ nameVal }}" onChange="{{ onName }}">
+              </div>
+            </div>
+
+            <div class="mb-card" style="padding: 20px;">
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 22px;">{{ statStreak }}</span>
+                  <span style="font-size: 11px; color: var(--text-muted);">day streak</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 22px;">{{ statChecks }}</span>
+                  <span style="font-size: 11px; color: var(--text-muted);">check-ins</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 22px;">{{ statMeals }}</span>
+                  <span style="font-size: 11px; color: var(--text-muted);">meals logged</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <span style="font-family: 'Spline Sans Mono', ui-monospace, monospace; font-size: 22px;">{{ statLessons }}</span>
+                  <span style="font-size: 11px; color: var(--text-muted);">lessons done</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-card" style="padding: 8px 20px; display: flex; flex-direction: column;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0;">
+                <div style="display: flex; flex-direction: column; gap: 1px;">
+                  <span style="font-size: 14px; font-weight: 500;">Theme</span>
+                  <span style="font-size: 12px; color: var(--text-muted);">Light is yang, dark is yin.</span>
+                </div>
+                <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.ThemeToggle" hint-size="52px,28px"></x-import>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border-subtle);">
+                <div style="display: flex; flex-direction: column; gap: 1px;">
+                  <span style="font-size: 14px; font-weight: 500;">Daily check-in reminder</span>
+                  <span style="font-size: 12px; color: var(--text-muted);">A quiet nudge, morning and evening.</span>
+                </div>
+                <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Switch" checked="{{ settingsReminders }}" onChange="{{ toggleReminders }}" hint-size="44px,26px"></x-import>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border-subtle);">
+                <div style="display: flex; flex-direction: column; gap: 1px;">
+                  <span style="font-size: 14px; font-weight: 500;">Share progress to feed</span>
+                  <span style="font-size: 12px; color: var(--text-muted);">Friends can see streaks and check-in milestones.</span>
+                </div>
+                <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Switch" checked="{{ settingsPublic }}" onChange="{{ togglePublic }}" hint-size="44px,26px"></x-import>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: center;">
+              <button class="mb-btn mb-btn--ghost mb-btn--sm">Sign out</button>
+            </div>
+
+          </div>
+        </sc-if>
+
+        <!-- @slot:profile-end -->
+
+      </div>
+    </main>
+  </div>
+
+  <sc-if value="{{ showTabBar }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Main" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; max-width: 680px; margin: 0 auto; padding: 6px 10px calc(6px + env(safe-area-inset-bottom)); box-sizing: border-box; background: color-mix(in srgb, var(--surface-card) 86%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--border-subtle);">
+      <sc-for list="{{ barItems }}" as="item" hint-placeholder-count="5">
+        <button onClick="{{ item.go }}" aria-current="{{ item.ariaCurrent }}" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 52px; padding: 4px 2px; border: none; border-radius: 10px; background: transparent; color: {{ item.color }}; font-family: inherit; cursor: pointer; transition: color 120ms ease-out;" style-hover="background: var(--surface-hover); color: var(--text-primary);">
+          <span style="display: block; width: 16px; height: 2px; border-radius: 1px; background: {{ item.barBg }};"></span>
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ item.icon }}" size="{{ 20 }}" stroke-width="{{ item.stroke }}" hint-size="20px,20px"></x-import>
+          <span style="font-size: 11px; font-weight: {{ item.weight }};">{{ item.label }}</span>
+        </button>
+      </sc-for>
+    </nav>
+  </sc-if>
+
+  <sc-if value="{{ moreOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMore }}" style="position: fixed; inset: 0; z-index: 90; background: rgb(31 33 29 / 0.45); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+    <div style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 91; max-width: 680px; margin: 0 auto; background: var(--surface-card); border: 1px solid var(--border-subtle); border-bottom: none; border-radius: 20px 20px 0 0; box-shadow: var(--shadow-lg); padding: 18px 18px calc(18px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 14px; animation: mbSheetIn 200ms ease-out;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-family: 'Newsreader', Georgia, serif; font-size: 18px; font-weight: 500;">More</span>
+        <button class="mb-icon-btn" onClick="{{ closeMore }}" aria-label="Close">
+          <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="x" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+        </button>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+        <sc-for list="{{ moreItems }}" as="item" hint-placeholder-count="6">
+          <button onClick="{{ item.go }}" style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 6px; border: 1px solid var(--border-subtle); border-radius: 14px; background: {{ item.bg }}; color: {{ item.color }}; font-family: inherit; font-size: 12px; font-weight: 500; cursor: pointer;" style-hover="background: var(--surface-hover);">
+            <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.Icon" name="{{ item.icon }}" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+            <span>{{ item.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 6px 0;">
+        <span style="font-size: 13px; color: var(--text-muted);">Theme</span>
+        <x-import component-from-global-scope="MacrobioticaDesignSystem_d67ea7.ThemeToggle" hint-size="52px,28px"></x-import>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;startTab&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;today&quot;, &quot;options&quot;: [&quot;today&quot;, &quot;diary&quot;, &quot;foods&quot;, &quot;treatments&quot;, &quot;learn&quot;, &quot;practices&quot;, &quot;feed&quot;, &quot;care&quot;, &quot;wisdom&quot;, &quot;profile&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Behavior&quot; },
+  &quot;contentWidth&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 680, &quot;min&quot;: 560, &quot;max&quot;: 840, &quot;step&quot;: 20, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Layout&quot; }
+}">
+class Component extends DCLogic {
+  state = {
+    ready: false,
+    tab: null,
+    isDesktop: typeof window !== 'undefined' && window.matchMedia('(min-width: 900px)').matches,
+    moreOpen: false,
+    // today
+    checkinOpen: false, checkinVal: 0, checkinNoteText: '',
+    pickerOpen: false, pickQ: '',
+    // diary
+    monthOffset: 0, selDay: null,
+    // foods
+    q: '', cat: 'All', foodsSel: null,
+    // treatments
+    tq: '', tsys: 'All', ailSel: null,
+    // learn
+    lessonSel: null,
+    // practices
+    practiceSel: null,
+    // feed
+    shareText: '', shareMeal: null,
+    drafts: {}, extraComments: this._load('mb-comments-user', {}),
+    likes: this._load('mb-likes', {}),
+    userPosts: this._load('mb-posts-user', []),
+    // care
+    friendSel: null,
+    // wisdom
+    wTab: 'elements', wq: '', birthYear: this._loadRaw('mb-birth-year', '1992'),
+    // profile
+    nameVal: this._loadRaw('mb-name', ''),
+    settings: this._load('mb-settings', { reminders: true, publicProfile: false }),
+    lessonsDone: this._load('mb-lessons', {}),
+    userLog: this._load('mb-log-user', {})
+  };
+
+  _load(k, fb) { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? fb : v; } catch (e) { return fb; } }
+  _loadRaw(k, fb) { try { return localStorage.getItem(k) ?? fb; } catch (e) { return fb; } }
+  _save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  componentDidMount() {
+    try {
+      const saved = localStorage.getItem('mb-theme');
+      if (saved === 'dark' || saved === 'light') document.documentElement.setAttribute('data-theme', saved);
+    } catch (e) {}
+    this._mq = window.matchMedia('(min-width: 900px)');
+    this._onMq = (e) => this.setState({ isDesktop: e.matches });
+    this._mq.addEventListener('change', this._onMq);
+    import('./mb-data.js').then((m) => {
+      this.DB = m;
+      this.SEED = m.seedLog(new Date());
+      this.setState({ ready: true });
+    }).catch((e) => console.error('data load failed', e));
+  }
+
+  componentWillUnmount() { if (this._mq) this._mq.removeEventListener('change', this._onMq); }
+
+  // ---- helpers ----
+  _p2(x) { return String(x).padStart(2, '0'); }
+  _key(d) { return d.getFullYear() + '-' + this._p2(d.getMonth() + 1) + '-' + this._p2(d.getDate()); }
+  _hhmm(d) { return this._p2(d.getHours()) + ':' + this._p2(d.getMinutes()); }
+  _sgn(v) { const r = Math.round(v * 100) / 100; return (r > 0 ? '+' : r < 0 ? '\u2212' : '\u00B1') + Math.abs(r).toFixed(2); }
+  _color(v) {
+    if (v <= -0.5) return 'var(--chakra-crown)';
+    if (v <= -0.25) return 'var(--chakra-third-eye)';
+    if (v < -0.05) return 'var(--chakra-throat)';
+    if (v <= 0.05) return 'var(--chakra-heart)';
+    if (v <= 0.25) return 'var(--chakra-solar)';
+    if (v <= 0.5) return 'var(--chakra-sacral)';
+    return 'var(--chakra-root)';
+  }
+  _note(v) {
+    if (v <= -0.5) return 'Strongly yin — expansive and cooling';
+    if (v <= -0.2) return 'More yin — light and cooling';
+    if (v < -0.05) return 'A little yin of centre';
+    if (v <= 0.05) return 'Near centre — balanced';
+    if (v < 0.2) return 'A little yang of centre';
+    if (v < 0.5) return 'More yang — warming and grounding';
+    return 'Strongly yang — contractive';
+  }
+  _mealById(id) { return (this.DB ? this.DB.MEALS : []).find((m) => m.id === id); }
+  _foodById(id) { return (this.DB ? this.DB.FOODS : []).find((f) => f.id === id); }
+  _getDay(k) {
+    const s = (this.SEED && this.SEED[k]) || {};
+    const u = this.state.userLog[k] || {};
+    return {
+      meals: [...(s.meals || []), ...(u.meals || [])],
+      checkins: [...(s.checkins || []), ...(u.checkins || [])],
+      practices: [...new Set([...(s.practices || []), ...(u.practices || [])])]
+    };
+  }
+  _dayAvg(day) {
+    const vals = [];
+    day.checkins.forEach((c) => vals.push(c.v));
+    day.meals.forEach((m) => { const meal = this._mealById(m.id); if (meal) vals.push(meal.yy); });
+    if (!vals.length) return null;
+    return Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100;
+  }
+  _addToDay(k, kind, entry) {
+    const log = { ...this.state.userLog };
+    const d = { ...(log[k] || {}) };
+    d[kind] = [...(d[kind] || []), entry];
+    log[k] = d;
+    this._save('mb-log-user', log);
+    this.setState({ userLog: log });
+  }
+  _setTab(id) {
+    try { localStorage.setItem('mb-tab', id); } catch (e) {}
+    this.setState({ tab: id, moreOpen: false });
+  }
+  _lessonDone(l) { return l.done || !!this.state.lessonsDone[l.id]; }
+
+  renderVals() {
+    const D = this.DB;
+    const now = new Date();
+    const todayKey = this._key(now);
+    const valid = ['today', 'diary', 'foods', 'treatments', 'learn', 'practices', 'feed', 'care', 'wisdom', 'profile'];
+    let tab = this.state.tab || this._loadRaw('mb-tab', null);
+    if (valid.indexOf(tab) === -1) tab = this.props.startTab ?? 'today';
+    const isDesktop = !!this.state.isDesktop;
+    const setTab = (id) => () => this._setTab(id);
+
+    // ----- navigation -----
+    const defs = [
+      { id: 'today', icon: 'sun', label: 'Today' },
+      { id: 'diary', icon: 'calendar-days', label: 'Diary' },
+      { id: 'foods', icon: 'carrot', label: 'Foods' },
+      { id: 'treatments', icon: 'leaf', label: 'Treatments' },
+      { id: 'learn', icon: 'book-open', label: 'Learn' },
+      { id: 'practices', icon: 'sprout', label: 'Practices' },
+      { id: 'wisdom', icon: 'moon', label: 'Wisdom' },
+      { id: 'feed', icon: 'newspaper', label: 'Feed' },
+      { id: 'care', icon: 'heart', label: 'Care' },
+      { id: 'profile', icon: 'user', label: 'Profile' }
+    ];
+    const navItem = (d) => {
+      const active = d.id === tab;
+      return {
+        icon: d.icon, label: d.label, go: setTab(d.id),
+        ariaCurrent: active ? 'page' : undefined,
+        color: active ? 'var(--text-primary)' : 'var(--text-muted)',
+        weight: active ? 600 : 500,
+        barBg: active ? 'var(--text-primary)' : 'transparent',
+        railBg: active ? 'var(--surface-sunken)' : 'transparent',
+        bg: active ? 'var(--surface-sunken)' : 'transparent',
+        stroke: active ? 2 : 1.75
+      };
+    };
+    const byId = {}; defs.forEach((d) => { byId[d.id] = navItem(d); });
+    const railGroups = [
+      { h: '', showH: false, items: [byId.today, byId.diary] },
+      { h: 'Explore', showH: true, items: [byId.foods, byId.treatments, byId.learn, byId.practices, byId.wisdom] },
+      { h: 'Circle', showH: true, items: [byId.feed, byId.care, byId.profile] }
+    ];
+    const moreSet = ['treatments', 'learn', 'practices', 'wisdom', 'care', 'profile'];
+    const moreActive = moreSet.indexOf(tab) !== -1;
+    const barItems = [byId.today, byId.diary, byId.foods, byId.feed, {
+      icon: 'menu', label: 'More', go: () => this.setState({ moreOpen: true }),
+      ariaCurrent: undefined,
+      color: moreActive ? 'var(--text-primary)' : 'var(--text-muted)',
+      weight: moreActive ? 600 : 500,
+      barBg: moreActive ? 'var(--text-primary)' : 'transparent',
+      stroke: moreActive ? 2 : 1.75
+    }];
+    const moreItems = moreSet.map((id) => byId[defs.findIndex((d) => d.id === id) >= 0 ? id : id]).map((x) => x);
+
+    const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    const meta = {
+      today: { title: 'Today', sub: dateStr },
+      diary: { title: 'Diary', sub: 'Every meal and check-in, day by day' },
+      foods: { title: 'Foods', sub: 'The yin\u2013yang compass for foods and whole meals' },
+      treatments: { title: 'Treatments', sub: 'Gentle food-based support, by ailment' },
+      learn: { title: 'Learn', sub: 'Philosophy, lessons, practice' },
+      practices: { title: 'Practices', sub: 'Small daily disciplines that do the real work' },
+      feed: { title: 'Feed', sub: 'What your circle is cooking and noticing' },
+      care: { title: 'Care', sub: 'The people you cook for' },
+      wisdom: { title: 'Wisdom', sub: 'Five elements, the organ clock, your chart' },
+      profile: { title: 'Profile', sub: 'Your practice, at a glance' }
+    };
+
+    // ----- today -----
+    const todayData = this._getDay(todayKey);
+    const todayAvg = this._dayAvg(todayData);
+    const todayVal = todayAvg == null ? 0 : todayAvg;
+    let todayNote = this._note(todayVal);
+    if (todayVal > 0.25) todayNote = 'More yang than usual — lighter, fresher foods may help';
+    if (todayVal < -0.25) todayNote = 'More yin than usual — grounding, warming foods may help';
+    const todayChecks = todayData.checkins.map((c) => ({ t: c.t, vStr: this._sgn(c.v), dot: this._color(c.v), note: c.note || '' }));
+    const todayMeals = todayData.meals.map((m) => {
+      const meal = this._mealById(m.id) || { n: m.id, yy: 0 };
+      return { t: m.t, name: meal.n, yy: meal.yy, click: () => this.setState({ tab: 'foods', foodsSel: { type: 'meal', id: m.id } }, () => this._setTab('foods')) };
+    });
+    const pickQ = this.state.pickQ.toLowerCase();
+    const pickRows = (D ? D.MEALS : []).filter((m) => !pickQ || m.n.toLowerCase().includes(pickQ)).map((m) => ({
+      name: m.n, time: m.time, yy: m.yy,
+      add: () => { this._addToDay(todayKey, 'meals', { id: m.id, t: this._hhmm(new Date()) }); this.setState({ pickerOpen: false, pickQ: '' }); }
+    }));
+    const practiceList = D ? D.PRACTICES : [];
+    const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+    const practiceToday = practiceList.length ? practiceList[dayOfYear % practiceList.length] : { icon: 'sprout', n: '', desc: '' };
+    const practiceDoneToday = todayData.practices.indexOf(practiceToday.id) !== -1;
+    const weekCols = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+      const k = this._key(d);
+      const avg = this._dayAvg(this._getDay(k));
+      weekCols.push({
+        letter: d.toLocaleDateString('en-US', { weekday: 'narrow' }),
+        dot: avg == null ? 'var(--border-subtle)' : this._color(avg),
+        vStr: avg == null ? '\u00B7' : this._sgn(avg),
+        border: i === 0 ? 'var(--border-strong)' : 'transparent',
+        go: () => this.setState({ selDay: k, monthOffset: 0 }, () => this._setTab('diary'))
+      });
+    }
+
+    // ----- diary -----
+    const mBase = new Date(now.getFullYear(), now.getMonth() + this.state.monthOffset, 1);
+    const monthLabel = mBase.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    const firstDow = (mBase.getDay() + 6) % 7;
+    const daysInMonth = new Date(mBase.getFullYear(), mBase.getMonth() + 1, 0).getDate();
+    const cellCount = Math.ceil((firstDow + daysInMonth) / 7) * 7;
+    const selDay = this.state.selDay || todayKey;
+    const dayCells = [];
+    for (let i = 0; i < cellCount; i++) {
+      const d = new Date(mBase.getFullYear(), mBase.getMonth(), i - firstDow + 1);
+      const k = this._key(d);
+      const inMonth = d.getMonth() === mBase.getMonth();
+      const avg = this._dayAvg(this._getDay(k));
+      const isToday = k === todayKey;
+      const sel = k === selDay;
+      dayCells.push({
+        num: d.getDate(),
+        numColor: inMonth ? 'var(--text-primary)' : 'var(--text-faint)',
+        dot: avg == null ? 'transparent' : this._color(avg),
+        bg: sel ? 'var(--surface-sunken)' : 'transparent',
+        border: isToday ? 'var(--focus-ring)' : 'transparent',
+        click: () => this.setState({ selDay: k })
+      });
+    }
+    const selData = this._getDay(selDay);
+    const selAvg = this._dayAvg(selData);
+    const selParts = selDay.split('-');
+    const selDate = new Date(Number(selParts[0]), Number(selParts[1]) - 1, Number(selParts[2]));
+    const selChecks = selData.checkins.map((c) => ({ t: c.t, vStr: this._sgn(c.v), dot: this._color(c.v), note: c.note || '' }));
+    const selMeals = selData.meals.map((m) => {
+      const meal = this._mealById(m.id) || { n: m.id, yy: 0 };
+      return { t: m.t, name: meal.n, yy: meal.yy, click: () => { this.setState({ foodsSel: { type: 'meal', id: m.id } }); this._setTab('foods'); } };
+    });
+    const selPractices = selData.practices.map((id) => {
+      const p = practiceList.find((x) => x.id === id);
+      return { n: p ? p.n : id };
+    });
+
+    // ----- assemble (screen-specific vals appended by _screenVals) -----
+    const base = {
+      isDesktop,
+      showMobileHeader: !isDesktop,
+      showTabBar: !isDesktop,
+      railGroups, barItems, moreItems,
+      moreOpen: this.state.moreOpen,
+      closeMore: () => this.setState({ moreOpen: false }),
+      dateStr,
+      screenTitle: meta[tab].title,
+      screenSub: meta[tab].sub,
+      contentMaxWidth: (this.props.contentWidth ?? 680) + 'px',
+      mainPad: isDesktop ? '36px 32px 56px' : '6px 20px 108px',
+      showToday: tab === 'today', showDiary: tab === 'diary', showFoods: tab === 'foods',
+      showTreatments: tab === 'treatments', showLearn: tab === 'learn', showPractices: tab === 'practices',
+      showFeed: tab === 'feed', showCare: tab === 'care', showWisdom: tab === 'wisdom', showProfile: tab === 'profile',
+      // today
+      todayVal, todayValStr: todayAvg == null ? '\u00B7\u00B7' : this._sgn(todayVal), todayNote,
+      checkinOpen: this.state.checkinOpen,
+      toggleCheckin: () => this.setState((s) => ({ checkinOpen: !s.checkinOpen })),
+      checkinVal: this.state.checkinVal,
+      checkinValStr: this._sgn(this.state.checkinVal),
+      checkinLiveNote: this._note(this.state.checkinVal),
+      checkinNoteText: this.state.checkinNoteText,
+      onCheckinSlide: (e) => this.setState({ checkinVal: Number(e.target.value) }),
+      onCheckinNote: (e) => this.setState({ checkinNoteText: e.target.value }),
+      saveCheckin: () => {
+        this._addToDay(todayKey, 'checkins', { t: this._hhmm(new Date()), v: this.state.checkinVal, note: this.state.checkinNoteText.trim() });
+        this.setState({ checkinOpen: false, checkinNoteText: '', checkinVal: 0 });
+      },
+      todayChecks, noChecks: todayChecks.length === 0,
+      todayMeals, noTodayMeals: todayMeals.length === 0, mealCount: String(todayMeals.length),
+      pickerOpen: this.state.pickerOpen,
+      togglePicker: () => this.setState((s) => ({ pickerOpen: !s.pickerOpen })),
+      pickQ: this.state.pickQ,
+      onPickQ: (e) => this.setState({ pickQ: e.target.value }),
+      pickRows,
+      practiceIcon: practiceToday.icon, practiceName: practiceToday.n, practiceDesc: practiceToday.desc,
+      practiceBtnLabel: practiceDoneToday ? 'Done today' : 'Mark done',
+      practiceBtnCls: practiceDoneToday ? 'mb-btn mb-btn--secondary mb-btn--sm' : 'mb-btn mb-btn--primary mb-btn--sm',
+      togglePracticeToday: () => {
+        if (practiceDoneToday) return;
+        this._addToDay(todayKey, 'practices', practiceToday.id);
+      },
+      goPractices: setTab('practices'),
+      goDiary: setTab('diary'),
+      weekCols,
+      // diary
+      monthLabel,
+      prevMonth: () => this.setState((s) => ({ monthOffset: s.monthOffset - 1 })),
+      nextMonth: () => this.setState((s) => ({ monthOffset: s.monthOffset + 1 })),
+      goTodayDiary: () => this.setState({ monthOffset: 0, selDay: todayKey }),
+      dayCells,
+      selDayLabel: selDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }),
+      selAvg: selAvg == null ? 0 : selAvg,
+      selHasAvg: selAvg != null,
+      selAvgStr: selAvg == null ? 'nothing logged' : this._sgn(selAvg),
+      selAvgNote: selAvg == null ? '' : this._note(selAvg),
+      selChecks, selNoChecks: selChecks.length === 0,
+      selMeals, selNoMeals: selMeals.length === 0,
+      selPractices, selHasPractices: selPractices.length > 0
+    };
+    return Object.assign(base, this._screenVals(tab, now, todayKey));
+  }
+
+  // Foods / Treatments / Learn / Practices / Feed / Care / Wisdom / Profile vals
+  _screenVals(tab, now, todayKey) {
+    const D = this.DB;
+    const FOODS = D ? D.FOODS : [];
+    const MEALS = D ? D.MEALS : [];
+    const out = {};
+
+    // ----- foods -----
+    const sel = this.state.foodsSel;
+    out.showFoodsList = !sel;
+    out.showFoodDetail = !!sel && sel.type === 'food';
+    out.showMealDetail = !!sel && sel.type === 'meal';
+    out.q = this.state.q;
+    out.onQ = (e) => this.setState({ q: e.target.value });
+    out.backToFoods = () => this.setState({ foodsSel: null });
+    const q = this.state.q.trim().toLowerCase();
+    const cat = this.state.cat;
+    out.catChips = ['All', 'Meals', ...(D ? D.CATS : [])].map((c) => ({
+      label: c, cls: 'mb-tag' + (c === cat ? ' mb-tag--active' : ''),
+      click: () => this.setState({ cat: c })
+    }));
+    const matches = (s) => !q || s.toLowerCase().includes(q);
+    const mealRows = (cat === 'All' || cat === 'Meals') ? MEALS.filter((m) => matches(m.n) || m.ingredients.some((i) => matches(i.n))).map((m) => ({
+      name: m.n, sub: m.time + ' \u00B7 ' + m.season, yy: m.yy,
+      click: () => this.setState({ foodsSel: { type: 'meal', id: m.id } })
+    })) : [];
+    const foodRows = (cat === 'Meals') ? [] : FOODS.filter((f) => (cat === 'All' || f.cat === cat) && matches(f.n)).map((f) => ({
+      name: f.n, sub: f.cat, yy: f.yy,
+      click: () => this.setState({ foodsSel: { type: 'food', id: f.id } })
+    }));
+    out.mealRows = mealRows; out.hasMealRows = mealRows.length > 0;
+    out.foodRows = foodRows; out.hasFoodRows = foodRows.length > 0;
+    out.noResults = !!D && mealRows.length === 0 && foodRows.length === 0;
+    out.qEcho = this.state.q;
+    const food = sel && sel.type === 'food' ? FOODS.find((f) => f.id === sel.id) : null;
+    out.foodName = food ? food.n : '';
+    out.foodCat = food ? food.cat : '';
+    out.foodYY = food ? food.yy : 0;
+    out.foodNoteTxt = food ? food.note : '';
+    out.foodMeterLabel = food ? this._note(food.yy) : '';
+    out.foodCookRows = food ? (D ? D.COOK_METHODS : []).filter((c) => ['Raw', 'Blanched', 'Steamed', 'Saut\u00E9ed', 'Long-simmered', 'Pickled'].indexOf(c.m) !== -1).map((c) => ({
+      m: c.m, val: Math.max(-1, Math.min(1, food.yy + c.shift)), shiftStr: c.shift === 0 ? '\u00B10.00' : this._sgn(c.shift), note: c.note
+    })) : [];
+    out.foodMealChips = food ? MEALS.filter((m) => m.ingredients.some((i) => i.ref === food.id)).map((m) => ({
+      name: m.n, click: () => this.setState({ foodsSel: { type: 'meal', id: m.id } })
+    })) : [];
+    out.hasFoodMealChips = out.foodMealChips.length > 0;
+    const meal = sel && sel.type === 'meal' ? MEALS.find((m) => m.id === sel.id) : null;
+    out.mealName = meal ? meal.n : '';
+    out.mealDesc = meal ? meal.desc : '';
+    out.mealYY = meal ? meal.yy : 0;
+    out.mealValStr = meal ? this._sgn(meal.yy) : '';
+    out.mealMeterLabel = meal ? this._note(meal.yy) : '';
+    out.mealTime = meal ? meal.time : '';
+    out.mealSeason = meal ? meal.season : '';
+    out.mealIngRows = meal ? meal.ingredients.map((i) => ({
+      n: i.n, amt: i.amt, yy: i.yy, note: i.note || '', hasNote: !!i.note,
+      click: i.ref ? () => this.setState({ foodsSel: { type: 'food', id: i.ref } }) : () => {}
+    })) : [];
+    out.mealProcRows = meal ? meal.process.map((p, i) => ({
+      i: String(i + 1), s: p.s, eStr: this._sgn(p.e), note: p.note || '', hasNote: !!p.note
+    })) : [];
+    out.mealNetStr = meal ? this._sgn(meal.process.reduce((a, p) => a + p.e, 0)) : '';
+    out.mealComments = meal ? meal.comments.map((c) => ({ who: c.who, t: c.t, initials: c.who.slice(0, 2).toUpperCase() })) : [];
+    out.hasMealComments = out.mealComments.length > 0;
+    out.logThisMeal = meal ? () => { this._addToDay(todayKey, 'meals', { id: meal.id, t: this._hhmm(new Date()) }); this._setTab('today'); } : () => {};
+
+    // ----- treatments -----
+    const AIL = D ? D.AILMENTS : [];
+    const ailSel = this.state.ailSel ? AIL.find((a) => a.id === this.state.ailSel) : null;
+    out.showTreatList = !ailSel;
+    out.showTreatDetail = !!ailSel;
+    out.tq = this.state.tq;
+    out.onTq = (e) => this.setState({ tq: e.target.value });
+    const tq = this.state.tq.trim().toLowerCase();
+    out.sysChips = (D ? D.AILMENT_SYSTEMS : []).map((s) => ({
+      label: s, cls: 'mb-tag' + (s === this.state.tsys ? ' mb-tag--active' : ''),
+      click: () => this.setState({ tsys: s })
+    }));
+    const patCls = (p) => 'mb-badge ' + (p.toLowerCase().includes('yin') && !p.toLowerCase().includes('yang') ? 'mb-badge--crown' : p.toLowerCase().includes('yang') && !p.toLowerCase().includes('yin') ? 'mb-badge--root' : '');
+    out.ailRows = AIL.filter((a) => (this.state.tsys === 'All' || a.system === this.state.tsys) && (!tq || a.n.toLowerCase().includes(tq) || a.signs.join(' ').toLowerCase().includes(tq))).map((a) => ({
+      n: a.n, sysLabel: a.system, pattern: a.pattern, patCls: patCls(a.pattern),
+      click: () => this.setState({ ailSel: a.id })
+    }));
+    out.noTreatResults = !!D && out.ailRows.length === 0;
+    out.backToAilments = () => this.setState({ ailSel: null });
+    out.ailName = ailSel ? ailSel.n : '';
+    out.ailPattern = ailSel ? ailSel.pattern : '';
+    out.ailPatCls = ailSel ? patCls(ailSel.pattern) : 'mb-badge';
+    out.ailSystem = ailSel ? ailSel.system : '';
+    out.ailNote = ailSel ? ailSel.note : '';
+    out.ailSigns = ailSel ? ailSel.signs.map((x) => ({ x })) : [];
+    out.ailEat = ailSel ? ailSel.eat.map((e) => ({
+      n: e.n, why: e.why, hasRef: !!e.ref,
+      click: e.ref ? () => { this.setState({ foodsSel: { type: 'meal', id: e.ref } }); this._setTab('foods'); } : () => {}
+    })) : [];
+    out.ailRemedies = ailSel ? ailSel.remedies.map((r) => ({ n: r.n, how: r.how })) : [];
+    out.ailPractices = ailSel ? ailSel.practices.map((id) => {
+      const p = (D ? D.PRACTICES : []).find((x) => x.id === id);
+      return { n: p ? p.n : id, click: () => { this.setState({ practiceSel: id }); this._setTab('practices'); } };
+    }) : [];
+    out.ailAvoid = ailSel ? ailSel.avoid.map((x) => ({ x })) : [];
+
+    // ----- learn -----
+    const COURSES = D ? D.COURSES : [];
+    const lsel = this.state.lessonSel;
+    let reader = null;
+    if (lsel) {
+      for (const c of COURSES) {
+        const idx = c.lessons.findIndex((l) => l.id === lsel);
+        if (idx !== -1) { reader = { course: c, lesson: c.lessons[idx], idx }; break; }
+      }
+    }
+    out.showLearnList = !reader;
+    out.showReader = !!reader;
+    const fob = COURSES.find((c) => c.id === 'fob');
+    const contLesson = fob ? fob.lessons.find((l) => !this._lessonDone(l)) : null;
+    out.continueTitle = contLesson ? contLesson.t : 'All caught up';
+    out.continueMeta = contLesson && fob ? 'Foundations of Balance \u00B7 Lesson ' + (fob.lessons.indexOf(contLesson) + 1) + ' of ' + fob.lessons.length : '';
+    out.openContinue = contLesson ? () => this.setState({ lessonSel: contLesson.id }) : () => {};
+    out.courseCards = COURSES.map((c) => {
+      const doneN = c.lessons.filter((l) => this._lessonDone(l)).length;
+      return {
+        title: c.title, prog: doneN + ' of ' + c.lessons.length,
+        pct: Math.round((doneN / c.lessons.length) * 100) + '%',
+        rows: c.lessons.map((l) => ({
+          t: l.t, minStr: l.min + ' min',
+          done: this._lessonDone(l),
+          dotBg: this._lessonDone(l) ? 'var(--control-checked)' : 'transparent',
+          dotBorder: this._lessonDone(l) ? 'var(--control-checked)' : 'var(--border-strong)',
+          titleColor: this._lessonDone(l) ? 'var(--text-muted)' : 'var(--text-primary)',
+          click: () => this.setState({ lessonSel: l.id })
+        }))
+      };
+    });
+    out.backToLearn = () => this.setState({ lessonSel: null });
+    out.readerKicker = reader ? reader.course.title : '';
+    out.readerTitle = reader ? reader.lesson.t : '';
+    out.readerMeta = reader ? reader.lesson.min + ' min \u00B7 Lesson ' + (reader.idx + 1) + ' of ' + reader.course.lessons.length : '';
+    const article = reader ? ((D && D.ARTICLES[reader.lesson.id]) || [
+      { t: 'p', x: 'The full text of this lesson is still being written — this reader shows the format it will arrive in.' },
+      { t: 'aside', x: 'Browse “The energy of cooking” or “Chewing well” in Foundations of Balance for finished examples.' }
+    ]) : [];
+    out.readerBlocks = article.map((b) => ({
+      isH: b.t === 'h', isP: b.t === 'p', isQuote: b.t === 'quote', isList: b.t === 'list', isAside: b.t === 'aside',
+      x: b.t === 'list' ? '' : b.x,
+      items: b.t === 'list' ? b.x.map((x) => ({ x })) : []
+    }));
+    out.readerDone = reader ? this._lessonDone(reader.lesson) : false;
+    out.readerDoneLabel = reader && this._lessonDone(reader.lesson) ? 'Completed' : 'Mark complete';
+    out.readerDoneCls = reader && this._lessonDone(reader.lesson) ? 'mb-btn mb-btn--secondary' : 'mb-btn mb-btn--primary';
+    out.markDone = reader ? () => {
+      const ld = { ...this.state.lessonsDone, [reader.lesson.id]: true };
+      this._save('mb-lessons', ld);
+      this.setState({ lessonsDone: ld });
+    } : () => {};
+    const nextL = reader ? reader.course.lessons[reader.idx + 1] : null;
+    out.hasNext = !!nextL;
+    out.nextLabel = nextL ? 'Next: ' + nextL.t : '';
+    out.goNext = nextL ? () => this.setState({ lessonSel: nextL.id }) : () => {};
+
+    // ----- practices -----
+    const PR = D ? D.PRACTICES : [];
+    out.practiceRows = PR.map((p) => {
+      const doneToday = this._getDay(todayKey).practices.indexOf(p.id) !== -1;
+      let streak = 0;
+      for (let i = 0; i < 60; i++) {
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+        const has = this._getDay(this._key(d)).practices.indexOf(p.id) !== -1;
+        if (has) streak++;
+        else if (i === 0) continue;
+        else break;
+      }
+      const expanded = this.state.practiceSel === p.id;
+      return {
+        icon: p.icon, n: p.n, tag: p.tag, desc: p.desc, why: p.why,
+        steps: p.steps.map((s, i) => ({ i: String(i + 1), x: s })),
+        streakStr: streak > 0 ? streak + '-day streak' : '',
+        hasStreak: streak > 0,
+        doneToday,
+        doneLabel: doneToday ? 'Done today' : 'Mark done',
+        doneBtnCls: doneToday ? 'mb-btn mb-btn--secondary mb-btn--sm' : 'mb-btn mb-btn--primary mb-btn--sm',
+        toggle: (e) => { if (!doneToday) this._addToDay(todayKey, 'practices', p.id); },
+        click: () => this.setState({ practiceSel: expanded ? null : p.id }),
+        expanded,
+        chevron: expanded ? 'chevron-up' : 'chevron-down'
+      };
+    });
+
+    // ----- feed -----
+    const posts = [...this.state.userPosts, ...(D ? D.POSTS : [])];
+    out.shareText = this.state.shareText;
+    out.onShareText = (e) => this.setState({ shareText: e.target.value });
+    const shareMealIds = [...new Set([...this._getDay(todayKey).meals.map((m) => m.id), 'pumpkin-soup', 'miso-soup'])].slice(0, 4);
+    out.shareChips = shareMealIds.map((id) => {
+      const m = this._mealById(id);
+      return m ? {
+        label: m.n, cls: 'mb-tag' + (this.state.shareMeal === id ? ' mb-tag--active' : ''),
+        click: () => this.setState((s) => ({ shareMeal: s.shareMeal === id ? null : id }))
+      } : null;
+    }).filter(Boolean);
+    out.share = () => {
+      const text = this.state.shareText.trim();
+      if (!text) return;
+      const name = (this.state.nameVal || 'You').trim();
+      const post = { id: 'u' + Date.now(), who: name, initials: name.slice(0, 2).toUpperCase(), time: 'Now', text, meal: this.state.shareMeal || undefined, likes: 0, comments: [] };
+      const up = [post, ...this.state.userPosts];
+      this._save('mb-posts-user', up);
+      this.setState({ userPosts: up, shareText: '', shareMeal: null });
+    };
+    out.feedPosts = posts.map((p) => {
+      const liked = !!this.state.likes[p.id];
+      const extra = this.state.extraComments[p.id] || [];
+      const comments = [...(p.comments || []), ...extra];
+      const meal = p.meal ? this._mealById(p.meal) : null;
+      return {
+        initials: p.initials, who: p.who, time: p.time, text: p.text,
+        hasMeal: !!meal, mealName: meal ? meal.n : '', mealYY: meal ? meal.yy : 0,
+        openMeal: meal ? () => { this.setState({ foodsSel: { type: 'meal', id: meal.id } }); this._setTab('foods'); } : () => {},
+        liked,
+        likeColor: liked ? 'var(--accent-strong)' : 'var(--text-muted)',
+        likes: String((p.likes || 0) + (liked ? 1 : 0)),
+        toggleLike: () => {
+          const likes = { ...this.state.likes, [p.id]: !liked };
+          this._save('mb-likes', likes);
+          this.setState({ likes });
+        },
+        comments: comments.map((c) => ({ who: c.who, t: c.t, initials: (c.who || '?').slice(0, 2).toUpperCase() })),
+        hasComments: comments.length > 0,
+        commentCount: String(comments.length),
+        draft: this.state.drafts[p.id] || '',
+        onDraft: (e) => this.setState({ drafts: { ...this.state.drafts, [p.id]: e.target.value } }),
+        addComment: () => {
+          const t = (this.state.drafts[p.id] || '').trim();
+          if (!t) return;
+          const name = (this.state.nameVal || 'You').trim();
+          const ec = { ...this.state.extraComments, [p.id]: [...extra, { who: name, t }] };
+          this._save('mb-comments-user', ec);
+          this.setState({ extraComments: ec, drafts: { ...this.state.drafts, [p.id]: '' } });
+        }
+      };
+    });
+
+    // ----- care -----
+    const FR = D ? D.FRIENDS : [];
+    const fsel = this.state.friendSel ? FR.find((f) => f.id === this.state.friendSel) : null;
+    out.showCareList = !fsel;
+    out.showFriend = !!fsel;
+    out.friendRows = FR.map((f) => ({
+      initials: f.initials, n: f.n, relation: f.relation + ' \u00B7 ' + f.constitution, yy: f.bal,
+      click: () => this.setState({ friendSel: f.id })
+    }));
+    out.backToCare = () => this.setState({ friendSel: null });
+    out.fName = fsel ? fsel.n : '';
+    out.fInitials = fsel ? fsel.initials : '';
+    out.fRelation = fsel ? fsel.relation : '';
+    out.fConstitution = fsel ? fsel.constitution : '';
+    out.fBal = fsel ? fsel.bal : 0;
+    out.fMeterLabel = fsel ? this._note(fsel.bal) : '';
+    out.fCooking = fsel ? fsel.cooking : '';
+    out.fNote = fsel ? fsel.note : '';
+    out.fCookingKicker = fsel ? 'Cooking for ' + fsel.n : '';
+    out.fBars = fsel ? fsel.trend.map((v, i) => ({
+      h: Math.round(Math.abs(v) * 30 + 6) + 'px',
+      bg: this._color(v),
+      op: i === fsel.trend.length - 1 ? '1' : '0.55'
+    })) : [];
+    out.fMeals = fsel ? (D ? D.MEALS : []).filter((m) => (fsel.bal > 0.1 ? m.yy < 0 : fsel.bal < -0.1 ? m.yy > 0.15 : Math.abs(m.yy) < 0.2)).slice(0, 3).map((m) => ({
+      name: m.n, click: () => { this.setState({ foodsSel: { type: 'meal', id: m.id } }); this._setTab('foods'); }
+    })) : [];
+
+    // ----- wisdom -----
+    const wTab = this.state.wTab;
+    out.wChips = [
+      { id: 'elements', label: 'Five elements' },
+      { id: 'clock', label: 'Organ clock' },
+      { id: 'astro', label: 'Astrology' },
+      { id: 'glossary', label: 'Glossary' }
+    ].map((t) => ({
+      label: t.label, cls: 'mb-tag' + (wTab === t.id ? ' mb-tag--active' : ''),
+      click: () => this.setState({ wTab: t.id })
+    }));
+    out.showElements = wTab === 'elements';
+    out.showClock = wTab === 'clock';
+    out.showAstro = wTab === 'astro';
+    out.showGlossary = wTab === 'glossary';
+    out.wq = this.state.wq;
+    out.onWq = (e) => this.setState({ wq: e.target.value });
+    const wq = this.state.wq.trim().toLowerCase();
+    const wMatch = (s) => !wq || s.toLowerCase().includes(wq);
+    out.elementRows = (D ? D.ELEMENTS : []).filter((e) => wMatch(e.el + ' ' + e.organ + ' ' + e.season + ' ' + e.foods)).map((e) => ({
+      el: e.el, organ: e.organ, season: e.season, taste: e.taste, emotion: e.emotion, foods: e.foods,
+      dot: 'var(' + e.colorVar + ')'
+    }));
+    const nowH = now.getHours();
+    out.clockRows = (D ? D.CLOCK : []).filter((c) => wMatch(c.organ + ' ' + c.note)).map((c) => {
+      const isNow = ((nowH - c.h + 24) % 24) < 2;
+      return { label: c.label, organ: c.organ, note: c.note, isNow, bg: isNow ? 'var(--surface-sunken)' : 'transparent' };
+    });
+    out.birthYear = this.state.birthYear;
+    out.onBirthYear = (e) => {
+      const v = e.target.value;
+      try { localStorage.setItem('mb-birth-year', v); } catch (err) {}
+      this.setState({ birthYear: v });
+    };
+    const zod = D ? D.zodiacFor(this.state.birthYear) : null;
+    out.zodOk = !!zod;
+    out.zodTitle = zod ? zod.element + ' ' + zod.animal : '';
+    out.zodPolarity = zod ? zod.polarity : '';
+    out.zodNote = zod ? zod.note : '';
+    const elRow = zod && D ? D.ELEMENTS.find((e) => e.el === zod.element) : null;
+    out.zodElementLine = elRow ? zod.element + ' element \u2014 ' + elRow.organ.toLowerCase() + ', ' + elRow.taste.toLowerCase() + ' taste, strongest in ' + elRow.season.toLowerCase() + '.' : '';
+    out.glossaryRows = (D ? D.GLOSSARY : []).filter((g) => wMatch(g.term + ' ' + g.def)).map((g) => ({ term: g.term, def: g.def }));
+
+    // ----- profile -----
+    out.nameVal = this.state.nameVal;
+    out.onName = (e) => {
+      const v = e.target.value;
+      try { localStorage.setItem('mb-name', v); } catch (err) {}
+      this.setState({ nameVal: v });
+    };
+    out.profileInitials = (this.state.nameVal || 'MB').trim().slice(0, 2).toUpperCase();
+    out.profileDisplay = this.state.nameVal.trim() || 'Your profile';
+    let streak = 0, checkTotal = 0, mealTotal = 0;
+    for (let i = 0; i < 30; i++) {
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+      const day = this._getDay(this._key(d));
+      checkTotal += day.checkins.length;
+      mealTotal += day.meals.length;
+      if (day.checkins.length > 0) { if (streak === i) streak++; }
+    }
+    let streak2 = 0;
+    for (let i = 0; i < 60; i++) {
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+      if (this._getDay(this._key(d)).checkins.length > 0) streak2++;
+      else if (i === 0) continue;
+      else break;
+    }
+    out.statStreak = String(streak2);
+    out.statChecks = String(checkTotal);
+    out.statMeals = String(mealTotal);
+    out.statLessons = String((D ? D.COURSES : []).reduce((a, c) => a + c.lessons.filter((l) => this._lessonDone(l)).length, 0));
+    out.settingsReminders = this.state.settings.reminders;
+    out.toggleReminders = () => {
+      const s = { ...this.state.settings, reminders: !this.state.settings.reminders };
+      this._save('mb-settings', s); this.setState({ settings: s });
+    };
+    out.settingsPublic = this.state.settings.publicProfile;
+    out.togglePublic = () => {
+      const s = { ...this.state.settings, publicProfile: !this.state.settings.publicProfile };
+      this._save('mb-settings', s); this.setState({ settings: s });
+    };
+    return out;
+  }
+}
+</script>
+</body>
+</html>

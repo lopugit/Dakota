@@ -1,0 +1,19 @@
+<!-- @dsCard group="Spacing" viewport="700x190" name="Elevation" subtitle="Low, diffuse shadows — never harsh" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 28px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .c { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px; display: flex; flex-direction: column; gap: 3px; }
+  .c b { font-size: 13px; font-weight: 600; }
+  .c code { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="c" style="box-shadow: var(--shadow-sm);"><b>sm</b><code>cards at rest</code></div>
+  <div class="c" style="box-shadow: var(--shadow-md);"><b>md</b><code>raised / hover</code></div>
+  <div class="c" style="box-shadow: var(--shadow-lg);"><b>lg</b><code>dialogs, toasts</code></div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "0bcfdee7411c488d",
+    "type": "split",
+    "children": [
+      {
+        "id": "a749d10b7227906d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3eb3c5b4ac316682",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Macrobiotica 🌱 Welcome.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Macrobiotica 🌱 Welcome"
+            }
+          },
+          {
+            "id": "04f58645ca27e571",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Macrobiotica 🌱 Welcome.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Macrobiotica 🌱 Welcome"
+            }
+          },
+          {
+            "id": "a4377e7a371fc2d9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Design Additions Prompt 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Design Additions Prompt 1"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "acee9729e4ab1fd5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af54eda42cca76dc",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1854ec3c0e0afe0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "66442022b3f15c4e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f5a0c8ca707d0518",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "ee5c74f8f00d0ff6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "8f1c343ba6da3316",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b3678d77c761df86",
+    "type": "split",
+    "children": [
+      {
+        "id": "fec98b179208902e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "118b4b883f2e4fa6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Design Additions Prompt 1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Design Additions Prompt 1"
+            }
+          },
+          {
+            "id": "614ea442c6e3ae2e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Design Additions Prompt 1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Design Additions Prompt 1"
+            }
+          },
+          {
+            "id": "02945edf9355272e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "dec9a874716d6a79",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Design Additions Prompt 1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Design Additions Prompt 1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "a4377e7a371fc2d9",
+  "lastOpenFiles": [
+    "Macrobiotica 🌱 Welcome.md",
+    "Design Additions Prompt 1.md",
+    "System Prompt.md"
+  ]
+}

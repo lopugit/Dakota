@@ -1,0 +1,24 @@
+<!-- @dsCard group="Type" viewport="700x200" name="UI sans — Hanken Grotesk" subtitle="All interface text" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 24px 28px; display: flex; flex-direction: column; gap: 12px; }
+  .sample { margin: 0; font-size: var(--text-xl); font-weight: 500; }
+  .rows { display: flex; flex-direction: column; gap: 6px; }
+  .r { display: flex; gap: 16px; align-items: baseline; }
+  .r code { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); width: 150px; flex: none; }
+</style>
+</head>
+<body>
+  <p class="sample">Your balance today — slightly yang</p>
+  <div class="rows">
+    <div class="r"><code>15px / 400 body</code><span style="font-size: var(--text-md);">Chew each bite well, and eat only when hungry.</span></div>
+    <div class="r"><code>14px / 600 control</code><span style="font-size: 14px; font-weight: 600;">Log a meal</span></div>
+    <div class="r"><code>13px / 500 secondary</code><span style="font-size: var(--text-sm); font-weight: 500; color: var(--text-secondary);">Based on 2 meals logged</span></div>
+    <div class="r"><code>11px / 600 caps</code><span class="mb-caps">Sea vegetables</span></div>
+  </div>
+</body>
+</html>

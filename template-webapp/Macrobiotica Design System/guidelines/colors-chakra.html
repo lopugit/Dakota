@@ -1,0 +1,32 @@
+<!-- @dsCard group="Colors" viewport="700x230" name="Chakra spectrum" subtitle="Doubles as the yin → yang scale: violet most yin, red most yang" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .bar { height: 8px; border-radius: 999px; background: var(--spectrum-gradient); }
+  .cols { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .c { display: flex; flex-direction: column; gap: 5px; }
+  .c i { display: block; height: 40px; border-radius: 8px; }
+  .c i.soft { height: 16px; border: 1px solid var(--border-subtle); }
+  .c span { font-size: 11px; font-weight: 600; color: var(--text-secondary); text-align: center; }
+  .ends { display: flex; justify-content: space-between; }
+  .ends b { font-size: var(--text-2xs); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="ends"><b>Yin 陰 · expansive</b><b>contractive · 陽 Yang</b></div>
+  <div class="bar"></div>
+  <div class="cols">
+    <div class="c"><i style="background: var(--chakra-crown);"></i><i class="soft" style="background: var(--chakra-crown-soft);"></i><span>crown</span></div>
+    <div class="c"><i style="background: var(--chakra-third-eye);"></i><i class="soft" style="background: var(--chakra-third-eye-soft);"></i><span>third-eye</span></div>
+    <div class="c"><i style="background: var(--chakra-throat);"></i><i class="soft" style="background: var(--chakra-throat-soft);"></i><span>throat</span></div>
+    <div class="c"><i style="background: var(--chakra-heart);"></i><i class="soft" style="background: var(--chakra-heart-soft);"></i><span>heart</span></div>
+    <div class="c"><i style="background: var(--chakra-solar);"></i><i class="soft" style="background: var(--chakra-solar-soft);"></i><span>solar</span></div>
+    <div class="c"><i style="background: var(--chakra-sacral);"></i><i class="soft" style="background: var(--chakra-sacral-soft);"></i><span>sacral</span></div>
+    <div class="c"><i style="background: var(--chakra-root);"></i><i class="soft" style="background: var(--chakra-root-soft);"></i><span>root</span></div>
+  </div>
+</body>
+</html>

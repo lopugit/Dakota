@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Macrobiotica — learn and keep a macrobiotic practice: yin–yang food energetics, daily balance, treatments, and the people you cook for." />
+    <title>Macrobiotica</title>
+    <script>
+      // Environment title prefix for at-a-glance tab management.
+      // Production domains keep the clean title.
+      (function () {
+        var h = location.hostname;
+        var prefix = '';
+        if (h === 'localhost' || h === '127.0.0.1') prefix = '[LC] ';
+        else if (/\.ts\.net$/.test(h)) prefix = '[TS] ';
+        else if (/\.vercel\.app$/.test(h)) prefix = '[VC] ';
+        if (prefix) document.title = prefix + document.title;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

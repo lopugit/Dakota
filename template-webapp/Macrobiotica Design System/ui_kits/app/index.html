@@ -1,0 +1,142 @@
+<!-- @dsCard group="App" viewport="390x780" name="Macrobiotica app" subtitle="Interactive: tabs, theme toggle, log a meal, add a person" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Macrobiotica — app</title>
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="app.css">
+<script>
+  document.documentElement.setAttribute('data-theme', (function () {
+    try { return localStorage.getItem('mb-theme') || 'light'; } catch (e) { return 'light'; }
+  })());
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {
+  TodayScreen, LearnScreen, FoodsScreen, CareScreen,
+  ThemeToggle, Icon, Button, Dialog, Toast, Select, Checkbox,
+} = window.MacrobioticaDesignSystem_d67ea7;
+
+const TABS = [
+  { id: 'today', label: 'Today', icon: 'sun' },
+  { id: 'learn', label: 'Learn', icon: 'book-open' },
+  { id: 'foods', label: 'Foods', icon: 'wheat' },
+  { id: 'care', label: 'Care', icon: 'heart' },
+];
+
+const TITLES = { today: 'Today', learn: 'Learn', foods: 'Foods', care: 'Care' };
+
+function App() {
+  const [tab, setTab] = React.useState('today');
+  const [dinnerLogged, setDinnerLogged] = React.useState(false);
+  const [logOpen, setLogOpen] = React.useState(false);
+  const [dish, setDish] = React.useState('Kabocha stew');
+  const [toast, setToast] = React.useState(null);
+
+  const showToast = (t) => {
+    setToast(t);
+    window.clearTimeout(showToast._t);
+    showToast._t = window.setTimeout(() => setToast(null), 3500);
+  };
+
+  const meals = [
+    { name: 'Breakfast', items: 'Miso soup, brown rice, pickles', value: 0.1 },
+    { name: 'Lunch', items: 'Kinpira gobo bowl', value: 0.3 },
+    dinnerLogged
+      ? { name: 'Dinner', items: dish, value: -0.1 }
+      : { name: 'Dinner', items: '', value: 0 },
+  ];
+
+  const logDinner = () => {
+    setDinnerLogged(true);
+    setLogOpen(false);
+    showToast({ tone: 'success', title: 'Dinner logged', description: 'Your balance moved gently toward center.' });
+  };
+
+  return (
+    <div className="app">
+      <div className="app-spectrum"></div>
+      <header className="app-header">
+        <div>
+          {tab === 'today' && <span className="mb-caps kicker">Thursday, July 2</span>}
+          <h1>{TITLES[tab]}</h1>
+        </div>
+        <ThemeToggle />
+      </header>
+      <main className="app-main">
+        {tab === 'today' && (
+          <TodayScreen
+            balance={dinnerLogged ? 0.05 : 0.2}
+            balanceNote={dinnerLogged ? 'Near balance' : 'Slightly yang'}
+            mealsLogged={dinnerLogged ? 3 : 2}
+            meals={meals}
+            onLogDinner={() => setLogOpen(true)}
+          />
+        )}
+        {tab === 'learn' && <LearnScreen />}
+        {tab === 'foods' && <FoodsScreen />}
+        {tab === 'care' && <CareScreen />}
+      </main>
+
+      <nav className="tabbar" aria-label="Main">
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            className={tab === t.id ? 'active' : ''}
+            aria-current={tab === t.id ? 'page' : undefined}
+            onClick={() => setTab(t.id)}
+          >
+            <Icon name={t.icon} size={20} strokeWidth={tab === t.id ? 2 : 1.75} />
+            {t.label}
+          </button>
+        ))}
+      </nav>
+
+      <Dialog
+        open={logOpen}
+        onClose={() => setLogOpen(false)}
+        title="Log dinner"
+        footer={
+          <React.Fragment>
+            <Button variant="ghost" onClick={() => setLogOpen(false)}>Cancel</Button>
+            <Button onClick={logDinner}>Save</Button>
+          </React.Fragment>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, paddingTop: 4 }}>
+          <Select label="What did you eat?" value={dish} onChange={(e) => setDish(e.target.value)}>
+            <option>Kabocha stew</option>
+            <option>Brown rice bowl</option>
+            <option>Miso soup &amp; rice</option>
+            <option>Root vegetable nishime</option>
+          </Select>
+          <Checkbox label="Chewed well" description="Aim for 30 chews a bite — gently" defaultChecked />
+        </div>
+      </Dialog>
+
+      {toast && (
+        <div className="toast-host">
+          <Toast
+            tone={toast.tone}
+            title={toast.title}
+            description={toast.description}
+            onDismiss={() => setToast(null)}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
