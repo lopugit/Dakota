@@ -1,0 +1,207 @@
+/* Dakota — color tokens. The tack room.
+   Warm oat-canvas neutrals + saddle-leather accent + brass hardware, with the
+   horse energy scale as the one expressive range: violet = flat/switched off,
+   green = forward & relaxed, red = hot/tense.
+   Light theme on :root; dark theme ("tack room at night") on [data-theme="dark"]. */
+
+/* ---------- Primitives (theme-independent ramps) ---------- */
+:root {
+  /* Oat — warm canvas neutrals, paper to bridle-leather ink */
+  --oat-0:   #FFFDF8;
+  --oat-50:  #F6F1E7;
+  --oat-100: #EDE5D6;
+  --oat-200: #E0D5C0;
+  --oat-300: #CBBC9F;
+  --oat-400: #A8987D;
+  --oat-500: #837458;
+  --oat-600: #655840;
+  --oat-700: #4B4130;
+  --oat-800: #352E23;
+  --oat-900: #231E17;
+  --oat-950: #17130E;
+
+  /* Saddle — oiled leather, the working accent */
+  --saddle-50:  #F9EFDF;
+  --saddle-100: #F3E2C7;
+  --saddle-200: #E8CCA0;
+  --saddle-300: #D9AE6F; /* the leather accent */
+  --saddle-400: #C6924B;
+  --saddle-500: #AD7734;
+  --saddle-600: #8F5E27;
+  --saddle-700: #71491E;
+  --saddle-800: #553618;
+  --saddle-900: #3D2712;
+}
+
+/* ---------- Light theme (default) ---------- */
+:root {
+  color-scheme: light;
+
+  /* Energy scale — twilight violet (flat) through pasture green to chestnut (hot) */
+  --scale-flat3:  #6F5BA6;
+  --scale-flat2:  #5769AE;
+  --scale-flat1:  #477C97;
+  --scale-centre: #5E8B4C;
+  --scale-hot1:   #A3842B;
+  --scale-hot2:   #B06A31;
+  --scale-hot3:   #A8473B;
+
+  --scale-flat3-soft:  #ECE4F3;
+  --scale-flat2-soft:  #E4E7F5;
+  --scale-flat1-soft:  #DFEAF0;
+  --scale-centre-soft: #E3EEDA;
+  --scale-hot1-soft:   #F1E9D0;
+  --scale-hot2-soft:   #F4E2CE;
+  --scale-hot3-soft:   #F4DED8;
+
+  /* Surfaces — oat canvas */
+  --surface-page:    var(--oat-50);
+  --surface-card:    var(--oat-0);
+  --surface-sunken:  var(--oat-100);
+  --surface-raised:  var(--oat-0);
+  --surface-inverse: var(--oat-900);
+  --surface-hover:   rgb(53 46 35 / 0.06);
+  --surface-active:  rgb(53 46 35 / 0.11);
+
+  /* Text — bridle ink */
+  --text-primary:   var(--oat-900);
+  --text-secondary: var(--oat-700);
+  --text-muted:     var(--oat-500);
+  --text-faint:     var(--oat-400);
+  --text-inverse:   var(--oat-50);
+
+  /* Borders */
+  --border-subtle: var(--oat-200);
+  --border-strong: var(--oat-300);
+
+  /* Accent — saddle leather */
+  --accent:        var(--saddle-300);
+  --accent-hover:  var(--saddle-400);
+  --accent-press:  var(--saddle-500);
+  --accent-tint:   var(--saddle-100);
+  --accent-strong: var(--saddle-600);
+  --accent-text:   var(--saddle-700);
+  --on-accent:     var(--saddle-900);
+
+  /* Brass hardware — buckles, rings, focus */
+  --brass:      #A08023;
+  --brass-soft: #F0E6C4;
+
+  /* Controls */
+  --control-checked: var(--saddle-500);
+  --control-off:     var(--oat-300);
+  --on-control:      #FFFDF8;
+  --focus-ring:      var(--brass);
+
+  /* Semantic (mapped onto the energy scale) */
+  --danger:       var(--scale-hot3);
+  --danger-hover: #8F3A2F;
+  --danger-soft:  var(--scale-hot3-soft);
+  --on-danger:    #FFFDF8;
+  --warning:      var(--scale-hot2);
+  --warning-soft: var(--scale-hot2-soft);
+  --success:      var(--scale-centre);
+  --success-soft: var(--scale-centre-soft);
+  --info:         var(--scale-flat1);
+  --info-soft:    var(--scale-flat1-soft);
+
+  /* Flat ↔ hot */
+  --flat: var(--scale-flat3);
+  --hot:  var(--scale-hot3);
+  /* Meter track — the energy scale as a gradient */
+  --spectrum-gradient: linear-gradient(90deg,
+    var(--scale-flat3) 0%,
+    var(--scale-flat2) 16.7%,
+    var(--scale-flat1) 33.3%,
+    var(--scale-centre) 50%,
+    var(--scale-hot1) 66.7%,
+    var(--scale-hot2) 83.3%,
+    var(--scale-hot3) 100%); /* @kind color */
+
+  /* Primary action — saddle leather with a lighter worn top edge */
+  --primary-fill: linear-gradient(180deg, var(--saddle-300), var(--saddle-400)); /* @kind color */
+  --primary-edge: var(--saddle-500);
+  --primary-stitch: rgb(255 253 248 / 0.55);
+
+  /* The strap — stitched leather brand hairline (top of app, dividers) */
+  --strap: repeating-linear-gradient(90deg,
+    var(--saddle-700) 0 14px,
+    var(--saddle-200) 14px 19px); /* @kind color */
+}
+
+/* ---------- Dark theme — the tack room at night ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --scale-flat3:  #A796D2;
+  --scale-flat2:  #94A1DB;
+  --scale-flat1:  #7FB0C4;
+  --scale-centre: #92BE7E;
+  --scale-hot1:   #CFB35A;
+  --scale-hot2:   #D69A5C;
+  --scale-hot3:   #D07E6E;
+
+  --scale-flat3-soft:  #2C2539;
+  --scale-flat2-soft:  #252A3B;
+  --scale-flat1-soft:  #1F2E35;
+  --scale-centre-soft: #24301D;
+  --scale-hot1-soft:   #363018;
+  --scale-hot2-soft:   #392B1A;
+  --scale-hot3-soft:   #3A2420;
+
+  --surface-page:    #16110D;
+  --surface-card:    #201914;
+  --surface-sunken:  #100C09;
+  --surface-raised:  #2A211A;
+  --surface-inverse: var(--oat-50);
+  --surface-hover:   rgb(242 234 221 / 0.06);
+  --surface-active:  rgb(242 234 221 / 0.11);
+
+  --text-primary:   #F2EADD;
+  --text-secondary: #CDC1AE;
+  --text-muted:     #9A8C77;
+  --text-faint:     #6B5F4E;
+  --text-inverse:   var(--oat-900);
+
+  --border-subtle: #352B21;
+  --border-strong: #4A3D2E;
+
+  --accent:        var(--saddle-300);
+  --accent-hover:  #E4C088;
+  --accent-press:  #CFA260;
+  --accent-tint:   #33271A;
+  --accent-strong: #DFB679;
+  --accent-text:   #EBCF9E;
+  --on-accent:     var(--oat-950);
+
+  --brass:      #D6B356;
+  --brass-soft: #3A311A;
+
+  --control-checked: var(--saddle-400);
+  --control-off:     #4A3D2E;
+  --on-control:      #17130E;
+  --focus-ring:      var(--brass);
+
+  --danger:       var(--scale-hot3);
+  --danger-hover: #DB9285;
+  --danger-soft:  var(--scale-hot3-soft);
+  --on-danger:    var(--oat-950);
+  --warning:      var(--scale-hot2);
+  --warning-soft: var(--scale-hot2-soft);
+  --success:      var(--scale-centre);
+  --success-soft: var(--scale-centre-soft);
+  --info:         var(--scale-flat1);
+  --info-soft:    var(--scale-flat1-soft);
+
+  --flat: var(--scale-flat3);
+  --hot:  var(--scale-hot3);
+
+  /* Leather reads lighter against the dark room */
+  --primary-fill: linear-gradient(180deg, var(--saddle-300), #BE8B45); /* @kind color */
+  --primary-edge: var(--saddle-600);
+  --primary-stitch: rgb(23 19 14 / 0.5);
+
+  --strap: repeating-linear-gradient(90deg,
+    #3B2C1B 0 14px,
+    var(--saddle-400) 14px 19px); /* @kind color */
+}
