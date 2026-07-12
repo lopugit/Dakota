@@ -322,7 +322,7 @@ export interface Ride {
   points: RidePoint[];
 }
 
-// ---- user state: paddocks ----
+// ---- user state: farms & paddocks ----
 
 export type Grass = 'lush' | 'good' | 'short' | 'eaten down' | 'resting';
 
@@ -332,17 +332,23 @@ export interface Paddock {
   acres: number;
   grass: Grass;
   water: string;
-  /** SVG polygon points on a 0–100 grid, e.g. "2,2 48,2 48,50 2,50". */
+  /** SVG polygon points on the farm's 0–100 grid, e.g. "2,2 48,2 48,50 2,50". */
   shape: string;
   /** Label anchor [x, y] on the same grid. */
   label: [number, number];
 }
 
-export interface PaddockGate {
+export type FarmFeatureKind = 'fence' | 'water' | 'gate';
+
+/**
+ * A painted map feature. `pts` is "x,y x,y …" on the farm's 0–100 grid:
+ * fence = open polyline (≥2 points), water = closed outline (≥3 points),
+ * gate = a two-point segment lying across the opening.
+ */
+export interface FarmFeature {
   id: string;
-  between: [string, string];
-  x: number;
-  y: number;
+  kind: FarmFeatureKind;
+  pts: string;
 }
 
 export interface PaddockMove {
@@ -352,12 +358,19 @@ export interface PaddockMove {
   at: string; // YYYY-MM-DD
 }
 
-export interface Paddocks {
+/** One property: its paddocks, painted features, and who grazes where. */
+export interface Farm {
+  id: string;
+  n: string;
   paddocks: Paddock[];
-  gates: PaddockGate[];
-  /** horse id → paddock id */
+  features: FarmFeature[];
+  /** horse id → paddock id (a horse lives on at most one farm at a time) */
   horses: Record<string, string>;
   moves: PaddockMove[];
+}
+
+export interface Paddocks {
+  farms: Farm[];
 }
 
 // ---- user state: profile ----

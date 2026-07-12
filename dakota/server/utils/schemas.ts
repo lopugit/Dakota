@@ -104,11 +104,60 @@ export const rideBody = z.object({
     .default([]),
 });
 
-// ---- paddocks ----
+// ---- farms & paddocks ----
 
 export const paddockMoveBody = z.object({
+  farm: idSchema,
   horse: idSchema,
   to: idSchema,
+});
+
+/** "x,y x,y …" on the 0–100 map grid. */
+const ptsSchema = z
+  .string()
+  .max(4000)
+  .regex(/^-?\d+(\.\d+)?,-?\d+(\.\d+)?( -?\d+(\.\d+)?,-?\d+(\.\d+)?)*$/, 'expected "x,y x,y …"');
+
+const grassSchema = z.enum(['lush', 'good', 'short', 'eaten down', 'resting']);
+
+const paddockSchema = z.object({
+  id: idSchema,
+  n: z.string().trim().min(1).max(80),
+  acres: z.number().min(0).max(100_000),
+  grass: grassSchema,
+  water: z.string().max(120).default(''),
+  shape: ptsSchema,
+  label: z.tuple([z.number(), z.number()]),
+});
+
+const farmFeatureSchema = z.object({
+  id: idSchema,
+  kind: z.enum(['fence', 'water', 'gate']),
+  pts: ptsSchema,
+});
+
+const paddockMoveEntry = z.object({
+  horse: idSchema,
+  from: z.string().max(100),
+  to: idSchema,
+  at: dateKeySchema,
+});
+
+export const farmBody = z.object({
+  id: idSchema,
+  n: z.string().trim().min(1).max(120),
+  paddocks: z.array(paddockSchema).max(80),
+  features: z.array(farmFeatureSchema).max(300),
+  horses: z.record(z.string().max(100), z.string().max(100)),
+  moves: z.array(paddockMoveEntry).max(400),
+});
+
+export const farmCreateBody = z.object({
+  n: z.string().trim().min(1).max(120),
+});
+
+export const farmDeleteBody = z.object({
+  id: idSchema,
 });
 
 // ---- feed ----

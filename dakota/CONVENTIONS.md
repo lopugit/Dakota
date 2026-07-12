@@ -67,7 +67,9 @@ reuse the same meter for their `heat` (cooling ↔ heating).
 - `useLog()` → `UserLog` (`Record<'YYYY-MM-DD', { sessions, checkins, practices, care }>`), seeded ~4 weeks back.
 - `useHorses()` → `Horse[]` (the user's herd; demo user has Dakota and Banjo).
 - `useRides()` → `Ride[]` newest-first, GPS points included.
-- `usePaddocks()` → `Paddocks` (paddocks, gates, horse locations, move history).
+- `usePaddocks()` → `Paddocks` (`{ farms: Farm[] }` — each farm carries its
+  paddocks, painted features (fence/water/gate `pts` on the 0–100 grid), horse
+  locations and move history; demo user has Bramble Creek + River flats).
 - `useProfile()` → `{ name, yardName, since, settings, lessonsDone, likes }`.
 - `useFeed()` → `FeedPost[]` (user posts first, then circle posts; `liked` flag).
 - Mutations (all optimistic — the UI must feel instant):
@@ -75,7 +77,10 @@ reuse the same meter for their `heat` (cooling ↔ heating).
   (`{date, ex, horse, t, mins, score, note}`), `useMarkPractice()` (`{date, id}`),
   `useLogCare()` (`{date, horse, type, t, note}`), `useAddHorse()`,
   `useUpdateHorse()` (`{id, patch}`), `useSaveRide()`, `useMoveHorse()`
-  (`{horse, to}`), `useToggleLike()`, `useAddComment(displayName)`,
+  (`{farm, horse, to}` — pulls the horse from any other farm first),
+  `useSaveFarm()` (whole `Farm` — the map-painting save), `useAddFarm()`
+  (`{n}`, returns the created farm), `useDeleteFarm()` (`{id}`),
+  `useToggleLike()`, `useAddComment(displayName)`,
   `useSharePost(displayName)` (`{text, ex?, ride?}`), `useUpdateProfile()`,
   `useCompleteLesson()`.
 - Day helpers in `@/lib/day`: `todayKey()`, `dateKey(d)`, `getDay(log, key)`,

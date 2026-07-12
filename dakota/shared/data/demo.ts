@@ -5,7 +5,7 @@
 // resets to the same world.
 import { dateKey, pad2, rideStats } from '../derive';
 import type {
-  DayLog, Exercise, Horse, Paddocks, Practice, Ride, RidePoint, UserLog,
+  DayLog, Exercise, Farm, Horse, Paddocks, Practice, Ride, RidePoint, UserLog,
 } from '../types';
 
 const daysAgo = (now: Date, n: number): string =>
@@ -85,51 +85,125 @@ export function demoHorses(now: Date): Horse[] {
   ];
 }
 
-// ---- paddocks ----
+// ---- farms & paddocks ----
 
-/** The demo property: five paddocks, gates between them, both horses out. */
+/**
+ * The demo land: Bramble Creek (five paddocks, both horses out) plus a leased
+ * river block down the road — two farms so the switcher has somewhere to go.
+ */
 export function demoPaddocks(now: Date): Paddocks {
   return {
-    paddocks: [
-      { id: 'creek', n: 'Creek flat', acres: 4, grass: 'good', water: 'Creek + trough', shape: '2,2 48,2 48,38 40,52 2,52', label: [25, 26] },
-      { id: 'hill', n: 'Hill paddock', acres: 6, grass: 'short', water: 'Dam', shape: '52,2 98,2 98,44 52,44', label: [75, 22] },
-      { id: 'house', n: 'House paddock', acres: 2.5, grass: 'lush', water: 'Trough', shape: '2,56 38,56 38,98 2,98', label: [20, 78] },
-      { id: 'arena', n: 'Arena yard', acres: 1, grass: 'eaten down', water: 'Trough', shape: '42,58 70,58 70,98 42,98', label: [56, 79] },
-      { id: 'spelling', n: 'Spelling paddock', acres: 3, grass: 'resting', water: 'Trough', shape: '74,48 98,48 98,98 74,98', label: [86, 74] },
-    ],
-    gates: [
-      { id: 'g-creek-house', between: ['creek', 'house'], x: 20, y: 54 },
-      { id: 'g-creek-hill', between: ['creek', 'hill'], x: 50, y: 22 },
-      { id: 'g-house-arena', between: ['house', 'arena'], x: 40, y: 76 },
-      { id: 'g-arena-spelling', between: ['arena', 'spelling'], x: 72, y: 76 },
-      { id: 'g-hill-spelling', between: ['hill', 'spelling'], x: 86, y: 46 },
-    ],
-    horses: { dakota: 'creek', banjo: 'house' },
-    moves: [
-      { horse: 'banjo', from: 'spelling', to: 'house', at: daysAgo(now, 2) },
-      { horse: 'dakota', from: 'hill', to: 'creek', at: daysAgo(now, 5) },
-      { horse: 'banjo', from: 'hill', to: 'spelling', at: daysAgo(now, 12) },
-      { horse: 'dakota', from: 'house', to: 'hill', at: daysAgo(now, 16) },
-      { horse: 'banjo', from: 'creek', to: 'hill', at: daysAgo(now, 16) },
-      { horse: 'dakota', from: 'creek', to: 'house', at: daysAgo(now, 27) },
+    farms: [
+      {
+        id: 'bramble',
+        n: 'Bramble Creek',
+        paddocks: [
+          { id: 'creek', n: 'Creek flat', acres: 4, grass: 'good', water: 'Creek + trough', shape: '2,2 48,2 48,38 40,52 2,52', label: [25, 26] },
+          { id: 'hill', n: 'Hill paddock', acres: 6, grass: 'short', water: 'Dam', shape: '52,2 98,2 98,44 52,44', label: [75, 22] },
+          { id: 'house', n: 'House paddock', acres: 2.5, grass: 'lush', water: 'Trough', shape: '2,56 38,56 38,98 2,98', label: [20, 78] },
+          { id: 'arena', n: 'Arena yard', acres: 1, grass: 'eaten down', water: 'Trough', shape: '42,58 70,58 70,98 42,98', label: [56, 79] },
+          { id: 'spelling', n: 'Spelling paddock', acres: 3, grass: 'resting', water: 'Trough', shape: '74,48 98,48 98,98 74,98', label: [86, 74] },
+        ],
+        features: [
+          // The creek winds along the western fence of Creek flat.
+          { id: 'w-creek', kind: 'water', pts: '2,4 7,9 9,15 8,23 4,29 2,33' },
+          { id: 'w-dam', kind: 'water', pts: '80,10 84,8 88,10 89,14 86,17 81,16 79,13' },
+          { id: 'w-house-trough', kind: 'water', pts: '29,59 32,59 32,61 29,61' },
+          { id: 'w-arena-trough', kind: 'water', pts: '65,60 68,60 68,62 65,62' },
+          // A catch pen fenced off in the hill paddock's corner.
+          { id: 'f-catch-pen', kind: 'fence', pts: '52,28 66,28 66,44' },
+          { id: 'f-house-rail', kind: 'fence', pts: '2,72 20,72' },
+          { id: 'g-creek-house', kind: 'gate', pts: '18.5,54 21.5,54' },
+          { id: 'g-creek-hill', kind: 'gate', pts: '48.5,22 51.5,22' },
+          { id: 'g-house-arena', kind: 'gate', pts: '38.5,76 41.5,76' },
+          { id: 'g-arena-spelling', kind: 'gate', pts: '70.5,76 73.5,76' },
+          { id: 'g-hill-spelling', kind: 'gate', pts: '86,44.5 86,47.5' },
+        ],
+        horses: { dakota: 'creek', banjo: 'house' },
+        moves: [
+          { horse: 'banjo', from: 'spelling', to: 'house', at: daysAgo(now, 2) },
+          { horse: 'dakota', from: 'hill', to: 'creek', at: daysAgo(now, 5) },
+          { horse: 'banjo', from: 'hill', to: 'spelling', at: daysAgo(now, 12) },
+          { horse: 'dakota', from: 'house', to: 'hill', at: daysAgo(now, 16) },
+          { horse: 'banjo', from: 'creek', to: 'hill', at: daysAgo(now, 16) },
+          { horse: 'dakota', from: 'creek', to: 'house', at: daysAgo(now, 27) },
+        ],
+      },
+      {
+        id: 'river',
+        n: 'River flats',
+        paddocks: [
+          { id: 'river-front', n: 'River front', acres: 8, grass: 'lush', water: 'River', shape: '2,2 62,2 58,48 2,58', label: [29, 28] },
+          { id: 'river-run', n: 'Back run', acres: 6, grass: 'short', water: 'River + trough', shape: '66,2 98,2 98,68 62,60', label: [82, 32] },
+          { id: 'river-yards', n: 'Yards', acres: 0.5, grass: 'eaten down', water: 'Trough', shape: '2,64 40,64 40,92 2,92', label: [21, 79] },
+        ],
+        features: [
+          // The river runs along the southern boundary.
+          { id: 'w-river', kind: 'water', pts: '44,98 52,84 70,78 88,82 98,78 98,98' },
+          { id: 'w-run-trough', kind: 'water', pts: '92,8 95,8 95,10 92,10' },
+          { id: 'f-river-lane', kind: 'fence', pts: '58,48 44,64 40,64' },
+          { id: 'g-front-yards', kind: 'gate', pts: '18.5,61 21.5,61' },
+          { id: 'g-front-run', kind: 'gate', pts: '62,24 62,28' },
+        ],
+        horses: {},
+        moves: [],
+      },
     ],
   };
 }
 
-/** Starter layout for fresh accounts — three paddocks and two gates to rename. */
+/** A blank-slate farm — three paddocks and two gates to rename and repaint. */
+export function starterFarm(id: string, n: string): Farm {
+  return {
+    id,
+    n,
+    paddocks: [
+      { id: `${id}-p1`, n: 'Front paddock', acres: 2, grass: 'good', water: 'Trough', shape: '2,2 48,2 48,98 2,98', label: [25, 50] },
+      { id: `${id}-p2`, n: 'Back paddock', acres: 3, grass: 'good', water: 'Dam', shape: '52,2 98,2 98,48 52,48', label: [75, 25] },
+      { id: `${id}-p3`, n: 'Yards', acres: 0.5, grass: 'eaten down', water: 'Trough', shape: '52,52 98,52 98,98 52,98', label: [75, 75] },
+    ],
+    features: [
+      { id: `${id}-g1`, kind: 'gate', pts: '50,23.5 50,26.5' },
+      { id: `${id}-g2`, kind: 'gate', pts: '50,73.5 50,76.5' },
+    ],
+    horses: {},
+    moves: [],
+  };
+}
+
+/** Starter layout for fresh accounts — one home farm. */
 export const DEFAULT_PADDOCKS: Paddocks = {
-  paddocks: [
-    { id: 'p1', n: 'Front paddock', acres: 2, grass: 'good', water: 'Trough', shape: '2,2 48,2 48,98 2,98', label: [25, 50] },
-    { id: 'p2', n: 'Back paddock', acres: 3, grass: 'good', water: 'Dam', shape: '52,2 98,2 98,48 52,48', label: [75, 25] },
-    { id: 'p3', n: 'Yards', acres: 0.5, grass: 'eaten down', water: 'Trough', shape: '52,52 98,52 98,98 52,98', label: [75, 75] },
-  ],
-  gates: [
-    { id: 'g1', between: ['p1', 'p2'], x: 50, y: 25 },
-    { id: 'g2', between: ['p1', 'p3'], x: 50, y: 75 },
-  ],
-  horses: {},
-  moves: [],
+  farms: [starterFarm('home', 'Home farm')],
 };
+
+/**
+ * Lift stored paddock state to the multi-farm shape. Older saves were a single
+ * flat property ({ paddocks, gates, horses, moves }) — wrap them into one farm,
+ * turning each gate point into a painted gate segment.
+ */
+export function migratePaddocks(raw: unknown): Paddocks {
+  const doc = (raw ?? {}) as Record<string, unknown>;
+  if (Array.isArray(doc.farms)) return doc as unknown as Paddocks;
+  // Deep-copy the starter so callers can mutate their farms freely.
+  if (!Array.isArray(doc.paddocks)) return JSON.parse(JSON.stringify(DEFAULT_PADDOCKS)) as Paddocks;
+  const gates = Array.isArray(doc.gates) ? (doc.gates as Array<{ id: string; x: number; y: number }>) : [];
+  return {
+    farms: [
+      {
+        id: 'home',
+        n: 'Home farm',
+        paddocks: doc.paddocks as Paddocks['farms'][number]['paddocks'],
+        features: gates.map((g) => ({
+          id: g.id,
+          kind: 'gate' as const,
+          pts: `${g.x - 1.5},${g.y} ${g.x + 1.5},${g.y}`,
+        })),
+        horses: (doc.horses ?? {}) as Record<string, string>,
+        moves: (doc.moves ?? []) as Paddocks['farms'][number]['moves'],
+      },
+    ],
+  };
+}
 
 // ---- GPS rides ----
 
