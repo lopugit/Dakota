@@ -16,13 +16,23 @@ const SCRYPT = { N: 16384, r: 8, p: 1, keylen: 64 };
 export const SESSION_COOKIE = 'dk-session';
 const SESSION_DAYS = 30;
 
+/** Link to a Thingtime account; the captured JWT stays server-side only. */
+export interface ThingtimeLink {
+  userId: string;
+  username: string;
+  token: string;
+  connectedAt: Date;
+}
+
 export interface UserDoc {
   _id: string;
   email: string;
   name: string;
+  /** Empty for accounts that authenticate via Thingtime. */
   passwordHash: string;
   dataSource: DataSource;
   createdAt: Date;
+  thingtime?: ThingtimeLink;
 }
 
 interface SessionDoc {
@@ -88,6 +98,52 @@ export async function createUser(
   return user;
 }
 
+/**
+ * Find-or-create the local account for a Thingtime identity. The id is
+ * deterministic (`ttu_<thingtime user id>`) so every environment resolves the
+ * same account — that's what makes Thingtime-hydrated docs line up.
+ */
+export async function upsertThingtimeUser(
+  tt: { id: string; username: string; email?: string; displayName?: string },
+  token: string,
+): Promise<UserDoc> {
+  const db = await getDb();
+  await ensureIndexes(db);
+  const users = db.collection('users');
+  const _id = `ttu_${tt.id}`;
+  const link: ThingtimeLink = {
+    userId: tt.id,
+    username: tt.username,
+    token,
+    connectedAt: new Date(),
+  };
+
+  const existing = (await users.findOne({ _id } as never)) as UserDoc | null;
+  if (existing) {
+    await users.updateOne({ _id } as never, { $set: { thingtime: link } } as never);
+    return { ...existing, thingtime: link };
+  }
+
+  const user: UserDoc = {
+    _id,
+    email: (tt.email || `${tt.username}@thingtime`).toLowerCase(),
+    name: tt.displayName || tt.username,
+    passwordHash: '',
+    dataSource: 'prod',
+    createdAt: new Date(),
+    thingtime: link,
+  };
+  try {
+    await users.insertOne(user as never);
+  } catch {
+    // Email already used by a local password account — keep both accounts by
+    // giving the Thingtime one a synthetic unique address.
+    user.email = `${tt.username}+${tt.id.slice(-6)}@thingtime`.toLowerCase();
+    await users.insertOne(user as never);
+  }
+  return user;
+}
+
 export async function startSession(event: H3Event, userId: string): Promise<void> {
   const db = await getDb();
   await ensureIndexes(db);
@@ -135,4 +191,5 @@ export const toAuthUser = (u: UserDoc): AuthUser => ({
   email: u.email,
   name: u.name,
   dataSource: u.dataSource,
+  ...(u.thingtime ? { thingtime: { username: u.thingtime.username } } : {}),
 });

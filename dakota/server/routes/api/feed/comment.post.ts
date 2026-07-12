@@ -3,6 +3,7 @@ import { feedCommentBody } from '../../../utils/schemas';
 import { readValidatedBodyZ } from '../../../utils/body';
 import { getDataContext, requireUserKey } from '../../../utils/datasource';
 import { getProfile } from '../../../utils/userdocs';
+import { mirrorUserDoc } from '../../../utils/ttstore';
 
 export default defineEventHandler(async (event) => {
   const { postId, t } = await readValidatedBodyZ(event, feedCommentBody);
@@ -11,6 +12,8 @@ export default defineEventHandler(async (event) => {
   const profile = await getProfile(ctx.db, userKey, ctx.user?.name);
   const who = (profile.name || 'You').trim();
   const at = Date.now();
-  await ctx.db.collection('comments').insertOne({ postId, who, userId: userKey, t, at } as never);
+  const _id = `c:${postId}:${userKey}:${at}`;
+  await ctx.db.collection('comments').insertOne({ _id, postId, who, userId: userKey, t, at } as never);
+  await mirrorUserDoc(ctx, 'comments', _id);
   return { ok: true, comment: { who, t } };
 });

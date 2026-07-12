@@ -4,6 +4,7 @@ import type { Ride } from '../../../shared/types';
 import { rideBody } from '../../utils/schemas';
 import { readValidatedBodyZ } from '../../utils/body';
 import { getDataContext, requireUserKey } from '../../utils/datasource';
+import { mirrorUserDoc } from '../../utils/ttstore';
 
 /** POST /api/rides — save a finished (or manually entered) ride. */
 export default defineEventHandler(async (event): Promise<Ride> => {
@@ -16,5 +17,6 @@ export default defineEventHandler(async (event): Promise<Ride> => {
     user: userKey,
     ...ride,
   } as never);
+  await mirrorUserDoc(ctx, 'rides', `${userKey}:${ride.id}`);
   return ride;
 });

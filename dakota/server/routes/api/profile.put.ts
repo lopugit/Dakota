@@ -4,6 +4,7 @@ import { profilePutBody } from '../../utils/schemas';
 import { readValidatedBodyZ } from '../../utils/body';
 import { getDataContext, requireUserKey } from '../../utils/datasource';
 import { getProfile, patchProfile } from '../../utils/userdocs';
+import { mirrorUserDoc } from '../../utils/ttstore';
 
 export default defineEventHandler(async (event): Promise<Profile> => {
   const patch = await readValidatedBodyZ(event, profilePutBody);
@@ -16,6 +17,7 @@ export default defineEventHandler(async (event): Promise<Profile> => {
   if (patch.settings !== undefined) $set.settings = patch.settings;
   if (Object.keys($set).length > 0) {
     await patchProfile(ctx.db, userKey, $set);
+    await mirrorUserDoc(ctx, 'profile', userKey);
   }
   return getProfile(ctx.db, userKey, ctx.user?.name);
 });

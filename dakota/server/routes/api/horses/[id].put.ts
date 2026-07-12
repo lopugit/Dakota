@@ -2,6 +2,7 @@ import { createError, defineEventHandler, getRouterParam } from 'h3';
 import { horsePatchBody } from '../../../utils/schemas';
 import { readValidatedBodyZ } from '../../../utils/body';
 import { getDataContext, requireUserKey } from '../../../utils/datasource';
+import { mirrorUserDoc } from '../../../utils/ttstore';
 
 /** PUT /api/horses/:id — patch top-level fields (care is replaced whole when present). */
 export default defineEventHandler(async (event) => {
@@ -22,5 +23,6 @@ export default defineEventHandler(async (event) => {
   if (res.matchedCount === 0) {
     throw createError({ statusCode: 404, statusMessage: 'Unknown horse' });
   }
+  await mirrorUserDoc(ctx, 'horses', `${userKey}:${id}`);
   return { ok: true };
 });

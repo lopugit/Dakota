@@ -11,6 +11,8 @@
     "build:client": "vite build",
     "build:node": "pnpm build:client && nitro build",
     "seed": "tsx scripts/seed.ts",
+    "thingtime:provision": "tsx scripts/thingtime-provision.ts",
+    "thingtime:sync": "tsx scripts/thingtime-sync-catalog.ts",
     "typecheck": "tsc --noEmit",
     "verify:vercel-output": "node scripts/verify-vercel-output.mjs"
   },

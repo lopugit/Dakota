@@ -2,6 +2,7 @@ import { createError, defineEventHandler, getRouterParam } from 'h3';
 import { getDb } from '../../../../utils/mongo';
 import { getDataContext, requireUserKey } from '../../../../utils/datasource';
 import { patchProfile } from '../../../../utils/userdocs';
+import { mirrorUserDoc } from '../../../../utils/ttstore';
 
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id');
@@ -13,5 +14,6 @@ export default defineEventHandler(async (event) => {
   const course = await (await getDb()).collection('courses').findOne({ 'lessons.id': id });
   if (!course) throw createError({ statusCode: 404, statusMessage: 'Unknown lesson' });
   await patchProfile(ctx.db, userKey, { [`lessonsDone.${id}`]: true });
+  await mirrorUserDoc(ctx, 'profile', userKey);
   return { ok: true };
 });

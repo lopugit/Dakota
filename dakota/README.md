@@ -78,6 +78,37 @@ Every API request resolves a **data context**:
 The catalog (exercises, feeds, ailments, practices, courses, wisdom) always
 comes from the primary db.
 
+## Thingtime integration
+
+Dakota stores its data on [Thingtime](https://thingtime.com)
+([API docs](https://thingtime.com/docs/api)) in two layers:
+
+- **Service account** (`dakota-app`) owns the generic Dakota data: the public
+  catalog bundle (`dakota:catalog:bundle:v1`, acl `tt:all`) and the shared
+  demo yard (`dakota:demo:*`). Provision once with `pnpm thingtime:provision`
+  (writes `THINGTIME_SERVICE_TOKEN` to `.env`; verify the account email
+  within seven days), then publish with `pnpm seed && pnpm thingtime:sync`.
+- **Login with Thingtime** (`/auth` → *Continue with Thingtime*): the server
+  exchanges the credentials with Thingtime (`POST /api/auth/thingtime`),
+  keeps the minted JWT server-side on the local user doc
+  (`ttu_<thingtime id>`), and starts a normal `dk-session`. Signing in flips
+  the SPA from the offline localStorage store onto the real API (`dk-remote`
+  flag in localStorage); signing out flips it back.
+- **Write-through mirror**: every mutation writes Mongo first, then mirrors
+  the affected doc to Thingtime as chunked private `post` things
+  (`dakota:u:<thingtime id>:<collection>:<doc>` — encoding in
+  `server/utils/ttcodec.ts`, mirror + hydration in `server/utils/ttstore.ts`).
+  Thingtime logins hydrate the account's things back into the UGC db, so
+  Thingtime is the durable copy of a yard across devices and databases.
+  Demo-sandbox writes mirror the same way under the service account.
+- `GET /api/catalog` prefers the published Thingtime bundle (5-minute
+  module cache) and falls back to the seeded Mongo collections.
+
+Env vars: `THINGTIME_BASE_URL`, `THINGTIME_SERVICE_TOKEN`, plus optional
+`THINGTIME_SERVICE_EMAIL` / `THINGTIME_SERVICE_USERNAME` for provisioning —
+see `.env.example`. On Vercel, set `THINGTIME_BASE_URL` and
+`THINGTIME_SERVICE_TOKEN` alongside `MONGODB_URI`.
+
 ## What's inside (seeded catalog)
 
 - **24 arena exercises** across Dressage, Pole work, Jumping, Groundwork and

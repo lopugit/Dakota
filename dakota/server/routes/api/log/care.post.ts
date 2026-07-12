@@ -2,11 +2,14 @@ import { defineEventHandler } from 'h3';
 import { logCareBody } from '../../../utils/schemas';
 import { readValidatedBodyZ } from '../../../utils/body';
 import { getDataContext, requireUserKey } from '../../../utils/datasource';
-import { pushToDay } from '../../../utils/userdocs';
+import { dayId, pushToDay } from '../../../utils/userdocs';
+import { mirrorUserDoc } from '../../../utils/ttstore';
 
 export default defineEventHandler(async (event) => {
   const { date, horse, type, t, note } = await readValidatedBodyZ(event, logCareBody);
   const ctx = await getDataContext(event);
-  await pushToDay(ctx.db, requireUserKey(ctx), date, 'care', { horse, type, t, note });
+  const userKey = requireUserKey(ctx);
+  await pushToDay(ctx.db, userKey, date, 'care', { horse, type, t, note });
+  await mirrorUserDoc(ctx, 'log', dayId(userKey, date));
   return { ok: true };
 });

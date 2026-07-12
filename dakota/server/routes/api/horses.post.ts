@@ -4,6 +4,7 @@ import type { Horse } from '../../../shared/types';
 import { horseBody } from '../../utils/schemas';
 import { readValidatedBodyZ } from '../../utils/body';
 import { getDataContext, requireUserKey } from '../../utils/datasource';
+import { mirrorUserDoc } from '../../utils/ttstore';
 
 /** POST /api/horses — add a horse to the caller's herd. */
 export default defineEventHandler(async (event): Promise<Horse> => {
@@ -18,5 +19,6 @@ export default defineEventHandler(async (event): Promise<Horse> => {
     order: 100 + count,
     ...horse,
   } as never);
+  await mirrorUserDoc(ctx, 'horses', `${userKey}:${horse.id}`);
   return horse;
 });

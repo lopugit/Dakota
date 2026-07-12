@@ -139,9 +139,9 @@ function buildFeed(): FeedPost[] {
 const rid = (prefix: string): string =>
   prefix + Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
 
-// ---------- api ----------
+// ---------- local transport ----------
 
-export const api = {
+const local = {
   catalog: () => reply(CATALOG),
   log: () => reply(state.log),
   profile: () => reply(state.profile),
@@ -280,5 +280,140 @@ export const api = {
     if (state.authUser) state.authUser.dataSource = dataSource;
     save();
     return reply({ ok: true as const, dataSource });
+  },
+};
+
+// ---------- remote transport (Nitro API → MongoDB + Thingtime) ----------
+//
+// Signing in with Thingtime flips the client onto the real API: the server
+// authenticates against thingtime.com, hydrates the account's yard from its
+// Thingtime things, and mirrors every write back to Thingtime. The flag
+// survives reloads; logging out returns to the local offline store.
+
+const REMOTE_FLAG = 'dk-remote';
+const remoteActive = (): boolean =>
+  hasStorage && window.localStorage.getItem(REMOTE_FLAG) === '1';
+const setRemoteActive = (on: boolean): void => {
+  if (!hasStorage) return;
+  try {
+    if (on) window.localStorage.setItem(REMOTE_FLAG, '1');
+    else window.localStorage.removeItem(REMOTE_FLAG);
+  } catch {
+    /* private mode — the session simply won't survive a reload */
+  }
+};
+
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(path, {
+    headers: init?.body ? { 'content-type': 'application/json' } : undefined,
+    ...init,
+  });
+  if (!res.ok) {
+    throw new Error(`${init?.method ?? 'GET'} ${path} failed: ${res.status}`);
+  }
+  return res.json() as Promise<T>;
+}
+
+const post = <T>(path: string, body: unknown): Promise<T> =>
+  request<T>(path, { method: 'POST', body: JSON.stringify(body) });
+
+const remote: typeof local = {
+  catalog: () => request<Catalog>('/api/catalog'),
+  log: () => request<UserLog>('/api/log'),
+  profile: () => request<Profile>('/api/profile'),
+  feed: () => request<FeedPost[]>('/api/feed'),
+  horses: () => request<Horse[]>('/api/horses'),
+  rides: () => request<Ride[]>('/api/rides'),
+  paddocks: () => request<Paddocks>('/api/paddocks'),
+
+  saveCheckin: (body) => post('/api/log/checkin', body),
+  logSession: (body) => post('/api/log/session', body),
+  markPractice: (body) => post('/api/log/practice', body),
+  logCare: (body) => post('/api/log/care', body),
+
+  addHorse: (body) => post<Horse>('/api/horses', body),
+  updateHorse: (id, patch) =>
+    request(`/api/horses/${encodeURIComponent(id)}`, {
+      method: 'PUT',
+      body: JSON.stringify(patch),
+    }),
+
+  saveRide: (body) => post<Ride>('/api/rides', body),
+
+  moveHorse: (body) => post('/api/paddocks/move', body),
+
+  sharePost: (body) => post('/api/feed/post', body),
+  setLike: (body) => post('/api/feed/like', body),
+  addComment: (body) => post('/api/feed/comment', body),
+
+  updateProfile: (patch) =>
+    request<Profile>('/api/profile', { method: 'PUT', body: JSON.stringify(patch) }),
+  completeLesson: (lessonId) =>
+    post(`/api/lessons/${encodeURIComponent(lessonId)}/complete`, {}),
+
+  authMe: () => request<{ user: AuthUser | null }>('/api/auth/me'),
+  signup: (body) => post<{ user: AuthUser }>('/api/auth/signup', body),
+  login: (body) => post<{ user: AuthUser }>('/api/auth/login', body),
+  logout: () => post<{ ok: true }>('/api/auth/logout', {}),
+  setDataSource: (dataSource) =>
+    post<{ ok: true; dataSource: DataSource }>('/api/auth/datasource', { dataSource }),
+};
+
+// ---------- api (transport dispatcher) ----------
+
+export interface ThingtimeAuthBody {
+  mode: 'signin' | 'signup';
+  username: string;
+  password: string;
+  email?: string;
+  name?: string;
+}
+
+const pick = (): typeof local => (remoteActive() ? remote : local);
+
+export const api: typeof local & {
+  thingtimeAuth: (body: ThingtimeAuthBody) => Promise<{ user: AuthUser }>;
+} = {
+  catalog: () => pick().catalog(),
+  log: () => pick().log(),
+  profile: () => pick().profile(),
+  feed: () => pick().feed(),
+  horses: () => pick().horses(),
+  rides: () => pick().rides(),
+  paddocks: () => pick().paddocks(),
+
+  saveCheckin: (body) => pick().saveCheckin(body),
+  logSession: (body) => pick().logSession(body),
+  markPractice: (body) => pick().markPractice(body),
+  logCare: (body) => pick().logCare(body),
+
+  addHorse: (body) => pick().addHorse(body),
+  updateHorse: (id, patch) => pick().updateHorse(id, patch),
+
+  saveRide: (body) => pick().saveRide(body),
+  moveHorse: (body) => pick().moveHorse(body),
+
+  sharePost: (body) => pick().sharePost(body),
+  setLike: (body) => pick().setLike(body),
+  addComment: (body) => pick().addComment(body),
+
+  updateProfile: (patch) => pick().updateProfile(patch),
+  completeLesson: (lessonId) => pick().completeLesson(lessonId),
+
+  authMe: () => pick().authMe(),
+  signup: (body) => pick().signup(body),
+  login: (body) => pick().login(body),
+  logout: async () => {
+    const res = await pick().logout();
+    setRemoteActive(false);
+    return res;
+  },
+  setDataSource: (dataSource) => pick().setDataSource(dataSource),
+
+  /** Sign in (or up) with Thingtime — always talks to the real API. */
+  thingtimeAuth: async (body) => {
+    const res = await post<{ user: AuthUser }>('/api/auth/thingtime', body);
+    setRemoteActive(true);
+    return res;
   },
 };

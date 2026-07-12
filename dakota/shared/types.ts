@@ -419,4 +419,6 @@ export interface AuthUser {
   email: string;
   name: string;
   dataSource: DataSource;
+  /** Present when the account signs in via Thingtime. */
+  thingtime?: { username: string };
 }
