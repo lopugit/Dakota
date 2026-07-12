@@ -1,1912 +1,1747 @@
 {
   ".claude/launch.json": {
-    "mtime": 1783452869.3077168,
+    "mtime": 1783814311.1552439,
     "ast_hash": "14e10a75a3912a93b34a375f844c9dbd",
     "semantic_hash": ""
   },
+  ".claude/settings.local.json": {
+    "mtime": 1783814447.171188,
+    "ast_hash": "4c01536a4897e75e8e273eeb39af93f9",
+    "semantic_hash": ""
+  },
   "dakota/.claude/launch.json": {
-    "mtime": 1783452869.308494,
+    "mtime": 1783814311.1731312,
     "ast_hash": "e5a6966fb071f62ce466b940a171b0e8",
     "semantic_hash": ""
   },
+  "dakota/.nitro/dev/index.mjs": {
+    "mtime": 1783826284.0679765,
+    "ast_hash": "12f746aee79e40ce86a95763976f7019",
+    "semantic_hash": ""
+  },
+  "dakota/.nitro/nitro.json": {
+    "mtime": 1783826284.2761903,
+    "ast_hash": "a368001fedf204e197d20f18733d1c7c",
+    "semantic_hash": ""
+  },
+  "dakota/.nitro/types/nitro-config.d.ts": {
+    "mtime": 1783826283.7281437,
+    "ast_hash": "c73a13c20447ab29713fbae69ade06f9",
+    "semantic_hash": ""
+  },
+  "dakota/.nitro/types/nitro-imports.d.ts": {
+    "mtime": 1783826283.728142,
+    "ast_hash": "da5d39a83fcf0a8c0bacfbd8cec3bc9b",
+    "semantic_hash": ""
+  },
+  "dakota/.nitro/types/nitro-routes.d.ts": {
+    "mtime": 1783826283.724186,
+    "ast_hash": "811a6e31706fdca72ce12d433d5cc5bd",
+    "semantic_hash": ""
+  },
+  "dakota/.nitro/types/nitro.d.ts": {
+    "mtime": 1783826283.728149,
+    "ast_hash": "39869a26ca1fd83b6b877dc25269c1e7",
+    "semantic_hash": ""
+  },
+  "dakota/.nitro/types/tsconfig.json": {
+    "mtime": 1783826283.7281542,
+    "ast_hash": "fe6d641a6f768c952ee6f8ab709fbde7",
+    "semantic_hash": ""
+  },
   "dakota/app/src/components/Avatar.tsx": {
-    "mtime": 1783452869.3103316,
+    "mtime": 1783814311.1748767,
     "ast_hash": "5624ca68df210e27a242fc0dd7b1026f",
     "semantic_hash": ""
   },
   "dakota/app/src/components/Badge.tsx": {
-    "mtime": 1783452869.3105807,
+    "mtime": 1783814311.175097,
     "ast_hash": "66ccf1dcd02a924b29e10235e27a13f2",
     "semantic_hash": ""
   },
   "dakota/app/src/components/BalanceMeter.tsx": {
-    "mtime": 1783452869.310825,
+    "mtime": 1783814311.175309,
     "ast_hash": "706ae401c63e188786b1662190f18121",
     "semantic_hash": ""
   },
   "dakota/app/src/components/Button.tsx": {
-    "mtime": 1783452869.3111737,
+    "mtime": 1783814311.1755707,
     "ast_hash": "0e1cc47ca475eee93295f86232302f33",
     "semantic_hash": ""
   },
   "dakota/app/src/components/Card.tsx": {
-    "mtime": 1783452869.3114092,
+    "mtime": 1783814311.175745,
     "ast_hash": "532837ce69e8384ce3933de055666ecc",
     "semantic_hash": ""
   },
   "dakota/app/src/components/FarmMotifs.tsx": {
-    "mtime": 1783814310.9434576,
+    "mtime": 1783814311.1758835,
     "ast_hash": "f339c942b1c9f8a1a9945ca812df512a",
     "semantic_hash": ""
   },
   "dakota/app/src/components/Icon.tsx": {
-    "mtime": 1783452869.3115807,
+    "mtime": 1783814311.1760526,
     "ast_hash": "6be7c36dd075d76b7817914b60552d1b",
     "semantic_hash": ""
   },
   "dakota/app/src/components/IconButton.tsx": {
-    "mtime": 1783452869.311808,
+    "mtime": 1783814311.1762917,
     "ast_hash": "54b32f95a9fbf4f1d5da780e7d0ad1aa",
     "semantic_hash": ""
   },
   "dakota/app/src/components/Input.tsx": {
-    "mtime": 1783452869.3120093,
+    "mtime": 1783814311.176511,
     "ast_hash": "71e55ae567b0d0a3fc04d49fd2f3a902",
     "semantic_hash": ""
   },
   "dakota/app/src/components/Switch.tsx": {
-    "mtime": 1783452869.3121307,
+    "mtime": 1783814311.1766543,
     "ast_hash": "a1d9214f5762790b17d4d1be8e3a3c1f",
     "semantic_hash": ""
   },
   "dakota/app/src/components/Tag.tsx": {
-    "mtime": 1783452869.3122556,
+    "mtime": 1783814311.1767821,
     "ast_hash": "0f645929cda5d56b5788563afa4f7ad6",
     "semantic_hash": ""
   },
   "dakota/app/src/components/ThemeToggle.tsx": {
-    "mtime": 1783452869.3123927,
+    "mtime": 1783814311.1769698,
     "ast_hash": "6e5ddba90cc5321eab9ae2ea5d82f8b2",
     "semantic_hash": ""
   },
   "dakota/app/src/components/index.ts": {
-    "mtime": 1783814310.943689,
+    "mtime": 1783814311.177116,
     "ast_hash": "8501143831f72ee14a1cb967472e9144",
     "semantic_hash": ""
   },
   "dakota/app/src/lib/api.ts": {
-    "mtime": 1783860651.0996256,
+    "mtime": 1783825849.46691,
     "ast_hash": "544f84a84441f29d1dbff19b1b936e31",
     "semantic_hash": ""
   },
   "dakota/app/src/lib/day.ts": {
-    "mtime": 1783452869.3129785,
+    "mtime": 1783814311.177453,
     "ast_hash": "87e8ebef7933cb83f59b95d9f0639271",
     "semantic_hash": ""
   },
   "dakota/app/src/lib/geo.ts": {
-    "mtime": 1783452869.3131213,
+    "mtime": 1783814311.1776624,
     "ast_hash": "10f101239dc05dbb93ae0994a2f901b6",
     "semantic_hash": ""
   },
   "dakota/app/src/lib/queries.ts": {
-    "mtime": 1783860651.0999496,
+    "mtime": 1783825866.7861202,
     "ast_hash": "e8a53969a0047e5d30908d9c0b9a03e3",
     "semantic_hash": ""
   },
   "dakota/app/src/lib/sample.ts": {
-    "mtime": 1783452869.313447,
+    "mtime": 1783814311.178024,
     "ast_hash": "6f04ee10a5e56fcd2cd26e2556d5106c",
     "semantic_hash": ""
   },
   "dakota/app/src/lib/useSticky.ts": {
-    "mtime": 1783452869.313638,
+    "mtime": 1783814311.1782572,
     "ast_hash": "676e9091098cf84de94764f5700208ba",
     "semantic_hash": ""
   },
   "dakota/app/src/main.tsx": {
-    "mtime": 1783452869.3138545,
+    "mtime": 1783814311.178508,
     "ast_hash": "cbd6c34e9d4c7bb47239aef0f1b0fcca",
     "semantic_hash": ""
   },
   "dakota/app/src/router.tsx": {
-    "mtime": 1783452869.313977,
+    "mtime": 1783814311.178673,
     "ast_hash": "7e6a6dce9568c57018ccecf784ba23b3",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/AilmentDetail.tsx": {
-    "mtime": 1783452869.314239,
+    "mtime": 1783814311.1790304,
     "ast_hash": "1c08e0f6f8fda54b79456bb2bcc5cea4",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Arena.tsx": {
-    "mtime": 1783452869.314382,
+    "mtime": 1783814311.179282,
     "ast_hash": "f25803dcece8effbfa7c6a2efdc08d1e",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Auth.tsx": {
-    "mtime": 1783860651.100274,
+    "mtime": 1783825928.0147533,
     "ast_hash": "3b2dea2734d57581ba822407ba2f7b73",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Circle.tsx": {
-    "mtime": 1783452869.3147225,
+    "mtime": 1783814311.1802843,
     "ast_hash": "ff4e8b9d5b117264dbaa51ad54d55ef8",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Diary.tsx": {
-    "mtime": 1783452869.3149672,
+    "mtime": 1783814311.1805735,
     "ast_hash": "d70c08383be21a07332069822b322cc9",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/ExerciseDetail.tsx": {
-    "mtime": 1783452869.3152177,
+    "mtime": 1783814311.1848378,
     "ast_hash": "be97fb24848a0dce3f621cd3dea62782",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Feed.tsx": {
-    "mtime": 1783452869.3155456,
+    "mtime": 1783814311.1852233,
     "ast_hash": "036a3abc5f940c5e2b9c0868cbbc0e8b",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/FeedItemDetail.tsx": {
-    "mtime": 1783452869.3156888,
+    "mtime": 1783814311.1854439,
     "ast_hash": "9df6ca35f8955de2acb52baa68b3400f",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/FeedRoom.tsx": {
-    "mtime": 1783452869.3159006,
+    "mtime": 1783814311.1857321,
     "ast_hash": "57842d54e1e74d490f32d0c280037a91",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Friend.tsx": {
-    "mtime": 1783452869.3161154,
+    "mtime": 1783814311.1859756,
     "ast_hash": "f2418d86d7d00f56cc11725a140fb9e1",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Health.tsx": {
-    "mtime": 1783452869.316241,
+    "mtime": 1783814311.18613,
     "ast_hash": "65ccaf3be8635c29c7fc4d7f221a9697",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/HorseDetail.tsx": {
-    "mtime": 1783452869.3164113,
+    "mtime": 1783814311.1864126,
     "ast_hash": "82d768bc163d04958e13be6e0acf8f1e",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Horses.tsx": {
-    "mtime": 1783452869.3165638,
+    "mtime": 1783814311.1865952,
     "ast_hash": "9b4fefc24b01d73efc88d513073065ca",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Learn.tsx": {
-    "mtime": 1783452869.3167512,
+    "mtime": 1783814311.1868196,
     "ast_hash": "bae1253873a4b07d6e0c7c1249837cf4",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Lesson.tsx": {
-    "mtime": 1783452869.316975,
+    "mtime": 1783814311.1870878,
     "ast_hash": "927aac766614658f2a6442499864e882",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Paddocks.tsx": {
-    "mtime": 1783452869.3173122,
+    "mtime": 1783814311.1873934,
     "ast_hash": "c8b36aacd23a25f2d3eaec6f57247e2d",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Practices.tsx": {
-    "mtime": 1783452869.3176255,
+    "mtime": 1783814311.1876206,
     "ast_hash": "07c5f1bb4f049088258eff4334fc9dfd",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Profile.tsx": {
-    "mtime": 1783452869.3180597,
+    "mtime": 1783814311.1879551,
     "ast_hash": "773f3560d6585e927a2f942e2dd42667",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/RideDetail.tsx": {
-    "mtime": 1783452869.3182912,
+    "mtime": 1783814311.188195,
     "ast_hash": "aa49f82c87e1b2695ef61b3ac7b92715",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Rides.tsx": {
-    "mtime": 1783452869.3185632,
+    "mtime": 1783814311.1885426,
     "ast_hash": "73389cf848acd6c84773f30d75b310cc",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Today.tsx": {
-    "mtime": 1783452869.3187983,
+    "mtime": 1783814311.1888561,
     "ast_hash": "0227f1ac0cb525c570e74a2fcb5f213a",
     "semantic_hash": ""
   },
   "dakota/app/src/screens/Wisdom.tsx": {
-    "mtime": 1783452869.3190272,
+    "mtime": 1783814311.1890905,
     "ast_hash": "ec03383d82ec017dfc02453a3fbeb843",
     "semantic_hash": ""
   },
   "dakota/app/src/shell/AppShell.tsx": {
-    "mtime": 1783814310.9442425,
+    "mtime": 1783814311.1892924,
     "ast_hash": "1d6340bea231fdbc317850259a383f22",
     "semantic_hash": ""
   },
   "dakota/app/src/shell/MoreSheet.tsx": {
-    "mtime": 1783452869.3194506,
+    "mtime": 1783814311.1895518,
     "ast_hash": "fdb20b1b6efaa6a58e8f506e15a8c810",
     "semantic_hash": ""
   },
   "dakota/app/src/shell/Rail.tsx": {
-    "mtime": 1783814310.944542,
+    "mtime": 1783814311.189684,
     "ast_hash": "3c580be0645fd68cd7bbba554cdf56b0",
     "semantic_hash": ""
   },
   "dakota/app/src/shell/TabBar.tsx": {
-    "mtime": 1783452869.3198023,
+    "mtime": 1783814311.1899188,
     "ast_hash": "c592a262aa7375d36ae7ce0312bdff63",
     "semantic_hash": ""
   },
   "dakota/app/src/shell/nav.ts": {
-    "mtime": 1783452869.320028,
+    "mtime": 1783814311.1901393,
     "ast_hash": "cbc2149843f9c98c0d7c0c03e8cdd1d6",
     "semantic_hash": ""
   },
   "dakota/app/src/shell/useMediaQuery.ts": {
-    "mtime": 1783814310.9448712,
+    "mtime": 1783814311.1902423,
     "ast_hash": "058307fc19a8a7f5794aa5436574ec38",
     "semantic_hash": ""
   },
   "dakota/nitro.config.ts": {
-    "mtime": 1783452869.3239284,
+    "mtime": 1783814311.1942828,
     "ast_hash": "3ec244af4abd7661d51d084d5c55022c",
     "semantic_hash": ""
   },
   "dakota/package.json": {
-    "mtime": 1783860651.1032355,
+    "mtime": 1783824996.5943494,
     "ast_hash": "30adaa3d11bd2a242f6a1b50f1a795c5",
     "semantic_hash": ""
   },
   "dakota/scripts/seed.ts": {
-    "mtime": 1783452869.3249438,
+    "mtime": 1783814311.1960518,
     "ast_hash": "636ac2f67963e64d296d9f168fbb4bd7",
     "semantic_hash": ""
   },
   "dakota/scripts/thingtime-provision.ts": {
-    "mtime": 1783860651.1034682,
+    "mtime": 1783825063.3395116,
     "ast_hash": "9943924e291060b915b37dd4bb6c845c",
     "semantic_hash": ""
   },
   "dakota/scripts/thingtime-sync-catalog.ts": {
-    "mtime": 1783860651.103701,
-    "ast_hash": "d6f906e4b0c6f89389f2f5034ec90a05",
+    "mtime": 1783825772.5286214,
+    "ast_hash": "9ca0d87e0f8ed99602ee5bf871c10c29",
     "semantic_hash": ""
   },
   "dakota/scripts/tt-env.ts": {
-    "mtime": 1783860651.1039033,
+    "mtime": 1783825738.644408,
     "ast_hash": "63b94679648a4f8dd44d07f83ab00fdb",
     "semantic_hash": ""
   },
   "dakota/scripts/verify-vercel-output.mjs": {
-    "mtime": 1783452869.3251512,
+    "mtime": 1783814311.1963048,
     "ast_hash": "9609c371920d0c9e56085c34ebc46145",
     "semantic_hash": ""
   },
   "dakota/server/routes/[...].get.ts": {
-    "mtime": 1783452869.3254876,
+    "mtime": 1783814311.1967103,
     "ast_hash": "4774a8fd161c4ac82e3afb2391929a5b",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/auth/datasource.post.ts": {
-    "mtime": 1783452869.3257928,
+    "mtime": 1783814311.1971505,
     "ast_hash": "8ce1ab8dfc5c5f1a25b6d3756cc69245",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/auth/login.post.ts": {
-    "mtime": 1783452869.3261602,
+    "mtime": 1783814311.1974468,
     "ast_hash": "3e79c116cc2442e85155bba4e3a80242",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/auth/logout.post.ts": {
-    "mtime": 1783452869.3264675,
+    "mtime": 1783814311.1977425,
     "ast_hash": "ed5efb7097931176ebf0f0593ec493c8",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/auth/me.get.ts": {
-    "mtime": 1783452869.326584,
+    "mtime": 1783814311.1979668,
     "ast_hash": "e6b5772d8450d4af6f8979fe8b9265ae",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/auth/signup.post.ts": {
-    "mtime": 1783452869.3267338,
+    "mtime": 1783814311.198156,
     "ast_hash": "0c87fdf4366cdbc6fefa0a49ed9ca375",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/auth/thingtime.post.ts": {
-    "mtime": 1783860651.1041775,
+    "mtime": 1783825589.6708267,
     "ast_hash": "ac6497bd9c38b5e815c69d3a54afe285",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/catalog.get.ts": {
-    "mtime": 1783860651.104412,
+    "mtime": 1783825753.0924306,
     "ast_hash": "76452c14f6eace58b98c80d36a1a48de",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/feed.get.ts": {
-    "mtime": 1783452869.3271616,
+    "mtime": 1783814311.198744,
     "ast_hash": "39a8897bf6b164b5517b04a2aafa0f7e",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/feed/comment.post.ts": {
-    "mtime": 1783860651.1046827,
+    "mtime": 1783825661.7894473,
     "ast_hash": "f821396c0e37e364375589353c93b2f9",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/feed/like.post.ts": {
-    "mtime": 1783860651.104947,
+    "mtime": 1783825661.789543,
     "ast_hash": "4fec33969062213e875723de4f1396f6",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/feed/post.post.ts": {
-    "mtime": 1783860651.1052873,
+    "mtime": 1783825661.7893577,
     "ast_hash": "305bc167c6daa6f171cce0a2d514ff76",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/horses.get.ts": {
-    "mtime": 1783452869.3282082,
+    "mtime": 1783814311.199885,
     "ast_hash": "1e6eb331d259dff7b3f7e54f07e390b7",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/horses.post.ts": {
-    "mtime": 1783860651.105483,
+    "mtime": 1783825661.788752,
     "ast_hash": "e152616246b1a94391e3d8a5fc81e1e5",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/horses/[id].put.ts": {
-    "mtime": 1783860651.105742,
+    "mtime": 1783825661.7888877,
     "ast_hash": "03e48065b8276183886a3044466b9295",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/lessons/[id]/complete.post.ts": {
-    "mtime": 1783860651.1060138,
+    "mtime": 1783825661.7892723,
     "ast_hash": "b12cea4e0b273c6e9d6922ffd059c24b",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/log.get.ts": {
-    "mtime": 1783452869.3289254,
+    "mtime": 1783814311.200747,
     "ast_hash": "74c29ad79fce47cd6a843208fab8049c",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/log/care.post.ts": {
-    "mtime": 1783860651.1062396,
+    "mtime": 1783825685.6785111,
     "ast_hash": "03b69b35f986cb60b6b535b988fa797c",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/log/checkin.post.ts": {
-    "mtime": 1783860651.1063986,
+    "mtime": 1783825685.6786919,
     "ast_hash": "6f6306dbb9c83d9d94578c8871896335",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/log/practice.post.ts": {
-    "mtime": 1783860651.1066055,
+    "mtime": 1783825685.6788132,
     "ast_hash": "2c6efae578d0155a383ca4170db7056a",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/log/session.post.ts": {
-    "mtime": 1783860651.1068516,
+    "mtime": 1783825685.678913,
     "ast_hash": "a6d833c7a544159474337580dde7d74b",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/paddocks.get.ts": {
-    "mtime": 1783452869.3296943,
+    "mtime": 1783814311.2015388,
     "ast_hash": "be7b7a92e26c488f3d42d8eb244ee32e",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/paddocks/move.post.ts": {
-    "mtime": 1783860651.1070912,
+    "mtime": 1783825661.7890832,
     "ast_hash": "33bbb3ccd209930e22eb711aab7d4ecc",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/profile.get.ts": {
-    "mtime": 1783452869.3300905,
+    "mtime": 1783814311.2019331,
     "ast_hash": "9901d3a003cdf153cc74efd5d1683564",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/profile.put.ts": {
-    "mtime": 1783860651.1072965,
+    "mtime": 1783825661.789174,
     "ast_hash": "2e89e08f834f2bb361a3dd66239cf6d8",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/rides.get.ts": {
-    "mtime": 1783452869.330442,
+    "mtime": 1783814311.2022922,
     "ast_hash": "e9d8548c1ae9eb6d6eb537ca5fcdfa6f",
     "semantic_hash": ""
   },
   "dakota/server/routes/api/rides.post.ts": {
-    "mtime": 1783860651.107464,
+    "mtime": 1783825661.7889912,
     "ast_hash": "a96989c9967a5df8be4b0a285c80a154",
     "semantic_hash": ""
   },
   "dakota/server/utils/auth.ts": {
-    "mtime": 1783860651.1076777,
+    "mtime": 1783825558.3775856,
     "ast_hash": "0a8d5c4707ea662836475593c7dd98eb",
     "semantic_hash": ""
   },
   "dakota/server/utils/body.ts": {
-    "mtime": 1783452869.3311458,
+    "mtime": 1783814311.203118,
     "ast_hash": "e5f306c1b679ba3226aad84bb88c3323",
     "semantic_hash": ""
   },
   "dakota/server/utils/catalog.ts": {
-    "mtime": 1783860651.107947,
-    "ast_hash": "efddce63c1b406664769bb31e15e598c",
+    "mtime": 1783825728.173133,
+    "ast_hash": "25e3248167f3abe351dce1a7b36467cd",
     "semantic_hash": ""
   },
   "dakota/server/utils/datasource.ts": {
-    "mtime": 1783452869.331268,
+    "mtime": 1783814311.2032576,
     "ast_hash": "be2a3bf694d3d6c396a800152cc5c240",
     "semantic_hash": ""
   },
   "dakota/server/utils/mongo.ts": {
-    "mtime": 1783452869.331391,
+    "mtime": 1783814311.2034135,
     "ast_hash": "25c870f50b55e8c9b16a70d9686daff0",
     "semantic_hash": ""
   },
   "dakota/server/utils/schemas.ts": {
-    "mtime": 1783860651.1081517,
+    "mtime": 1783825582.7736745,
     "ast_hash": "96679daeaa22a75f279f14aefa9492c7",
     "semantic_hash": ""
   },
   "dakota/server/utils/thingtime.ts": {
-    "mtime": 1783860651.1086428,
+    "mtime": 1783824934.9882076,
     "ast_hash": "f6e0caa78cfc33eaefe532f89c7cf9fe",
     "semantic_hash": ""
   },
   "dakota/server/utils/ttcodec.ts": {
-    "mtime": 1783860651.1092727,
+    "mtime": 1783825512.5277665,
     "ast_hash": "8cb28b5993d9e5566259226acabfb812",
     "semantic_hash": ""
   },
   "dakota/server/utils/ttstore.ts": {
-    "mtime": 1783860651.109606,
+    "mtime": 1783825537.7817404,
     "ast_hash": "a77fd813d947e1579e81c1e36c9d032c",
     "semantic_hash": ""
   },
   "dakota/server/utils/userdocs.ts": {
-    "mtime": 1783452869.3316855,
+    "mtime": 1783814311.2037506,
     "ast_hash": "2ed7829955b3a3946dff29df9d15a71a",
     "semantic_hash": ""
   },
   "dakota/shared/data/ailments.ts": {
-    "mtime": 1783452869.332039,
+    "mtime": 1783814311.204231,
     "ast_hash": "14429e173f024e59dbb63e8826b2a3cc",
     "semantic_hash": ""
   },
   "dakota/shared/data/circle.ts": {
-    "mtime": 1783452869.3323305,
+    "mtime": 1783814311.2044964,
     "ast_hash": "823d082e31182cf00906d817f0fef9ef",
     "semantic_hash": ""
   },
   "dakota/shared/data/courses.ts": {
-    "mtime": 1783452869.3326504,
+    "mtime": 1783814311.2049868,
     "ast_hash": "1e89ae18e60745e3a97ec26a31588e35",
     "semantic_hash": ""
   },
   "dakota/shared/data/demo.ts": {
-    "mtime": 1783452869.332938,
+    "mtime": 1783814311.205589,
     "ast_hash": "2f0b49393ce00ff25c9dca60115655a2",
     "semantic_hash": ""
   },
   "dakota/shared/data/exercises.ts": {
-    "mtime": 1783452869.3333962,
+    "mtime": 1783814311.206158,
     "ast_hash": "3b4c8d23a0d6e81b28062072b7247b28",
     "semantic_hash": ""
   },
   "dakota/shared/data/feeds.ts": {
-    "mtime": 1783452869.3336587,
+    "mtime": 1783814311.2064612,
     "ast_hash": "667b86a9521911e1282d007c196a9809",
     "semantic_hash": ""
   },
   "dakota/shared/data/practices.ts": {
-    "mtime": 1783452869.3339424,
+    "mtime": 1783814311.2066844,
     "ast_hash": "507a3a0ae924e3e4b531ead591b6aa3a",
     "semantic_hash": ""
   },
   "dakota/shared/data/wisdom.ts": {
-    "mtime": 1783452869.3342505,
+    "mtime": 1783814311.20696,
     "ast_hash": "2bef9cdcb34d09a851de2b16cea8d1dd",
     "semantic_hash": ""
   },
   "dakota/shared/derive.ts": {
-    "mtime": 1783814310.9461803,
+    "mtime": 1783814311.2071617,
     "ast_hash": "29b954cc3444a5248c56059265432973",
     "semantic_hash": ""
   },
   "dakota/shared/dk-data.ts": {
-    "mtime": 1783452869.3346086,
+    "mtime": 1783814311.2073333,
     "ast_hash": "e286cb6c49da8b97c526e00175480585",
     "semantic_hash": ""
   },
   "dakota/shared/types.ts": {
-    "mtime": 1783860651.1104982,
+    "mtime": 1783825572.9144292,
     "ast_hash": "b960c36a470bb1e2a65ef7ff33c0a689",
     "semantic_hash": ""
   },
   "dakota/tsconfig.json": {
-    "mtime": 1783452869.335029,
+    "mtime": 1783814311.2079449,
     "ast_hash": "f5b2f66a03f2f2055de2182def35afc6",
     "semantic_hash": ""
   },
   "dakota/vite.config.ts": {
-    "mtime": 1783452869.335144,
+    "mtime": 1783814311.20813,
     "ast_hash": "294bec5e7b9971d587bb54bc9582c40a",
     "semantic_hash": ""
   },
   "template-webapp/.claude/launch.json": {
-    "mtime": 1783054283.2046924,
+    "mtime": 1783814311.208556,
     "ast_hash": "914464f4a77f9fb3c06516dd1c11a642",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/_adherence.oxlintrc.json": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2100885,
     "ast_hash": "89be582d2045d212a1eadb648f6dc984",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/_ds_bundle.js": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2104256,
     "ast_hash": "6c45f759fa7e87d2311582365fc1835f",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/_ds_manifest.json": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2107732,
     "ast_hash": "657709580faa59fa277c7b85c6d32614",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/BalanceMeter.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2111146,
     "ast_hash": "af9329944d5fc42cf1ec8bfbcd6a5936",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/BalanceMeter.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2113414,
     "ast_hash": "759da47f8a429fd7b7acd41e284aeec3",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/Icon.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2117682,
     "ast_hash": "8c768330432c0a28d5e7c40bf9da25cd",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/Icon.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2119968,
     "ast_hash": "683294c6ae7f5fb25732c250859601f1",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/ThemeToggle.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.212333,
     "ast_hash": "835d90fbda7da7c144c858b85067bfa8",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/ThemeToggle.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2124884,
     "ast_hash": "365f84301ce3300fe33af7813a2a470b",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Badge.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2135794,
     "ast_hash": "68746358b4787a30940de2145d782434",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Badge.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.213773,
     "ast_hash": "16826fdf9b13a949f670b111a7ddb442",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Button.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.214134,
     "ast_hash": "c876e4ad7a852730b9021f0d4b6c4a32",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Button.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2143018,
     "ast_hash": "b440e07aeea97ea4d830568850f216d6",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Card.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.214647,
     "ast_hash": "717c657ffc5186d564ac23d6bdb9b614",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Card.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2149045,
     "ast_hash": "aac45f15f0e7400619851f594fde3184",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/IconButton.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2153347,
     "ast_hash": "ede63c0318b75f05e649c83b70969a62",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/IconButton.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2157285,
     "ast_hash": "ce303b26f26079887957af5c5a95e3c7",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Tag.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2160244,
     "ast_hash": "095bf0e8c72379d2a18b0c2413a2f5e6",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Tag.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.216156,
     "ast_hash": "5ec66f724289f64e9ca04e3531641511",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Dialog.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2170446,
     "ast_hash": "4189616b595c020cb47b4d643cf12840",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Dialog.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2173088,
     "ast_hash": "f4878730524a26485cd2a917dd4058e6",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Toast.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2176933,
     "ast_hash": "0ae17c9fd1e0b98bc33d84cc77e1b926",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Toast.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.218176,
     "ast_hash": "acfdf8a49eb84e0f467e6d433be6cf80",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Tooltip.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.218462,
     "ast_hash": "61aa9b95308627f79375b1f1caedbe8d",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Tooltip.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2186277,
     "ast_hash": "f749b7d495363f160754f4643c5bfaea",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Checkbox.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2191732,
     "ast_hash": "5e577c4da8ba537f87a9e16abe273017",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Checkbox.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2193828,
     "ast_hash": "a23e56c2450dd4cc6d6d99e67575507e",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Input.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2198064,
     "ast_hash": "d49a9622000083bc9a91c0847f1340ae",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Input.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.22006,
     "ast_hash": "fe408f4ab465f5c4636f48bfb328cc50",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Radio.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2206364,
     "ast_hash": "d7384c11ce4adb9cf4963c5a217388bc",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Radio.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.220803,
     "ast_hash": "811a61236d1cbe3b8f81682f3eca6f54",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Select.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2216458,
     "ast_hash": "c2fff1ac62e66347f07d758eb6e89790",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Select.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.221905,
     "ast_hash": "3f291c1971248fa2ca1eef494d091463",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Switch.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2223077,
     "ast_hash": "ec0e67b36e3c92c0692d86d3e55b83bb",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Switch.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2224824,
     "ast_hash": "51d92af6f9e416807881862d51a77388",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/navigation/Tabs.d.ts": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2231426,
     "ast_hash": "34f92edb2b61390bdba5e7f88ce22094",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/navigation/Tabs.jsx": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2237165,
     "ast_hash": "d6f1dfec1e1f61ee5b117438adf18854",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/templates/today/ds-base.js": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2300682,
     "ast_hash": "a10629f1017f31cd686266e2fa942243",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/templates/today/support.js": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2305307,
     "ast_hash": "5d03065df5441f0c24f990fac9a018dd",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/ui_kits/app/CareScreen.jsx": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2322495,
     "ast_hash": "81b8098eeeb9a2b465dc2792fdf1626b",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/ui_kits/app/FoodsScreen.jsx": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2324088,
     "ast_hash": "a7aa5f3b64b01eab0d71bb4d0d0de897",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/ui_kits/app/LearnScreen.jsx": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.23268,
     "ast_hash": "b2356f14a3ef4dd09dc9f1821cce226b",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/ui_kits/app/TodayScreen.jsx": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2332354,
     "ast_hash": "8ff9acd88390ba59f165e45bed296531",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_adherence.oxlintrc.json": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2878363,
     "ast_hash": "89be582d2045d212a1eadb648f6dc984",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_ds_bundle.js": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.288074,
     "ast_hash": "6c45f759fa7e87d2311582365fc1835f",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_ds_manifest.json": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.288302,
     "ast_hash": "657709580faa59fa277c7b85c6d32614",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/mb-data.js": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2900927,
     "ast_hash": "93e9dce335475ef803306449740a5809",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/support.js": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.290343,
     "ast_hash": "5d03065df5441f0c24f990fac9a018dd",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/.obsidian/app.json": {
-    "mtime": 1783234758.4372053,
+    "mtime": 1783814311.2969136,
     "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/.obsidian/appearance.json": {
-    "mtime": 1783234758.4377255,
+    "mtime": 1783814311.2972562,
     "ast_hash": "75c04e54f4b7a0165d016575b113c190",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/.obsidian/core-plugins-migration.json": {
-    "mtime": 1783005691.4788654,
+    "mtime": 1783814311.2975733,
     "ast_hash": "7c76ff003c0b4503e386b17d5783d84c",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/.obsidian/core-plugins.json": {
-    "mtime": 1783234758.045913,
+    "mtime": 1783814311.2978516,
     "ast_hash": "ae0a3ebef29ef8fffb5dc6dcdd3d38f9",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/.obsidian/graph.json": {
-    "mtime": 1783234759.802,
+    "mtime": 1783814311.2981477,
     "ast_hash": "41ffa915f9d880d061cd7db53a247fe1",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/.obsidian/workspace.json": {
-    "mtime": 1783234758.5705752,
+    "mtime": 1783814311.2984743,
     "ast_hash": "f8fdcdb607b8a84d61943441bc7fd36f",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Avatar.tsx": {
-    "mtime": 1783013984.1849172,
+    "mtime": 1783814311.3005698,
     "ast_hash": "5624ca68df210e27a242fc0dd7b1026f",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Badge.tsx": {
-    "mtime": 1783013959.7362206,
+    "mtime": 1783814311.3007295,
     "ast_hash": "042db00ad6a40c556d430e962a7c622c",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/BalanceMeter.tsx": {
-    "mtime": 1783013980.4267163,
+    "mtime": 1783814311.3009346,
     "ast_hash": "0de7ddb3ab64694dce92e48cbe692417",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Button.tsx": {
-    "mtime": 1783014134.0660126,
+    "mtime": 1783814311.301115,
     "ast_hash": "b60ffe7785aab42fe68622ca6365e20c",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Card.tsx": {
-    "mtime": 1783013964.3951242,
+    "mtime": 1783814311.3013186,
     "ast_hash": "c5bb2e851fd6ff2c35abb1d372ae0519",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Icon.tsx": {
-    "mtime": 1783014304.2198608,
+    "mtime": 1783814311.3015037,
     "ast_hash": "857dc9c15a1c9a39a8ff49f853000a81",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/IconButton.tsx": {
-    "mtime": 1783014135.9518797,
+    "mtime": 1783814311.3016737,
     "ast_hash": "d859f4e3569bb924cc0739fd3d8732a0",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Input.tsx": {
-    "mtime": 1783013966.3181264,
+    "mtime": 1783814311.3018758,
     "ast_hash": "b825a57590fb4500b2a72ef0cc7df1d4",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Switch.tsx": {
-    "mtime": 1783013969.1502252,
+    "mtime": 1783814311.302106,
     "ast_hash": "2422bbcd3519feb1ed302d1b8935f09d",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/Tag.tsx": {
-    "mtime": 1783014137.8118014,
+    "mtime": 1783814311.3023515,
     "ast_hash": "0191b4bace5dce135cb20ca12a34bcf6",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/ThemeToggle.tsx": {
-    "mtime": 1783013975.2492154,
+    "mtime": 1783814311.3026369,
     "ast_hash": "dfd7d48d53465a5bb928232893edd31f",
     "semantic_hash": ""
   },
   "template-webapp/app/src/components/index.ts": {
-    "mtime": 1783013986.0917277,
+    "mtime": 1783814311.302769,
     "ast_hash": "a65da37928b4337a0b3e8a24305e24b8",
     "semantic_hash": ""
   },
   "template-webapp/app/src/lib/api.ts": {
-    "mtime": 1783016688.8543353,
+    "mtime": 1783814311.3030782,
     "ast_hash": "dfb9ae6673b795b07320b4d267ccce73",
     "semantic_hash": ""
   },
   "template-webapp/app/src/lib/day.ts": {
-    "mtime": 1783014031.3431907,
+    "mtime": 1783814311.303332,
     "ast_hash": "7927262191f77db0518df01125786cf2",
     "semantic_hash": ""
   },
   "template-webapp/app/src/lib/queries.ts": {
-    "mtime": 1783055143.8570545,
+    "mtime": 1783814311.30359,
     "ast_hash": "f9ea77ca31e02a7046c3a9327729e61b",
     "semantic_hash": ""
   },
   "template-webapp/app/src/lib/sample.ts": {
-    "mtime": 1783055093.7018082,
+    "mtime": 1783814311.3038542,
     "ast_hash": "10bfa14334cc8d2024c43f88d6d8cfd5",
     "semantic_hash": ""
   },
   "template-webapp/app/src/lib/useSticky.ts": {
-    "mtime": 1783014026.2018623,
+    "mtime": 1783814311.30402,
     "ast_hash": "676e9091098cf84de94764f5700208ba",
     "semantic_hash": ""
   },
   "template-webapp/app/src/main.tsx": {
-    "mtime": 1783014176.6198258,
+    "mtime": 1783814311.3041599,
     "ast_hash": "cbd6c34e9d4c7bb47239aef0f1b0fcca",
     "semantic_hash": ""
   },
   "template-webapp/app/src/router.tsx": {
-    "mtime": 1783016723.8946276,
+    "mtime": 1783814311.3045049,
     "ast_hash": "3c5a1681da68fe57eb6db3569a08034f",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Auth.tsx": {
-    "mtime": 1783055172.9065385,
+    "mtime": 1783814311.3049045,
     "ast_hash": "891d8cb581ebce3ad05fd8c6e5c3a178",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Care.tsx": {
-    "mtime": 1783015220.49342,
+    "mtime": 1783814311.3052251,
     "ast_hash": "6d984c965a2c144db1b4e20e03c1b02d",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Diary.tsx": {
-    "mtime": 1783015000.1843927,
+    "mtime": 1783814311.3054135,
     "ast_hash": "f80b1adad2f0843fe33cbf6519a57bb7",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Feed.tsx": {
-    "mtime": 1783015209.9205465,
+    "mtime": 1783814311.3057146,
     "ast_hash": "2e3a912f3c6fcc9d7c9442f4effc5424",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/FoodDetail.tsx": {
-    "mtime": 1783015035.7155592,
+    "mtime": 1783814311.306004,
     "ast_hash": "12a4a17d1444c6a5dd5e3080c40e39f4",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Foods.tsx": {
-    "mtime": 1783015022.8842945,
+    "mtime": 1783814311.306251,
     "ast_hash": "c86e882319a5c675e51037aa9a999354",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Friend.tsx": {
-    "mtime": 1783015232.8047216,
+    "mtime": 1783814311.3064196,
     "ast_hash": "defe781d1e8e4dfe82f5406d058b72f3",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Learn.tsx": {
-    "mtime": 1783015117.2615242,
+    "mtime": 1783814311.3066163,
     "ast_hash": "0d3718327e9041a75306b3a22b869e72",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Lesson.tsx": {
-    "mtime": 1783015135.311635,
+    "mtime": 1783814311.3068633,
     "ast_hash": "ea77230c1d2cce1ee5ff744f056206b9",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/MealDetail.tsx": {
-    "mtime": 1783015063.2378068,
+    "mtime": 1783814311.307063,
     "ast_hash": "bdcc0a7443a4ac1cd5cf424419c633eb",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Practices.tsx": {
-    "mtime": 1783015154.6669593,
+    "mtime": 1783814311.3072753,
     "ast_hash": "071ddd86c0fdc7ca4502e088125c8a9c",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Profile.tsx": {
-    "mtime": 1783055168.5543754,
+    "mtime": 1783814311.307604,
     "ast_hash": "5678ef4d45bef8bb05453990314245d0",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Today.tsx": {
-    "mtime": 1783014966.8224678,
+    "mtime": 1783814311.3079412,
     "ast_hash": "f24a71bbcfdf4c6155d868cf6db2b643",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/TreatmentDetail.tsx": {
-    "mtime": 1783015096.118207,
+    "mtime": 1783814311.3081844,
     "ast_hash": "a0e266eb283905f213c4423da70a2d25",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Treatments.tsx": {
-    "mtime": 1783015079.0114522,
+    "mtime": 1783814311.3084252,
     "ast_hash": "237bc73bf88027061de4734079dd38d4",
     "semantic_hash": ""
   },
   "template-webapp/app/src/screens/Wisdom.tsx": {
-    "mtime": 1783015182.9486322,
+    "mtime": 1783814311.3086631,
     "ast_hash": "f7b68fc376df836e0b8c59b5ca8da038",
     "semantic_hash": ""
   },
   "template-webapp/app/src/shell/AppShell.tsx": {
-    "mtime": 1783014158.7079272,
+    "mtime": 1783814311.3090181,
     "ast_hash": "2cc9e247b86c7a175c6a5ae38b16eb98",
     "semantic_hash": ""
   },
   "template-webapp/app/src/shell/MoreSheet.tsx": {
-    "mtime": 1783014121.1687906,
+    "mtime": 1783814311.3092344,
     "ast_hash": "2c7828020efa409036489d67fb07eb54",
     "semantic_hash": ""
   },
   "template-webapp/app/src/shell/Rail.tsx": {
-    "mtime": 1783014084.4124942,
+    "mtime": 1783814311.3094757,
     "ast_hash": "c134dc54db7e06e5562833479f99a4b6",
     "semantic_hash": ""
   },
   "template-webapp/app/src/shell/TabBar.tsx": {
-    "mtime": 1783014106.8735614,
+    "mtime": 1783814311.3096914,
     "ast_hash": "8ac51902306fb88338a391b0b270639f",
     "semantic_hash": ""
   },
   "template-webapp/app/src/shell/nav.ts": {
-    "mtime": 1783014066.2634714,
+    "mtime": 1783814311.3099067,
     "ast_hash": "2e676e754dd54fa9a8caa35a9b1771cd",
     "semantic_hash": ""
   },
   "template-webapp/app/src/shell/useMediaQuery.ts": {
-    "mtime": 1783014068.1493766,
+    "mtime": 1783814311.3100667,
     "ast_hash": "c73429d429ea2d76a968493793898527",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_adherence.oxlintrc.json": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.313291,
     "ast_hash": "89be582d2045d212a1eadb648f6dc984",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_ds_bundle.js": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3135166,
     "ast_hash": "6c45f759fa7e87d2311582365fc1835f",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/_ds_manifest.json": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3136902,
     "ast_hash": "657709580faa59fa277c7b85c6d32614",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/mb-data.js": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3151834,
     "ast_hash": "93e9dce335475ef803306449740a5809",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/support.js": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3154275,
     "ast_hash": "5d03065df5441f0c24f990fac9a018dd",
     "semantic_hash": ""
   },
   "template-webapp/nitro.config.ts": {
-    "mtime": 1783013585.6765807,
+    "mtime": 1783814311.325458,
     "ast_hash": "3ec244af4abd7661d51d084d5c55022c",
     "semantic_hash": ""
   },
   "template-webapp/package.json": {
-    "mtime": 1783015395.0311172,
+    "mtime": 1783814311.325726,
     "ast_hash": "87dc4524cd345d4bfc39e929340f7ebf",
     "semantic_hash": ""
   },
   "template-webapp/scripts/seed.ts": {
-    "mtime": 1783013882.8661954,
+    "mtime": 1783814311.3265636,
     "ast_hash": "6552b7b1b44a339689e660f5c6c65672",
     "semantic_hash": ""
   },
   "template-webapp/scripts/verify-vercel-output.mjs": {
-    "mtime": 1783013888.2774513,
+    "mtime": 1783814311.3266964,
     "ast_hash": "9609c371920d0c9e56085c34ebc46145",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/[...].get.ts": {
-    "mtime": 1783013870.1637561,
+    "mtime": 1783814311.327025,
     "ast_hash": "dfcd7151756c1ed424f6aa47f322e344",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/auth/datasource.post.ts": {
-    "mtime": 1783016582.640438,
+    "mtime": 1783814311.3272376,
     "ast_hash": "8ce1ab8dfc5c5f1a25b6d3756cc69245",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/auth/login.post.ts": {
-    "mtime": 1783016576.3001363,
+    "mtime": 1783814311.327352,
     "ast_hash": "3e79c116cc2442e85155bba4e3a80242",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/auth/logout.post.ts": {
-    "mtime": 1783016577.6926873,
+    "mtime": 1783814311.32746,
     "ast_hash": "ed5efb7097931176ebf0f0593ec493c8",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/auth/me.get.ts": {
-    "mtime": 1783016579.641596,
+    "mtime": 1783814311.3275912,
     "ast_hash": "e6b5772d8450d4af6f8979fe8b9265ae",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/auth/signup.post.ts": {
-    "mtime": 1783016573.05741,
+    "mtime": 1783814311.3277273,
     "ast_hash": "0c87fdf4366cdbc6fefa0a49ed9ca375",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/catalog.get.ts": {
-    "mtime": 1783014251.0743802,
+    "mtime": 1783814311.327951,
     "ast_hash": "fa6ab23f356bdfa07b34ad5b77443548",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/feed.get.ts": {
-    "mtime": 1783055038.9086275,
+    "mtime": 1783814311.3280876,
     "ast_hash": "39a8897bf6b164b5517b04a2aafa0f7e",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/feed/comment.post.ts": {
-    "mtime": 1783055057.4178548,
+    "mtime": 1783814311.3282871,
     "ast_hash": "adeb624017426e192f329bdf829a2e5a",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/feed/like.post.ts": {
-    "mtime": 1783055053.5375707,
+    "mtime": 1783814311.3284073,
     "ast_hash": "1e28e15e0af196942b922c82866349d1",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/feed/post.post.ts": {
-    "mtime": 1783055045.9087236,
+    "mtime": 1783814311.3286202,
     "ast_hash": "b2ce67ef5fa27d589f27ae7f6fa73d39",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/lessons/[id]/complete.post.ts": {
-    "mtime": 1783055025.0714715,
+    "mtime": 1783814311.328857,
     "ast_hash": "8f07f7cbf063e893d3ffaf1eb43ecfb8",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/log.get.ts": {
-    "mtime": 1783054998.7173188,
+    "mtime": 1783814311.3291187,
     "ast_hash": "1dca6f790d8eb8336f09e3195cfcbbe4",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/log/checkin.post.ts": {
-    "mtime": 1783055001.9632812,
+    "mtime": 1783814311.3295841,
     "ast_hash": "22a823360754ff05df522f720e678b36",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/log/meal.post.ts": {
-    "mtime": 1783055007.1386132,
+    "mtime": 1783814311.3297472,
     "ast_hash": "f11353dd498b104e426b033e7ad7b9d4",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/log/practice.post.ts": {
-    "mtime": 1783055011.388858,
+    "mtime": 1783814311.3299465,
     "ast_hash": "54caca4b23b55b5d30083a558afa1dc4",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/profile.get.ts": {
-    "mtime": 1783055014.7738123,
+    "mtime": 1783814311.3300605,
     "ast_hash": "9901d3a003cdf153cc74efd5d1683564",
     "semantic_hash": ""
   },
   "template-webapp/server/routes/api/profile.put.ts": {
-    "mtime": 1783055020.3779054,
+    "mtime": 1783814311.3303995,
     "ast_hash": "7176c4432a671b3b4db53aadf7fae535",
     "semantic_hash": ""
   },
   "template-webapp/server/utils/auth.ts": {
-    "mtime": 1783016557.2005517,
+    "mtime": 1783814311.3307567,
     "ast_hash": "df1b2035565f6c7befb604c856dc7b4e",
     "semantic_hash": ""
   },
   "template-webapp/server/utils/body.ts": {
-    "mtime": 1783013755.4560168,
+    "mtime": 1783814311.3308814,
     "ast_hash": "e5f306c1b679ba3226aad84bb88c3323",
     "semantic_hash": ""
   },
   "template-webapp/server/utils/datasource.ts": {
-    "mtime": 1783054980.6933606,
+    "mtime": 1783814311.3311253,
     "ast_hash": "61682266adc2cab518d6964691074ec7",
     "semantic_hash": ""
   },
   "template-webapp/server/utils/mongo.ts": {
-    "mtime": 1783016530.2045677,
+    "mtime": 1783814311.3316212,
     "ast_hash": "da7274fb38a7a51b535cfee958268a07",
     "semantic_hash": ""
   },
   "template-webapp/server/utils/schemas.ts": {
-    "mtime": 1783016570.169472,
+    "mtime": 1783814311.3318303,
     "ast_hash": "9745844f980f3bb00f978305a725585e",
     "semantic_hash": ""
   },
   "template-webapp/server/utils/userdocs.ts": {
-    "mtime": 1783016599.6559846,
+    "mtime": 1783814311.3320658,
     "ast_hash": "f1e26e4aac91a6e8870fc47b8d5bc871",
     "semantic_hash": ""
   },
   "template-webapp/shared/derive.ts": {
-    "mtime": 1783013710.7285907,
+    "mtime": 1783814311.3323562,
     "ast_hash": "1bb4b8a8b1b3d540c33d8094a77fb2d4",
     "semantic_hash": ""
   },
   "template-webapp/shared/mb-data.ts": {
-    "mtime": 1783013683.903602,
+    "mtime": 1783814311.332848,
     "ast_hash": "73388f07d9d542b0fb8c684d04e1dfd2",
     "semantic_hash": ""
   },
   "template-webapp/shared/types.ts": {
-    "mtime": 1783016524.7514994,
+    "mtime": 1783814311.333057,
     "ast_hash": "fd3c5493e64297f3f55d31c1c6074f08",
     "semantic_hash": ""
   },
   "template-webapp/tsconfig.json": {
-    "mtime": 1783014322.402013,
+    "mtime": 1783814311.3332002,
     "ast_hash": "f5b2f66a03f2f2055de2182def35afc6",
     "semantic_hash": ""
   },
   "template-webapp/vite.config.ts": {
-    "mtime": 1783054282.0251412,
+    "mtime": 1783814311.3334591,
     "ast_hash": "d94cae9509b18c5c063589d4c75ad759",
     "semantic_hash": ""
   },
   "dakota/CONVENTIONS.md": {
-    "mtime": 1783452869.3092203,
+    "mtime": 1783814311.174002,
     "ast_hash": "e0ace0075a232a0b8cae0bfd49bc1964",
     "semantic_hash": ""
   },
   "dakota/README.md": {
-    "mtime": 1783860651.0992825,
-    "ast_hash": "c79557ea2b658b4d92df86034506db26",
+    "mtime": 1783826839.3687077,
+    "ast_hash": "02b8eb12aa3bedb63c88cb7339c7ca9e",
     "semantic_hash": ""
   },
   "dakota/VERCEL_DEPLOYMENTS.md": {
-    "mtime": 1783452869.3096588,
+    "mtime": 1783814311.1743941,
     "ast_hash": "5828e170f6e833b37c18a9dcfc22c26a",
     "semantic_hash": ""
   },
   "dakota/app/index.html": {
-    "mtime": 1783814310.9431963,
+    "mtime": 1783814311.174547,
     "ast_hash": "68cc2eb5fa0bc3265a3db2fe5014f8b5",
     "semantic_hash": ""
   },
   "template-webapp/CONVENTIONS.md": {
-    "mtime": 1783014229.8178084,
+    "mtime": 1783814311.2093318,
     "ast_hash": "dfef9a61bbea427c822046cb35e26e32",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/SKILL.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2097037,
     "ast_hash": "daea2974d165000fa9befdc08cd9e862",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/BalanceMeter.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2115586,
     "ast_hash": "df548367786c87012e9ff1f59877fbe2",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/Icon.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2121751,
     "ast_hash": "71745bc6795efda8650ed96c2fc71473",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/ThemeToggle.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2127345,
     "ast_hash": "ea6382fdf6a2c9ebaab04c0d1b9e9c13",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/brand/brand.card.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2130132,
     "ast_hash": "4a68bea0c6795b738eb18f86d878eb01",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Badge.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2139668,
     "ast_hash": "8d7b51d1df055c76dcf1f4a3ae19313f",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Button.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.214471,
     "ast_hash": "74daf8138a95b10be2c23d21ccd51323",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Card.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2151124,
     "ast_hash": "ac3103b9071eef70b34586c897fa8d27",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/IconButton.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.215877,
     "ast_hash": "696b9b58e76c453db15164fcbcdd7350",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/Tag.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2163725,
     "ast_hash": "331036973931181731f1a3d8e2c9ba38",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/core/core.card.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2166138,
     "ast_hash": "caa3d71ad7b2905e8a72a91f6a63909d",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Dialog.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2175045,
     "ast_hash": "aa415d8fe0cbb3a0813a45def0087686",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Toast.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2183254,
     "ast_hash": "c437dbc7e6c4ea234c636fbf7017472f",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/Tooltip.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.218786,
     "ast_hash": "2282d8d4d8e26ed0a6f7ed05966f4766",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/feedback/feedback.card.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2189248,
     "ast_hash": "3d10ab91c39b1948e30b882adf895faf",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Checkbox.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2196035,
     "ast_hash": "7b274fb89e7cc49ee766ca9ebc19e8b3",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Input.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2204592,
     "ast_hash": "aded31976a9cf26c6d6d5a2cf929d6e5",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Radio.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2210336,
     "ast_hash": "ba203b807a24692a19e23dc8d9c6381b",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Select.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2220993,
     "ast_hash": "ba365bb22298d26b61457542d2cdd6d7",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/Switch.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2226386,
     "ast_hash": "373681b70cd87c036ec4625e0e597437",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/forms/forms.card.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.222837,
     "ast_hash": "aa1fae4c3dd936425fbbc2747a35eb9b",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/navigation/Tabs.prompt.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.223909,
     "ast_hash": "41730445cb0bfde154332d99fb0dc9dd",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/components/navigation/navigation.card.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2241359,
     "ast_hash": "0c0b56a6d9a7af489afcae80887bb0a2",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/brand-balance.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.224965,
     "ast_hash": "98970ce4744086f556d94e66b7742eb2",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/brand-icons.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2251203,
     "ast_hash": "e927021aeb951126b044bfba932b74b2",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/brand-voice.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2252798,
     "ast_hash": "16757b27ffaa5189193aa9f51dd38d48",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/brand-wordmark.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2254303,
     "ast_hash": "fa1bfc1df96acf44a5c3c7a95f1cad64",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/colors-chakra.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2256677,
     "ast_hash": "c1cbe522da5fdc7171438876d14568b8",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/colors-greens.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.225969,
     "ast_hash": "d12bbbdaf4c76c8c1023569148e429fa",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/colors-greyscale.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2263715,
     "ast_hash": "2b9bc06f417ec8bae16c448092b4fd25",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/colors-primary.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.226523,
     "ast_hash": "415a6e32642bb4cab50763be724e14fd",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/colors-semantic.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2267237,
     "ast_hash": "6798a0f09f2c8b185c1fd9383ca9d623",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/colors-themes.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2268898,
     "ast_hash": "991cfef4ae52a5986575907308e39b47",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/spacing-elevation.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2270458,
     "ast_hash": "1b6296534a49a09847520c9cb7a21543",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/spacing-motion.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2272148,
     "ast_hash": "82ef5980069a7b99a15582f856163f8d",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/spacing-radii.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2273962,
     "ast_hash": "a802f6d058353aea910fb24d2b267e2f",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/spacing-scale.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2276638,
     "ast_hash": "54734ed3a7a497519f479972c36c76c3",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/type-display.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2279222,
     "ast_hash": "d6d054e15996d6e8f1e18098680c20b8",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/type-mono.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2282271,
     "ast_hash": "2f8811134c3e705eddd9db4d12a0e77c",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/type-sans.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2283807,
     "ast_hash": "2bd4f5a9326db5dfce30b8a4b78f31e7",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/guidelines/type-scale.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2285278,
     "ast_hash": "2f152afeae81584a4272e873733850fa",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/index.html": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2288127,
     "ast_hash": "9a8d71383f4925c1e02e29ed77496769",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/readme.md": {
-    "mtime": 1783006291.0,
+    "mtime": 1783814311.2291656,
     "ast_hash": "77604b8d8abdba4512affa5210200a2f",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/templates/today/Today.dc.html": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2299237,
     "ast_hash": "15e1a8c9890ad8d28cae4be1bd37512f",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/ui_kits/app/README.md": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2329705,
     "ast_hash": "dbcb4260560ed0cc87fafcf486648c02",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/ui_kits/app/index.html": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2338326,
     "ast_hash": "2371fe2dc581bfd1c426fb0cee91324a",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/Macrobiotica App v1.dc.html": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2868547,
     "ast_hash": "5e08e54a9f74598cec98bd7513aa937d",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/Macrobiotica App.dc.html": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2875638,
     "ast_hash": "ea5a2563b0594aabff636fc8a600e261",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/readme.md": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2886794,
     "ast_hash": "77604b8d8abdba4512affa5210200a2f",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/Design Additions Prompt 1.md": {
-    "mtime": 1783005703.5702431,
+    "mtime": 1783814311.2986853,
     "ast_hash": "8366e78c23d6bcc2f7c3c621860fd6cc",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/Macrobiotica \ud83c\udf31 Welcome.md": {
-    "mtime": 1783001326.0281544,
+    "mtime": 1783814311.2989032,
     "ast_hash": "45831f58ac79aabc07fa2030eed5f69d",
     "semantic_hash": ""
   },
   "template-webapp/Obsidian/System Prompt.md": {
-    "mtime": 1783001685.1925945,
+    "mtime": 1783814311.2992723,
     "ast_hash": "fdabdde30d033546079efa1eb89d997e",
     "semantic_hash": ""
   },
   "template-webapp/README.md": {
-    "mtime": 1783055185.391128,
+    "mtime": 1783814311.2995872,
     "ast_hash": "71b7b0b280311ba268fde5940d72b54e",
     "semantic_hash": ""
   },
   "template-webapp/VERCEL_DEPLOYMENTS.md": {
-    "mtime": 1783016786.1640344,
+    "mtime": 1783814311.2999115,
     "ast_hash": "4518508675489782e93f27f8cf912551",
     "semantic_hash": ""
   },
   "template-webapp/app/index.html": {
-    "mtime": 1783013626.8611047,
+    "mtime": 1783814311.3002768,
     "ast_hash": "39862a5b61546e9e8fa0438c571f6af2",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/PROMPT.md": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3115003,
     "ast_hash": "990486e2f71c0a3915f77db781c811e7",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/README.md": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3117762,
     "ast_hash": "f58750e00880593712d218acb574b53b",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/SPEC-behavior.md": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3120153,
     "ast_hash": "5a04f2114aac371fd3039d13f9ff51fb",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/SPEC-screens.md": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3122838,
     "ast_hash": "eaa52f437b1e9fae6d0eb3a26204b936",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/Macrobiotica App v1.dc.html": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3127282,
     "ast_hash": "5e08e54a9f74598cec98bd7513aa937d",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/Macrobiotica App.dc.html": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3130097,
     "ast_hash": "ea5a2563b0594aabff636fc8a600e261",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/design_files/_ds/macrobiotica-design-system-d67ea7d2-e1ab-4fd6-8135-f6482f5ee39d/readme.md": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.314189,
     "ast_hash": "77604b8d8abdba4512affa5210200a2f",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Claude 2026-07-03 00.49.36.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2354712,
     "ast_hash": "f8e11b24329209828fa6455fc9261390",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Claude 2026-07-03 00.49.41.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2369463,
     "ast_hash": "92c4bcb8addb6e5852dc0b0f40a045f4",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Claude 2026-07-03 00.52.02.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2381678,
     "ast_hash": "731fd3a7c93bbfcd7168f3de918a219c",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Claude 2026-07-03 00.52.08.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2397273,
     "ast_hash": "d8d47f8caad3473863b818652ae66f35",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Claude 2026-07-03 01.11.48.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2452874,
     "ast_hash": "24738db46a40db9d0c2f15bbd06bfcaa",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Claude 2026-07-03 01.11.56.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2489889,
     "ast_hash": "3a241b6144b87c555944a2a36f4b26ef",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Claude 2026-07-03 01.24.47.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2521076,
     "ast_hash": "984f8b8436cd6155e8719d3eeba08ace",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Google Chrome 2026-07-03 01.24.29.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2547064,
     "ast_hash": "4351b2b56a4e6a09c08d0bd61ce7cca2",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Google Chrome 2026-07-03 01.24.39.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.257778,
     "ast_hash": "e503068b312bb15ce0c4d134c7c0cfc1",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Screenshot 2026-07-03 at 01.10.25 AM - Finder - Macrobiotica Design System.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2605283,
     "ast_hash": "23e6d8e7d0c39903e943a2d7a8c13486",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Screenshot 2026-07-03 at 01.24.46 AM - Claude - Design.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2625182,
     "ast_hash": "984f8b8436cd6155e8719d3eeba08ace",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Screenshot 2026-07-03 at 12.38.20 AM - Google Chrome - macrobiotics - Google Search.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2819278,
     "ast_hash": "b6f4665d8fd287df0a4d08e30cddb1f4",
     "semantic_hash": ""
   },
   "template-webapp/Macrobiotica Design System/uploads/Screenshot 2026-07-03 at 12.39.46 AM - Claude - Design.png": {
-    "mtime": 1783006292.0,
+    "mtime": 1783814311.2850947,
     "ast_hash": "5b1e21d965a9689a70f189c578b0aeb5",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/uploads/Claude 2026-07-03 01.14.51.png": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2925143,
     "ast_hash": "9bc88b7e4030da8e9a1e8baaea6f2a23",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/uploads/Claude 2026-07-03 01.15.10.png": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2944133,
     "ast_hash": "78f00551b3dd9b469bfc7a5b13637d03",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/uploads/Claude 2026-07-03 01.15.13.png": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2957435,
     "ast_hash": "8f403d8c14cb2fbd434cef434660cae6",
     "semantic_hash": ""
   },
   "template-webapp/Mobile-first webapp scaffold/uploads/Claude 2026-07-03 01.15.19.png": {
-    "mtime": 1783008107.0,
+    "mtime": 1783814311.2964861,
     "ast_hash": "8ad561dc4a6feb2d09a1d4bdf0457f2e",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/01 Today.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3159316,
     "ast_hash": "b3aa8015bada38b232580224e3418f14",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/02 Diary calendar.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.31631,
     "ast_hash": "242d5bc7358bdc23f10b977a12df7c84",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/03 Foods search.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3168674,
     "ast_hash": "87eb08fecc33fe464ea7c2121679fb64",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/04 Meal detail - Pumpkin soup.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3173685,
     "ast_hash": "c5ac7fb05143d7b0a1283ea0948cced9",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/05 Treatments search.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.317867,
     "ast_hash": "674029df0513bd05ccbcea043993826a",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/06 Lesson reader.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3183606,
     "ast_hash": "79d3333674621ae395c5b20d34d2f39d",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/07 Learn courses.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.318786,
     "ast_hash": "a08ab56f71ecc1a9bbc3d31b67e78bd9",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/08 Practices.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3192747,
     "ast_hash": "477cc53ad0861540e924f9f4e766ee01",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/09 Feed.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3197827,
     "ast_hash": "f448f7de14a62afb8093595a1bad4fd4",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/10 Friend profile - Mei.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3203564,
     "ast_hash": "6081c98b99b13823bf07e5b81e19a605",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/11 Wisdom - astrology.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3208294,
     "ast_hash": "95b8a3ff0706720d0ee9a2728261d4bb",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/12 Profile.png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3211415,
     "ast_hash": "82ed9bdb5cd2d0b7ee470aafa9bdadd6",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/13 Today (dark).png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3213286,
     "ast_hash": "242d5bc7358bdc23f10b977a12df7c84",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/14 Meal detail (dark).png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.321542,
     "ast_hash": "79d3333674621ae395c5b20d34d2f39d",
     "semantic_hash": ""
   },
   "template-webapp/design_handoff_macrobiotica_app/screenshots/15 Treatment detail (dark).png": {
-    "mtime": 1783012884.0,
+    "mtime": 1783814311.3217356,
     "ast_hash": "f448f7de14a62afb8093595a1bad4fd4",
-    "semantic_hash": ""
-  },
-  "template-webapp/.nitro/dev/index.mjs": {
-    "mtime": 1783423127.319443,
-    "ast_hash": "5444932802b886d7c68b65e0e1489153",
-    "semantic_hash": ""
-  },
-  "template-webapp/.nitro/nitro.json": {
-    "mtime": 1783423128.129498,
-    "ast_hash": "eaae8d1ac8e601b4157142635495f8d5",
-    "semantic_hash": ""
-  },
-  "template-webapp/.nitro/types/nitro-config.d.ts": {
-    "mtime": 1783423126.9686818,
-    "ast_hash": "c73a13c20447ab29713fbae69ade06f9",
-    "semantic_hash": ""
-  },
-  "template-webapp/.nitro/types/nitro-imports.d.ts": {
-    "mtime": 1783423126.968709,
-    "ast_hash": "da5d39a83fcf0a8c0bacfbd8cec3bc9b",
-    "semantic_hash": ""
-  },
-  "template-webapp/.nitro/types/nitro-routes.d.ts": {
-    "mtime": 1783423126.968788,
-    "ast_hash": "12cc0e75c25e943a7863c5042088dc26",
-    "semantic_hash": ""
-  },
-  "template-webapp/.nitro/types/nitro.d.ts": {
-    "mtime": 1783423126.968686,
-    "ast_hash": "39869a26ca1fd83b6b877dc25269c1e7",
-    "semantic_hash": ""
-  },
-  "template-webapp/.nitro/types/tsconfig.json": {
-    "mtime": 1783423126.9687853,
-    "ast_hash": "fe6d641a6f768c952ee6f8ab709fbde7",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/config.json": {
-    "mtime": 1783017003.714459,
-    "ast_hash": "4d8bc5b2377fb12cda2341dfcfa84a9c",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/.vc-config.json": {
-    "mtime": 1783017003.7147565,
-    "ast_hash": "98892fe1889e3eba0e14c2f00b73d548",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/_/auth.mjs": {
-    "mtime": 1783017003.6775584,
-    "ast_hash": "96fc0a3ece792b1ce8196fead3e5e630",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/_/body.mjs": {
-    "mtime": 1783017003.677101,
-    "ast_hash": "4df3ee354066234c0b8cbcc098ac0aea",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/_/datasource.mjs": {
-    "mtime": 1783017003.6775858,
-    "ast_hash": "eb50cbfea6567eef32d735768953aee7",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/_/mongo.mjs": {
-    "mtime": 1783017003.6774912,
-    "ast_hash": "1efabb3303e435163fbf9227e00c79a2",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/_/userdocs.mjs": {
-    "mtime": 1783017003.6776917,
-    "ast_hash": "0362c5dd65c936cc80a197fba3e81f8f",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/nitro/nitro.mjs": {
-    "mtime": 1783017003.6766973,
-    "ast_hash": "b8f1237c2813e25a9fdee67f8dacad5c",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/raw/index-BrF4geil.mjs": {
-    "mtime": 1783017003.6773741,
-    "ast_hash": "4c64f1130a99d94c134234bf87e00ea8",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/raw/index-ZhD0rHxk.mjs": {
-    "mtime": 1783017003.6764848,
-    "ast_hash": "4edfa1c7d834274f792178c77fbd39fd",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/raw/index.mjs": {
-    "mtime": 1783017003.6773703,
-    "ast_hash": "20816993df30a3d2cecc1b1178695373",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/_..._.get.mjs": {
-    "mtime": 1783017003.6774395,
-    "ast_hash": "3d82f8c209449d603ae8b8e588ede18b",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/auth/datasource.post.mjs": {
-    "mtime": 1783017003.6785808,
-    "ast_hash": "bc0683904d05190cf64be719564fc5f4",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/auth/login.post.mjs": {
-    "mtime": 1783017003.6785517,
-    "ast_hash": "69906d655dfe1ebd5dbffea881daec5d",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/auth/logout.post.mjs": {
-    "mtime": 1783017003.6786065,
-    "ast_hash": "501a38688ee09e3ab7db686bf7269651",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/auth/me.get.mjs": {
-    "mtime": 1783017003.6786225,
-    "ast_hash": "4aea365f2788b0a2ca58e8998a9535c8",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/auth/signup.post.mjs": {
-    "mtime": 1783017003.6786036,
-    "ast_hash": "dcae8e75ef7dc27e3c3f47cca28d4ca0",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/catalog.get.mjs": {
-    "mtime": 1783017003.6764977,
-    "ast_hash": "2685efeeee6b5c10af16a818159a8348",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/feed.get.mjs": {
-    "mtime": 1783017003.6774209,
-    "ast_hash": "57d6ecef25d4c06613e4b1d3fb9707ef",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/feed/comment.post.mjs": {
-    "mtime": 1783017003.6768305,
-    "ast_hash": "07aedb7e6ab12334fca18e4a562561f9",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/feed/like.post.mjs": {
-    "mtime": 1783017003.6786094,
-    "ast_hash": "6df555b39861287d86944c2ac64feef7",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/feed/post.post.mjs": {
-    "mtime": 1783017003.6786366,
-    "ast_hash": "8428fe6c117fafe121830e70a90599cc",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/lessons/_id/complete.post.mjs": {
-    "mtime": 1783017003.6786299,
-    "ast_hash": "69859c432525a81945196b1dcd496b8b",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/log.get.mjs": {
-    "mtime": 1783017003.6774392,
-    "ast_hash": "a9ed5736611ea6603c66cc4d9a0c1a0e",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/log/checkin.post.mjs": {
-    "mtime": 1783017003.6786566,
-    "ast_hash": "08c419f9444679a7cf3b0b0a820fa1e5",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/log/meal.post.mjs": {
-    "mtime": 1783017003.6772885,
-    "ast_hash": "adf0cd04384ad81d80c253d3c4f8db44",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/log/practice.post.mjs": {
-    "mtime": 1783017003.6778665,
-    "ast_hash": "892cc6ef4c61a6fdd3aa1f9d3efec856",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/profile.get.mjs": {
-    "mtime": 1783017003.6774776,
-    "ast_hash": "68d332f22a6b9fcfc52cf2fa6eeba546",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/chunks/routes/api/profile.put.mjs": {
-    "mtime": 1783017003.6774461,
-    "ast_hash": "b031f8f2df00f17e858d64611f851897",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/index.mjs": {
-    "mtime": 1783017003.6759803,
-    "ast_hash": "4e005c958ecc478ac6be0f6eebf0c445",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/functions/__fallback.func/package.json": {
-    "mtime": 1783017003.628326,
-    "ast_hash": "5c93f88e128fdebd27964a37d5026c4c",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/nitro.json": {
-    "mtime": 1783017003.6790142,
-    "ast_hash": "d1e24b2781aa90da99f0832f611e274d",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/static/assets/index-ZhD0rHxk.js": {
-    "mtime": 1783017002.7121203,
-    "ast_hash": "d690141a41465303eee38509d850bfbc",
-    "semantic_hash": ""
-  },
-  "template-webapp/.vercel/output/static/index.html": {
-    "mtime": 1783017002.7118123,
-    "ast_hash": "06dea1988e948cbbe23525f924a91c1e",
     "semantic_hash": ""
   }
 }

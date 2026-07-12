@@ -1,4 +1,4 @@
-# Dakota 🐴
+# Dakota 🐴💃
 
 The horse diary — an all-in-one app for horse training, health and riding:
 arena schooling figures with route diagrams, session scores and notes, daily
@@ -83,9 +83,11 @@ comes from the primary db.
 Dakota stores its data on [Thingtime](https://thingtime.com)
 ([API docs](https://thingtime.com/docs/api)) in two layers:
 
-- **Service account** (`dakota-app`) owns the generic Dakota data: the public
-  catalog bundle (`dakota:catalog:bundle:v1`, acl `tt:all`) and the shared
-  demo yard (`dakota:demo:*`). Provision once with `pnpm thingtime:provision`
+- **Service account** (`dakota-app`) owns the generic Dakota data: the
+  catalog bundle (`dakota:catalog:bundle:v1`) and the shared demo yard
+  (`dakota:demo:*`), both private to the account (acl `tt:user`) so the
+  encoded envelopes never show up on the public Thingtime feed — Dakota's
+  API reads them back with the service token. Provision once with `pnpm thingtime:provision`
   (writes `THINGTIME_SERVICE_TOKEN` to `.env`; verify the account email
   within seven days), then publish with `pnpm seed && pnpm thingtime:sync`.
 - **Login with Thingtime** (`/auth` → *Continue with Thingtime*): the server

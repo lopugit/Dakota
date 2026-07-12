@@ -2,8 +2,10 @@
  * Catalog assembly. The generic Dakota data (exercises, feeds, ailments,
  * practices, courses, articles, friends, wisdom) is owned by the Dakota
  * service account on Thingtime — `pnpm thingtime:sync` publishes it as a
- * chunked public bundle. Reads prefer that bundle (cached in module scope);
- * the seeded Mongo collections remain the assembly source and the fallback.
+ * chunked bundle private to that account (acl tt:user), so the encoded
+ * envelopes never appear on the public Thingtime feed. Reads prefer that
+ * bundle (fetched with the service token, cached in module scope); the
+ * seeded Mongo collections remain the assembly source and the fallback.
  */
 import type { Db } from 'mongodb';
 import type { Catalog } from '../../shared/types';
@@ -90,9 +92,10 @@ export async function getThingtimeCatalog(): Promise<Catalog | null> {
 }
 
 async function fetchCatalogBundle(): Promise<Catalog | null> {
-  // The bundle is public (acl tt:all); the service token just keeps reads
-  // attributed when present.
+  // The bundle is private to the service account, so reads need its token;
+  // without one Dakota just assembles the catalog from Mongo.
   const token = ttServiceToken();
+  if (!token) return null;
   const headId = headThingId(CATALOG_SCOPE, CATALOG_COLLECTION, CATALOG_DOC_ID);
   const head = await ttGetThing(token, headId);
   const headText = (head?.crystal as { text?: unknown } | undefined)?.text;
