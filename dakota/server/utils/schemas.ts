@@ -163,3 +163,22 @@ export const profilePutBody = z.object({
     })
     .optional(),
 });
+
+export const thingtimeAuthBody = z
+  .object({
+    mode: z.enum(['signin', 'signup']),
+    username: z.string().trim().min(1).max(80),
+    password: z.string().min(1).max(200),
+    email: z.string().trim().toLowerCase().email().max(120).optional(),
+    name: z.string().trim().max(80).optional(),
+  })
+  .superRefine((val, ctx) => {
+    if (val.mode === 'signup') {
+      if (!val.email) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['email'], message: 'Email is required to create a Thingtime account' });
+      }
+      if (val.password.length < 8) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['password'], message: 'Password must be at least 8 characters' });
+      }
+    }
+  });

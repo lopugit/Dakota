@@ -86,6 +86,8 @@ function useAuthMutation<TVars, TResult>(fn: (vars: TVars) => Promise<TResult>) 
 export const useSignup = () => useAuthMutation(api.signup);
 export const useLogin = () => useAuthMutation(api.login);
 export const useLogout = () => useAuthMutation(api.logout);
+/** Sign in / sign up with Thingtime — flips the client onto the remote API. */
+export const useThingtimeAuth = () => useAuthMutation(api.thingtimeAuth);
 
 export function useSetDataSource() {
   const qc = useQueryClient();

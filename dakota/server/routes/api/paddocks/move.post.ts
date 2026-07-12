@@ -5,6 +5,7 @@ import { paddockMoveBody } from '../../../utils/schemas';
 import { readValidatedBodyZ } from '../../../utils/body';
 import { getDataContext, requireUserKey } from '../../../utils/datasource';
 import { dateKey } from '../../../../shared/derive';
+import { mirrorUserDoc } from '../../../utils/ttstore';
 
 /** POST /api/paddocks/move — move a horse to another paddock, logging the rotation. */
 export default defineEventHandler(async (event) => {
@@ -29,5 +30,6 @@ export default defineEventHandler(async (event) => {
   await ctx.db
     .collection('paddocks')
     .updateOne({ _id: userKey } as never, { $set: next } as never, { upsert: true });
+  await mirrorUserDoc(ctx, 'paddocks', userKey);
   return { ok: true };
 });

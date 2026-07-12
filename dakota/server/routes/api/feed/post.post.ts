@@ -3,6 +3,7 @@ import { feedPostBody } from '../../../utils/schemas';
 import { readValidatedBodyZ } from '../../../utils/body';
 import { getDataContext, requireUserKey } from '../../../utils/datasource';
 import { getProfile } from '../../../utils/userdocs';
+import { mirrorUserDoc } from '../../../utils/ttstore';
 
 export default defineEventHandler(async (event) => {
   const { text, ex, ride } = await readValidatedBodyZ(event, feedPostBody);
@@ -26,5 +27,6 @@ export default defineEventHandler(async (event) => {
     at,
   };
   await ctx.db.collection('user_posts').insertOne({ _id: post.id, ...post } as never);
+  await mirrorUserDoc(ctx, 'user_posts', post.id);
   return { ok: true, post };
 });

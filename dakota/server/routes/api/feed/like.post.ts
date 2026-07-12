@@ -4,6 +4,7 @@ import { feedLikeBody } from '../../../utils/schemas';
 import { readValidatedBodyZ } from '../../../utils/body';
 import { getDataContext, requireUserKey } from '../../../utils/datasource';
 import { patchProfile } from '../../../utils/userdocs';
+import { mirrorUserDoc, mirrorValue } from '../../../utils/ttstore';
 
 // One like per user per post in the UGC db.
 let likesIndexReady: Promise<unknown> | null = null;
@@ -28,6 +29,7 @@ export default defineEventHandler(async (event) => {
   if (ctx.demo) {
     // Prototype behavior: like state lives on the demo profile doc.
     await patchProfile(ctx.db, userKey, { [`likes.${postId}`]: liked });
+    await mirrorUserDoc(ctx, 'profile', userKey);
     return { ok: true };
   }
 
@@ -41,5 +43,6 @@ export default defineEventHandler(async (event) => {
   } else {
     await ctx.db.collection('likes').deleteOne({ postId, userId: userKey });
   }
+  await mirrorValue(ctx, 'likes', postId, { postId, userId: userKey, liked, at: Date.now() });
   return { ok: true };
 });
