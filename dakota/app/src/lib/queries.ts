@@ -9,7 +9,7 @@ import {
   type QueryClient,
 } from '@tanstack/react-query';
 import type {
-  DayLog, FeedPost, Horse, Paddocks, Profile, Ride, UserLog,
+  DayLog, Farm, FeedPost, Horse, Paddocks, Profile, Ride, UserLog,
 } from '@shared/types';
 import { EMPTY_DAY, dateKey } from '@shared/derive';
 import { api } from './api';
@@ -233,7 +233,7 @@ export function useSaveRide() {
   });
 }
 
-// ---- paddocks ----
+// ---- farms & paddocks ----
 
 export function useMoveHorse() {
   const qc = useQueryClient();
@@ -244,12 +244,89 @@ export function useMoveHorse() {
       const prev = await snapshot<Paddocks>(qc, keys.paddocks);
       qc.setQueryData<Paddocks>(keys.paddocks as unknown as unknown[], (old) => {
         if (!old) return old;
-        const from = old.horses[vars.horse] ?? '';
         return {
-          ...old,
-          horses: { ...old.horses, [vars.horse]: vars.to },
-          moves: [{ horse: vars.horse, from, to: vars.to, at: dateKey(new Date()) }, ...old.moves],
+          farms: old.farms.map((f) => {
+            const horses = { ...f.horses };
+            delete horses[vars.horse];
+            if (f.id !== vars.farm) return { ...f, horses };
+            // The horse may be coming over from another farm — name that paddock.
+            const from =
+              f.horses[vars.horse] ??
+              old.farms.find((x) => x.horses[vars.horse])?.horses[vars.horse] ??
+              '';
+            horses[vars.horse] = vars.to;
+            return {
+              ...f,
+              horses,
+              moves: [
+                { horse: vars.horse, from, to: vars.to, at: dateKey(new Date()) },
+                ...f.moves,
+              ].slice(0, 200),
+            };
+          }),
         };
+      });
+      return { prev };
+    },
+    onError: (e, v, c) => {
+      rollback<Paddocks>(qc, keys.paddocks)(e, v, c);
+      gate(e);
+    },
+    onSettled: () => qc.invalidateQueries({ queryKey: keys.paddocks }),
+  });
+}
+
+/** Painting mutation — replaces one farm's whole layout, optimistically. */
+export function useSaveFarm() {
+  const qc = useQueryClient();
+  const gate = useSignInGate();
+  return useMutation({
+    mutationFn: api.saveFarm,
+    onMutate: async (farm: Farm) => {
+      const prev = await snapshot<Paddocks>(qc, keys.paddocks);
+      qc.setQueryData<Paddocks>(keys.paddocks as unknown as unknown[], (old) => {
+        if (!old) return old;
+        return { farms: old.farms.map((f) => (f.id === farm.id ? farm : f)) };
+      });
+      return { prev };
+    },
+    onError: (e, v, c) => {
+      rollback<Paddocks>(qc, keys.paddocks)(e, v, c);
+      gate(e);
+    },
+    onSettled: () => qc.invalidateQueries({ queryKey: keys.paddocks }),
+  });
+}
+
+export function useAddFarm() {
+  const qc = useQueryClient();
+  const gate = useSignInGate();
+  return useMutation({
+    mutationFn: api.addFarm,
+    // Land the created farm in the cache immediately so callers can switch to
+    // it before the refetch settles.
+    onSuccess: (farm: Farm) => {
+      qc.setQueryData<Paddocks>(keys.paddocks as unknown as unknown[], (old) =>
+        old && !old.farms.some((f) => f.id === farm.id)
+          ? { farms: [...old.farms, farm] }
+          : old,
+      );
+    },
+    onError: gate,
+    onSettled: () => qc.invalidateQueries({ queryKey: keys.paddocks }),
+  });
+}
+
+export function useDeleteFarm() {
+  const qc = useQueryClient();
+  const gate = useSignInGate();
+  return useMutation({
+    mutationFn: api.deleteFarm,
+    onMutate: async (vars: { id: string }) => {
+      const prev = await snapshot<Paddocks>(qc, keys.paddocks);
+      qc.setQueryData<Paddocks>(keys.paddocks as unknown as unknown[], (old) => {
+        if (!old) return old;
+        return { farms: old.farms.filter((f) => f.id !== vars.id) };
       });
       return { prev };
     },

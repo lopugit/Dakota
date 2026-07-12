@@ -36,9 +36,16 @@ export function HorsesScreen() {
   const herd = horses ?? [];
 
   const paddockName = (horseId: string): string | undefined => {
-    const pid = paddocks?.horses[horseId];
-    if (!pid) return undefined;
-    return paddocks?.paddocks.find((p) => p.id === pid)?.n;
+    const farms = paddocks?.farms ?? [];
+    for (const farm of farms) {
+      const pid = farm.horses[horseId];
+      if (!pid) continue;
+      const name = farm.paddocks.find((p) => p.id === pid)?.n;
+      if (!name) continue;
+      // With several farms, say which one the horse grazes.
+      return farms.length > 1 ? `${name} · ${farm.n}` : name;
+    }
+    return undefined;
   };
 
   const resetForm = () => {

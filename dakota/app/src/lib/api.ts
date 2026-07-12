@@ -6,13 +6,14 @@
 // every screen stay unchanged; only the transport moved from `/api/*` to a
 // localStorage-backed store built the same way scripts/seed.ts seeds Mongo.
 import type {
-  AuthUser, CareType, Catalog, DataSource, FeedPost, Horse, Paddocks, Post,
+  AuthUser, CareType, Catalog, DataSource, Farm, FeedPost, Horse, Paddocks, Post,
   PostRide, Profile, Ride, UserLog, UserPost,
 } from '@shared/types';
 import {
   AGES, AILMENTS, AILMENT_SYSTEMS, ARTICLES, BREEDS, CONDITION, COURSES,
   DISCIPLINES, EXERCISES, FEEDS, FEED_CATS, FRIENDS, GAITS, GLOSSARY, LEVELS,
-  MARKINGS, POSTS, PRACTICES, SIGNALS, demoHorses, demoPaddocks, demoRides, seedLog,
+  MARKINGS, POSTS, PRACTICES, SIGNALS, demoHorses, demoPaddocks, demoRides,
+  migratePaddocks, seedLog, starterFarm,
 } from '@shared/dk-data';
 import { dateKey } from '@shared/derive';
 
@@ -91,7 +92,12 @@ function load(): LocalState {
   if (hasStorage) {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) return JSON.parse(raw) as LocalState;
+      if (raw) {
+        const parsed = JSON.parse(raw) as LocalState;
+        // Saves from before multi-farm hold a single flat property — lift it.
+        parsed.paddocks = migratePaddocks(parsed.paddocks);
+        return parsed;
+      }
     } catch {
       /* corrupt or unavailable — fall through to a fresh yard */
     }
@@ -200,14 +206,56 @@ export const api = {
     return reply(ride);
   },
 
-  moveHorse: (body: { horse: string; to: string }) => {
-    const p = state.paddocks;
-    if (p.paddocks.some((pd) => pd.id === body.to)) {
-      const from = p.horses[body.horse] ?? '';
-      p.horses[body.horse] = body.to;
-      p.moves = [{ horse: body.horse, from, to: body.to, at: dateKey(new Date()) }, ...p.moves].slice(0, 200);
+  moveHorse: (body: { farm: string; horse: string; to: string }) => {
+    const farm = state.paddocks.farms.find((f) => f.id === body.farm);
+    if (farm && farm.paddocks.some((pd) => pd.id === body.to)) {
+      // A horse grazes one farm at a time — pull it from wherever it was.
+      const from =
+        farm.horses[body.horse] ??
+        state.paddocks.farms.find((f) => f.horses[body.horse])?.horses[body.horse] ??
+        '';
+      for (const f of state.paddocks.farms) delete f.horses[body.horse];
+      farm.horses[body.horse] = body.to;
+      farm.moves = [
+        { horse: body.horse, from, to: body.to, at: dateKey(new Date()) },
+        ...farm.moves,
+      ].slice(0, 200);
       save();
     }
+    return reply({ ok: true } as const);
+  },
+
+  addFarm: (body: { n: string }) => {
+    const farm = starterFarm(rid('f_'), body.n);
+    state.paddocks.farms.push(farm);
+    save();
+    return reply(farm);
+  },
+  saveFarm: (farm: Farm) => {
+    // Whole-farm saves still honour the invariants: residents must stand in a
+    // paddock that exists here, and a horse grazes one farm at a time. Copy
+    // before fixing up — the caller's object also lives in the query cache.
+    const valid = new Set(farm.paddocks.map((p) => p.id));
+    const next: Farm = {
+      ...farm,
+      horses: Object.fromEntries(
+        Object.entries(farm.horses).filter(([, pid]) => valid.has(pid)),
+      ),
+    };
+    const farms = state.paddocks.farms;
+    const i = farms.findIndex((f) => f.id === next.id);
+    if (i >= 0) farms[i] = next;
+    else farms.push(next);
+    for (const f of farms) {
+      if (f.id === next.id) continue;
+      for (const horse of Object.keys(next.horses)) delete f.horses[horse];
+    }
+    save();
+    return reply({ ok: true } as const);
+  },
+  deleteFarm: (body: { id: string }) => {
+    state.paddocks.farms = state.paddocks.farms.filter((f) => f.id !== body.id);
+    save();
     return reply({ ok: true } as const);
   },
 
