@@ -4,12 +4,15 @@
  *   pnpm seed             # make sure local Mongo holds the canonical data
  *   pnpm thingtime:sync
  *
- * Pushes two scopes, both owned by the Dakota service account:
- * - `dakota:catalog:*` — the assembled catalog bundle, public (acl tt:all);
- *   the API serves this to every visitor (see server/utils/catalog.ts);
+ * Pushes two scopes, both owned by the Dakota service account and both
+ * private to it (acl tt:user) — the encoded envelopes are machine data and
+ * must never surface on the public Thingtime feed:
+ * - `dakota:catalog:*` — the assembled catalog bundle; Dakota's API reads it
+ *   back with the service token and serves it to visitors itself
+ *   (see server/utils/catalog.ts);
  * - `dakota:demo:*`    — the shared demo yard (horses, rides, paddocks,
- *   profile, diary, posts), private to the service account; runtime writes
- *   to the sandbox mirror to the same things.
+ *   profile, diary, posts); runtime writes to the sandbox mirror to the
+ *   same things.
  */
 import './tt-env';
 import { MongoClient } from 'mongodb';
@@ -23,13 +26,14 @@ const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 const dbName = process.env.MONGODB_DB || 'dakota';
 const DEMO_USER = 'demo';
 
-async function putChunks(token: string, chunks: TtChunk[], acl: string[]): Promise<void> {
+async function putChunks(token: string, chunks: TtChunk[]): Promise<void> {
   for (const chunk of chunks) {
     await ttPutThing(token, {
       id: chunk.id,
       thingtime: ['post'],
       crystal: { type: 'text', text: chunk.text },
-      acl,
+      // Owner-only, always: an upsert also flips any previously public chunk.
+      acl: ['tt:user'],
       tags: ['dakota'],
     });
   }
@@ -51,7 +55,7 @@ async function main() {
   await client.connect();
   const db = client.db(dbName);
 
-  // 1. The public catalog bundle.
+  // 1. The catalog bundle (private; Dakota's API reads it with the token).
   const catalog = await assembleCatalogFromMongo(db);
   if (catalog.exercises.length === 0) {
     console.error(`No catalog in ${dbName} — run \`pnpm seed\` first.`);
@@ -60,8 +64,8 @@ async function main() {
     return;
   }
   const bundleChunks = encodeDoc(CATALOG_SCOPE, CATALOG_COLLECTION, CATALOG_DOC_ID, catalog);
-  await putChunks(token, bundleChunks, ['tt:all']);
-  console.log(`catalog: 1 bundle → ${bundleChunks.length} things (public)`);
+  await putChunks(token, bundleChunks);
+  console.log(`catalog: 1 bundle → ${bundleChunks.length} things (private to the service account)`);
 
   // 2. The demo yard, doc by doc, same shape the runtime mirror uses.
   const demoQueries: Array<[string, Record<string, unknown>]> = [
@@ -78,7 +82,7 @@ async function main() {
     let things = 0;
     for (const doc of docs) {
       const chunks = encodeDoc('demo', collection, String(doc._id), doc);
-      await putChunks(token, chunks, ['tt:user']);
+      await putChunks(token, chunks);
       things += chunks.length;
     }
     console.log(`demo ${collection}: ${docs.length} docs → ${things} things`);
