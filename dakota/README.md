@@ -1,4 +1,4 @@
-# Dakota 🐴
+# Dakota 🐴💃
 
 The horse diary — an all-in-one app for horse training, health and riding:
 arena schooling figures with route diagrams, session scores and notes, daily
